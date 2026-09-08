@@ -1,0 +1,47 @@
+.intro {
+  display: grid;
+  gap: var(--block-y);
+  padding-block: var(--section-y);
+}
+
+/* Three metadata fields spread edge to edge, matching the case-study grid. */
+.meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6) var(--grid-gap);
+  margin: 0;
+}
+
+.metaField {
+  display: grid;
+  gap: var(--space-2);
+  align-content: start;
+}
+
+.metaField:last-child {
+  justify-items: end;
+  text-align: right;
+}
+
+.metaValue {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-body);
+}
+
+.overview {
+  margin-block-start: var(--space-3);
+  max-width: 44ch;
+}
+
+@media (max-width: 760px) {
+  .meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metaField:last-child {
+    justify-items: start;
+    text-align: left;
+  }
+}

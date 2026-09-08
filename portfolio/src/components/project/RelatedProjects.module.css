@@ -1,0 +1,46 @@
+.section {
+  padding-block-end: var(--space-9);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--grid-gap);
+  align-items: start;
+}
+
+.card {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.media {
+  transition: opacity var(--dur-base) var(--ease-out-expo);
+}
+
+.card:hover .media,
+.card:focus-visible .media {
+  opacity: 0.82;
+}
+
+.title {
+  font-size: var(--fs-card);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-heading);
+  margin-block-start: var(--space-2);
+}
+
+.discipline {
+  font-size: var(--fs-body);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-body);
+  color: var(--muted-2);
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-11);
+  }
+}

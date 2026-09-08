@@ -1,0 +1,68 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  min-height: var(--header-h);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  /* The optical centre of the smiley sits slightly above its bounding box. */
+  margin-block-start: -1px;
+}
+
+.logo {
+  width: clamp(28px, 0.9vw + 25px, 39px);
+  height: auto;
+  flex: none;
+  color: #1d1d1b;
+}
+
+.brandName,
+.navLink {
+  font-size: var(--fs-nav);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-heading);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(var(--space-5), 2.6vw, var(--space-9));
+}
+
+.navLink {
+  position: relative;
+  display: inline-block;
+  padding-block: var(--space-1);
+}
+
+/* Underline grows from the left rather than fading in — reads as a mark being
+   drawn, which matches the rest of the site's editorial tone. */
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-out-expo);
+}
+
+.navLink:hover::after,
+.navLink:focus-visible::after {
+  transform: scaleX(1);
+}

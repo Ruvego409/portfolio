@@ -1,0 +1,78 @@
+.section {
+  padding-block-start: var(--section-y);
+  /* Set lowercase by design; the content itself keeps its proper casing. */
+  text-transform: lowercase;
+}
+
+.heading {
+  text-align: center;
+  margin-block-end: clamp(var(--space-9), 5vw, var(--space-13));
+}
+
+.list {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr);
+  gap: var(--grid-gap);
+  align-items: start;
+  padding-block: clamp(var(--space-6), 2.2vw, var(--space-8));
+  border-block-start: 1px solid var(--line);
+}
+
+.row:last-child {
+  border-block-end: 1px solid var(--line);
+}
+
+.who {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.company {
+  font-size: clamp(16px, 0.28vw + 15px, 18px);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-heading);
+}
+
+.roles {
+  display: grid;
+  gap: 2px;
+  font-weight: var(--fw-light);
+  font-size: var(--fs-label);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-body);
+  color: var(--muted);
+}
+
+.note {
+  font-weight: var(--fw-light);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--muted);
+  max-width: 46ch;
+}
+
+.period {
+  justify-self: end;
+  text-align: right;
+  font-size: clamp(16px, 0.28vw + 15px, 18px);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-heading);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 860px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-4) var(--space-6);
+  }
+
+  .note {
+    grid-column: 1 / -1;
+  }
+}

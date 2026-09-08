@@ -1,0 +1,101 @@
+.section {
+  padding-block-start: var(--section-y);
+}
+
+.heading {
+  text-align: center;
+  margin-block-end: clamp(var(--space-9), 5vw, var(--space-13));
+}
+
+.headingLink {
+  display: inline-block;
+  transition: opacity var(--dur-fast) ease;
+}
+
+.headingLink:hover {
+  opacity: 0.6;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--grid-gap);
+  align-items: start;
+}
+
+.portraitColumn {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-7);
+}
+
+.portrait {
+  width: min(100%, 412px);
+}
+
+/* Two lines, the second flush right — a small typographic gesture carried over
+   from the original layout. */
+.caption {
+  display: grid;
+  width: min(100%, 300px);
+  font-size: clamp(16px, 0.55vw + 14px, 20px);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-lead);
+}
+
+.caption span:last-child {
+  justify-self: end;
+}
+
+.textColumn {
+  display: grid;
+  gap: clamp(var(--space-9), 5vw, var(--space-12));
+  align-content: start;
+}
+
+.copy {
+  max-width: 34ch;
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6) clamp(var(--space-8), 7vw, var(--space-13));
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-weight: var(--fw-light);
+  font-size: clamp(16px, 0.55vw + 14px, 20px);
+  line-height: 1.6;
+  letter-spacing: var(--ls-lead);
+}
+
+.socialIcon {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  transition: transform var(--dur-base) var(--ease-out-expo);
+}
+
+.socialLink:hover .socialIcon,
+.socialLink:focus-visible .socialIcon {
+  transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-11);
+  }
+
+  .portraitColumn {
+    justify-items: start;
+  }
+
+  .copy {
+    max-width: 46ch;
+  }
+}

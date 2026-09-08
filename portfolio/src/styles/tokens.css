@@ -1,0 +1,82 @@
+/* ============================================================================
+   Design tokens
+   ----------------------------------------------------------------------------
+   Every value the layout depends on lives here. Sizes are fluid: the clamp()
+   middle term is expressed in vw so type and rhythm scale continuously between
+   the 360px and 1440px reference widths instead of snapping at breakpoints.
+   ========================================================================= */
+
+:root {
+  /* --- Colour ------------------------------------------------------------ */
+  --paper: #ffffff;
+  --ink: #000000;
+  --ink-soft: #141414;
+  --muted: #575757;        /* section labels, metadata keys */
+  --muted-2: #666666;      /* card subtitles */
+  --line: rgba(20, 20, 20, 0.14);
+  --shelf-plinth: #635b42; /* the "projects / bookshelf" plinth under the stack */
+  --on-dark: #ffffff;
+
+  /* --- Type ramp ---------------------------------------------------------
+     Named by role, not by size, so a component never hardcodes a px value.  */
+  --fs-label: clamp(12px, 0.18vw + 11.4px, 14px);
+  --fs-body: clamp(15px, 0.14vw + 14.5px, 16px);
+  --fs-nav: clamp(16px, 0.46vw + 14.3px, 21px);
+  --fs-card: clamp(16px, 0.18vw + 15.4px, 18px);
+  --fs-lead: clamp(18px, 0.55vw + 16px, 24px);
+  --fs-spine: clamp(13px, 1.04vw + 9px, 24px);
+  --fs-hero: clamp(26px, 2.2vw + 18px, 48px);
+  --fs-section: clamp(38px, 4.4vw + 6px, 68px);
+
+  /* --- Line height -------------------------------------------------------
+     Framer exported everything at 1.2, which is cramped once a paragraph
+     wraps. Display copy stays tight; running text opens up to 1.5.          */
+  --lh-display: 0.92;
+  --lh-heading: 1.08;
+  --lh-snug: 1.2;
+  --lh-lead: 1.32;
+  --lh-body: 1.5;
+
+  /* --- Letter spacing (optical: tighter as type grows) -------------------- */
+  --ls-display: -0.035em;
+  --ls-heading: -0.025em;
+  --ls-lead: -0.02em;
+  --ls-body: -0.008em;
+  --ls-label: 0.012em;
+
+  /* --- Weight ------------------------------------------------------------ */
+  --fw-light: 300;
+  --fw-regular: 400;
+
+  /* --- Spacing scale (4px base) ------------------------------------------ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 56px;
+  --space-11: 64px;
+  --space-12: 80px;
+  --space-13: 96px;
+  --space-14: 120px;
+
+  /* --- Layout ------------------------------------------------------------ */
+  --gutter: clamp(16px, 1.4vw, 20px);
+  --header-h: clamp(56px, 1.9vw + 48px, 83px);
+  --section-y: clamp(72px, 7vw + 8px, 152px);
+  --block-y: clamp(40px, 3.4vw + 12px, 80px);
+  --rail-w: clamp(240px, 21vw, 320px);
+  --grid-gap: clamp(28px, 3.7vw, 56px);
+  --stack-gap: clamp(16px, 1.5vw, 24px);
+
+  /* --- Motion ------------------------------------------------------------ */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --dur-fast: 180ms;
+  --dur-base: 320ms;
+  --dur-slow: 560ms;
+}

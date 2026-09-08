@@ -1,0 +1,143 @@
+/* ============================================================================
+   Bookshelf
+   ----------------------------------------------------------------------------
+   Books stack flush against each other, each one indented by its own amount so
+   the pile keeps a ragged edge. Insets are percentages of the content width, so
+   the raggedness is preserved rather than collapsing on narrow screens.
+
+   Thickness is stored as a unitless number (--book-h). Multiplying it by a vw
+   value scales the whole stack continuously; the clamp keeps thin books tall
+   enough to stay a comfortable tap target on a phone.
+   ========================================================================= */
+
+.shelf {
+  padding-block-start: var(--space-8);
+  /* Books overshoot upward before they land; without this the fall is clipped
+     by the sticky header's stacking context on some browsers. */
+  isolation: isolate;
+}
+
+.stack {
+  padding-inline: var(--gutter);
+}
+
+.slot {
+  /* Squash on landing pivots on the bottom edge, like weight hitting a shelf. */
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+}
+
+.book {
+  --book-pad: clamp(10px, 1.4vw, 20px);
+
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1.4vw, 20px);
+
+  height: clamp(
+    calc(var(--book-h) * 0.66px),
+    calc(var(--book-h) * 0.0694vw),
+    calc(var(--book-h) * 1px)
+  );
+  min-height: 46px;
+
+  margin-inline-start: var(--book-left);
+  margin-inline-end: var(--book-right);
+  padding-inline: var(--book-pad);
+
+  background: var(--book-color);
+  color: var(--on-dark);
+
+  transition:
+    transform var(--dur-base) var(--ease-out-expo),
+    filter var(--dur-base) var(--ease-out-expo);
+}
+
+/* Pull the book out of the stack the way you would off a real shelf. */
+.book:hover,
+.book:focus-visible {
+  transform: translateX(clamp(6px, 0.8vw, 12px));
+  filter: brightness(1.12);
+}
+
+.content {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  min-width: 0;
+  padding-inline: var(--book-pad);
+}
+
+.title,
+.year {
+  font-size: var(--fs-spine);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-heading);
+}
+
+.title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.year {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Spine decorations ---------------------------------------------------- */
+
+.stripes {
+  display: flex;
+  flex: none;
+  align-self: stretch;
+  gap: clamp(7px, 1.1vw, 16px);
+}
+
+.stripes i {
+  display: block;
+  width: clamp(8px, 1.2vw, 17px);
+  background: var(--mark-color);
+}
+
+.icon {
+  flex: none;
+  width: clamp(26px, 3.9vw, 56px);
+  height: auto;
+  color: var(--on-dark);
+}
+
+/* --- Plinth --------------------------------------------------------------- */
+
+.plinth {
+  background: var(--shelf-plinth);
+  color: var(--on-dark);
+  will-change: transform, opacity;
+}
+
+.plinthInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  min-height: clamp(56px, 6.3vw, 91px);
+  font-size: var(--fs-nav);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-heading);
+}
+
+@media (max-width: 640px) {
+  .title {
+    /* Two lines beat an ellipsis once the spine title stops fitting. */
+    white-space: normal;
+    overflow: visible;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+}

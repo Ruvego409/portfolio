@@ -1,0 +1,77 @@
+.page {
+  padding-block-start: clamp(var(--space-7), 3vw, var(--space-9));
+  padding-block-end: var(--space-9);
+  display: grid;
+  gap: var(--space-8);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 39fr) minmax(0, 22fr) minmax(0, 39fr);
+  align-items: center;
+  gap: clamp(var(--space-4), 2vw, var(--space-7));
+}
+
+.word {
+  display: block;
+  width: 100%;
+  height: auto;
+  fill: var(--ink);
+}
+
+.word text {
+  font-family: inherit;
+  font-size: 300px;
+  letter-spacing: var(--ls-display);
+}
+
+.plate {
+  display: block;
+  overflow: hidden;
+  transition: opacity var(--dur-base) var(--ease-out-expo);
+}
+
+.plate img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 224 / 117;
+  object-fit: cover;
+}
+
+.plate:hover,
+.plate:focus-visible {
+  opacity: 0.85;
+}
+
+.email {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: var(--space-6);
+  }
+
+  .word {
+    width: min(100%, 340px);
+  }
+
+  .plate {
+    width: min(100%, 260px);
+  }
+
+  /* On a phone the mailto: photograph is easy to miss, so spell the address
+     out underneath it. */
+  .email {
+    display: block;
+    text-align: center;
+    font-size: clamp(16px, 0.55vw + 14px, 20px);
+    letter-spacing: var(--ls-lead);
+  }
+
+  .email a {
+    border-block-end: 1px solid currentColor;
+  }
+}
