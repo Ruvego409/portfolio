@@ -1,11 +1,13 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 
 import type { Project } from '@/data/types'
 import { bookVariants, plinthVariants } from '@/lib/motion'
 import { DanceMuseumMark, LasowiakMark, SheetSolvedMark } from '@/components/ui/Marks'
+import { HoverPreview } from './HoverPreview'
 
 import styles from './Bookshelf.module.css'
 
@@ -21,11 +23,16 @@ type Props = {
  * On load the books fall in from above, top to bottom, one after another.
  * The fall lives on the <li> and the hover lives on the <a>, so the two
  * transforms never fight over the same element.
+ *
+ * HoverPreview is rendered once here so there is only ever one floating card
+ * in the DOM; Books just update the shared state via callbacks.
  */
 export function Bookshelf({ projects }: Props) {
   const reduced = useReducedMotion()
   const initial = reduced ? 'static' : 'hidden'
   const animate = reduced ? 'static' : 'visible'
+
+  const [hoveredProject, setHoveredProject] = useState<Project | null>(null)
 
   return (
     <section className={styles.shelf} aria-label="Selected projects">
@@ -39,7 +46,11 @@ export function Bookshelf({ projects }: Props) {
             initial={initial}
             animate={animate}
           >
-            <Book project={project} />
+            <Book
+              project={project}
+              onMouseEnter={() => setHoveredProject(project)}
+              onMouseLeave={() => setHoveredProject(null)}
+            />
           </motion.li>
         ))}
       </ul>
@@ -55,11 +66,26 @@ export function Bookshelf({ projects }: Props) {
           <span>bookshelf</span>
         </div>
       </motion.div>
+
+      {/* Floating preview card — one instance, updated by hover state */}
+      {hoveredProject && (
+        <HoverPreview
+          media={hoveredProject.card}
+          label="See full project"
+          visible={Boolean(hoveredProject)}
+        />
+      )}
     </section>
   )
 }
 
-function Book({ project }: { project: Project }) {
+type BookProps = {
+  project: Project
+  onMouseEnter: () => void
+  onMouseLeave: () => void
+}
+
+function Book({ project, onMouseEnter, onMouseLeave }: BookProps) {
   const { spine, color, mark, markColor } = project
 
   const style = {
@@ -71,7 +97,13 @@ function Book({ project }: { project: Project }) {
   } as React.CSSProperties
 
   return (
-    <Link href={`/${project.slug}`} className={styles.book} style={style}>
+    <Link
+      href={`/${project.slug}`}
+      className={styles.book}
+      style={style}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <Decoration mark={mark} position="start" />
 
       <span className={styles.content}>

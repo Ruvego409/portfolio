@@ -1,0 +1,63 @@
+﻿/* ==========================================================================
+   HoverPreview
+   --------------------------------------------------------------------------
+   A small card that follows the cursor over the bookshelf. It is always
+   present in the DOM but invisible (opacity 0, pointer-events none) until
+   a Book is hovered. Transition on opacity + transform gives a quick but
+   smooth fade-and-lift entrance.
+   ========================================================================== */
+
+.preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+
+  /* Initial position off-screen so the card does not flash at 0,0 */
+  transform: translate(-9999px, -9999px);
+
+  width: clamp(160px, 16vw, 220px);
+
+  background: #fff;
+  color: #111;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 0.18s ease,
+    scale 0.18s ease;
+
+  scale: 0.92;
+}
+
+.preview.visible {
+  opacity: 1;
+  scale: 1;
+}
+
+/* Media container preserves aspect ratio and clips overflow */
+.media {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #eee;
+}
+
+.video,
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* "See full project →" label at the bottom */
+.cta {
+  padding: 10px 12px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+  border-top: 1px solid #e5e5e5;
+}
