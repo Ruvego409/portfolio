@@ -13,11 +13,8 @@ type Props = {
 }
 
 /**
- * A small floating card that follows the cursor and shows either a video
+ * A floating card that follows the cursor and shows either a video
  * or an image preview of the project, plus a "See full project" label.
- *
- * Rendered once at the Bookshelf level and updated by mouse-enter / mouse-leave
- * on each Book, so there is only ever one DOM node regardless of project count.
  */
 export function HoverPreview({ media, label, visible, anchor }: Props) {
   const ref = useRef<HTMLDivElement>(null)
@@ -37,19 +34,15 @@ export function HoverPreview({ media, label, visible, anchor }: Props) {
 
       let y: number
       if (anchorRef.current === 'below') {
-        // Card appears below the cursor
         y = e.clientY + 20
       } else {
-        // Card appears above the cursor
         y = e.clientY - rect.height - 20
       }
 
-      // Keep the card inside the viewport horizontally
       if (x + rect.width > window.innerWidth - 8) {
         x = e.clientX - rect.width - offsetX
       }
 
-      // Keep the card inside the viewport vertically
       if (y + rect.height > window.innerHeight - 8) {
         y = window.innerHeight - rect.height - 8
       }
@@ -92,8 +85,8 @@ export function HoverPreview({ media, label, visible, anchor }: Props) {
       <div className={styles.cta}>
         <span className={styles.ctaLabel}>{label}</span>
         <span className={styles.ctaCircle}>
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-            <path d="M1 5h8M6 2l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M1.5 6h9M7 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </span>
       </div>
