@@ -21,7 +21,7 @@ const cards = {
   ubu: video('SpAQypmAKcjojk1r7A0F5hcye7M.mp4', 0.75, 'Ubu Roi book, animated preview'),
   sheetsolved: video('X7mVWw48oBMDDHbcxH3RhVommQ.mp4', 0.75, 'SheetSolved identity, animated preview'),
   mtrw: video('1SBUPFmivlWB4AcWR8lgsZvk.mp4', 0.8, 'Warsaw dance museum identity, animated preview'),
-  aktan: img('tcbeOzybtpGmP1sObudWElrsTY.png', 1.807, 'Spreads from the Akta No. illustrated book'),
+  aktan: img('aktan-hover-preview.png', 0.75, 'Charcoal illustration from the Akta No. book'),
   're-move': video('zl174ethgs7OB28ATVUU6DpaS0.mp4', 0.8, 'Re:Move key visual, animated preview'),
   lasowiak: img('YeV2lnGiwBSzZ8A9ZGuPgdiBqfo.jpg', 0.667, 'Lasowiak cranberry liqueur bottle'),
   honored: img('PKFwInnTMZlUu00bKRvSP5EI.png', 1.503, 'Honored agency website'),
@@ -257,7 +257,7 @@ export const projects: Project[] = [
       {
         caption: 'Final Result:',
         items: [
-          img('VocXQQCXA7epkcS8eluPo9Gt8.png', 1.303, 'Cover of the Akta No. book', { inset: true }),
+          img('VocXQQCXA7epkcS8eluPo9Gt8.png', 1.303, 'Cover of the Akta No. book'),
           img('NOavjdW8oiXLl4FIMb1Ne9xF0.png', 1.303, 'Charcoal illustration spread'),
           img('tsAsaIZClXpfnvWg10zYXNlBUR4.jpg', 1.303, 'Printed book photographed on a table'),
           video('WFDgKrhEQYxr1vB3i6jE4rvANPU.mp4', 1.333, 'Pages turning'),

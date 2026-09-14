@@ -8,6 +8,8 @@ type Props = {
   media: MediaItem
   label: string
   visible: boolean
+  /** 'below' places the card below the cursor, 'above' places it above. */
+  anchor: 'above' | 'below'
 }
 
 /**
@@ -17,8 +19,10 @@ type Props = {
  * Rendered once at the Bookshelf level and updated by mouse-enter / mouse-leave
  * on each Book, so there is only ever one DOM node regardless of project count.
  */
-export function HoverPreview({ media, label, visible }: Props) {
+export function HoverPreview({ media, label, visible, anchor }: Props) {
   const ref = useRef<HTMLDivElement>(null)
+  const anchorRef = useRef(anchor)
+  anchorRef.current = anchor
 
   useEffect(() => {
     const el = ref.current
@@ -27,15 +31,25 @@ export function HoverPreview({ media, label, visible }: Props) {
     function onMove(e: MouseEvent) {
       if (!el) return
       const offsetX = 20
-      const offsetY = -20
+      const rect = el.getBoundingClientRect()
 
       let x = e.clientX + offsetX
-      let y = e.clientY + offsetY
 
-      const rect = el.getBoundingClientRect()
+      let y: number
+      if (anchorRef.current === 'below') {
+        // Card appears below the cursor
+        y = e.clientY + 20
+      } else {
+        // Card appears above the cursor
+        y = e.clientY - rect.height - 20
+      }
+
+      // Keep the card inside the viewport horizontally
       if (x + rect.width > window.innerWidth - 8) {
         x = e.clientX - rect.width - offsetX
       }
+
+      // Keep the card inside the viewport vertically
       if (y + rect.height > window.innerHeight - 8) {
         y = window.innerHeight - rect.height - 8
       }
@@ -75,9 +89,14 @@ export function HoverPreview({ media, label, visible }: Props) {
           />
         )}
       </div>
-      <p className={styles.cta}>
-        {label} <span aria-hidden="true">→</span>
-      </p>
+      <div className={styles.cta}>
+        <span className={styles.ctaLabel}>{label}</span>
+        <span className={styles.ctaCircle}>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+            <path d="M1 5h8M6 2l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </span>
+      </div>
     </div>
   )
 }

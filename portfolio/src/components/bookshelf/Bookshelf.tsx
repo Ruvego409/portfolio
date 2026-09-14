@@ -33,6 +33,7 @@ export function Bookshelf({ projects }: Props) {
   const animate = reduced ? 'static' : 'visible'
 
   const [hoveredProject, setHoveredProject] = useState<Project | null>(null)
+  const [hoveredIndex, setHoveredIndex] = useState(0)
 
   return (
     <section className={styles.shelf} aria-label="Selected projects">
@@ -48,7 +49,10 @@ export function Bookshelf({ projects }: Props) {
           >
             <Book
               project={project}
-              onMouseEnter={() => setHoveredProject(project)}
+              onMouseEnter={() => {
+                setHoveredProject(project)
+                setHoveredIndex(index)
+              }}
               onMouseLeave={() => setHoveredProject(null)}
             />
           </motion.li>
@@ -73,6 +77,7 @@ export function Bookshelf({ projects }: Props) {
           media={hoveredProject.card}
           label="See full project"
           visible={Boolean(hoveredProject)}
+          anchor={hoveredIndex <= 2 ? 'below' : 'above'}
         />
       )}
     </section>

@@ -3,8 +3,7 @@
    --------------------------------------------------------------------------
    A small card that follows the cursor over the bookshelf. It is always
    present in the DOM but invisible (opacity 0, pointer-events none) until
-   a Book is hovered. Transition on opacity + transform gives a quick but
-   smooth fade-and-lift entrance.
+   a Book is hovered.
    ========================================================================== */
 
 .preview {
@@ -17,9 +16,6 @@
   transform: translate(-9999px, -9999px);
 
   width: clamp(160px, 16vw, 220px);
-
-  background: #fff;
-  color: #111;
 
   opacity: 0;
   pointer-events: none;
@@ -41,7 +37,7 @@
   width: 100%;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  background: #eee;
+  background: #111;
 }
 
 .video,
@@ -52,12 +48,33 @@
   display: block;
 }
 
-/* "See full project →" label at the bottom */
+/* "See full project (arrow)" bar — black background, white text, Amiamie font */
 .cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
   padding: 10px 12px;
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
   margin: 0;
-  border-top: 1px solid #e5e5e5;
+  background: #111;
+  color: #fff;
+  font-family: 'Amiamie', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.ctaLabel {
+  white-space: nowrap;
+}
+
+.ctaCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
 }
