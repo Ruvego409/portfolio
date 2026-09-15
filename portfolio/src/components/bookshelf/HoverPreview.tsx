@@ -27,16 +27,16 @@ export function HoverPreview({ media, label, visible, anchor }: Props) {
 
     function onMove(e: MouseEvent) {
       if (!el) return
-      const offsetX = 20
+      const offsetX = 16
       const rect = el.getBoundingClientRect()
 
       let x = e.clientX + offsetX
 
       let y: number
       if (anchorRef.current === 'below') {
-        y = e.clientY + 20
+        y = e.clientY + 16
       } else {
-        y = e.clientY - rect.height - 20
+        y = e.clientY - rect.height - 16
       }
 
       if (x + rect.width > window.innerWidth - 8) {
@@ -85,8 +85,8 @@ export function HoverPreview({ media, label, visible, anchor }: Props) {
       <div className={styles.cta}>
         <span className={styles.ctaLabel}>{label}</span>
         <span className={styles.ctaCircle}>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-            <path d="M1.5 6h9M7 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+            <path d="M1.5 5h7M5.5 2l3 3-3 3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </span>
       </div>
