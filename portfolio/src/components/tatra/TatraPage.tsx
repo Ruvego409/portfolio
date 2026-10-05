@@ -9,14 +9,19 @@ import { TatraGlyphs } from './TatraGlyphs'
 import { TatraTester } from './TatraTester'
 import styles from './TatraPage.module.css'
 
-const galleryImages = [
-  { src: '/media/tatra/pres-1.png', ratio: 1.778 },  // Cover — Tatra wordmark orange
-  { src: '/media/tatra/pres-2.png', ratio: 1.778 },  // Elements spread (stone cutouts)
-  { src: '/media/tatra/pres-3.png', ratio: 1.056 },  // Full glyph map (portrait)
-  { src: '/media/tatra/pres-4.png', ratio: 1.778 },  // ALTITUDE STONE poster
-  { src: '/media/tatra/pres-5.png', ratio: 1.408 },  // Elevation book mockup
-  { src: '/media/tatra/pres-6.png', ratio: 1.778 },  // Streetwear / product mockups
-  { src: '/media/tatra/pres-7.png', ratio: 1.778 },  // Beanie & apparel mockup
+type GalleryItem =
+  | { kind: 'image'; src: string; ratio: number; alt: string }
+  | { kind: 'vimeo'; vimeoId: string; ratio: number; title: string }
+
+const galleryItems: GalleryItem[] = [
+  { kind: 'image', src: '/media/tatra/pres-2.webp', ratio: 1.4,   alt: 'Tatra stone elements spread' },
+  { kind: 'image', src: '/media/tatra/pres-3.webp', ratio: 0.872, alt: 'Tatra full glyph map' },
+  { kind: 'vimeo', vimeoId: '1233050325',           ratio: 1.778, title: 'Tatra font animation' },
+  { kind: 'image', src: '/media/tatra/pres-4.webp', ratio: 1.4,   alt: 'ALTITUDE STONE poster' },
+  { kind: 'image', src: '/media/tatra/pres-5.webp', ratio: 1.4,   alt: 'Elevation book mockup' },
+  { kind: 'image', src: '/media/tatra/pres-6.webp', ratio: 1.4,   alt: 'Streetwear and packaging design' },
+  { kind: 'image', src: '/media/tatra/pres-7.webp', ratio: 1.501, alt: 'Peak beanie apparel mockup' },
+  { kind: 'image', src: '/media/tatra/pres-8.webp', ratio: 1.432, alt: 'Peak brutalist typography artwork' },
 ]
 
 export function TatraPage() {
@@ -31,15 +36,16 @@ export function TatraPage() {
         <h1 className={styles.bandTitle}>Tatra</h1>
       </div>
 
-      {/* ── Hero video/image ──────────────────────────── */}
+      {/* ── Hero cover image (optimized WebP) ─────────── */}
       <div className={styles.heroMedia}>
-        <video
-          src="/media/tatra/gallery-8.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className={styles.heroVideo}
+        <Image
+          src="/media/tatra/pres-1.webp"
+          alt="Tatra display font cover"
+          width={1400}
+          height={1000}
+          priority
+          sizes="100vw"
+          className={styles.heroImg}
         />
       </div>
 
@@ -75,18 +81,33 @@ export function TatraPage() {
 
       {/* ── Gallery + Specs (split layout like project pages) ── */}
       <div className={`container split ${styles.body}`}>
-        {/* Left: gallery images */}
+        {/* Left: gallery images & Vimeo video */}
         <div className={styles.gallery}>
-          {galleryImages.map((img, i) => (
-            <Reveal as="figure" key={img.src} delay={i * 0.04} className={styles.figure}>
-              <Image
-                src={img.src}
-                alt={`Tatra font showcase ${i + 1}`}
-                width={1600}
-                height={Math.round(1600 / img.ratio)}
-                sizes="(max-width: 900px) 100vw, 72vw"
-                className={styles.galleryImg}
-              />
+          {galleryItems.map((item, i) => (
+            <Reveal as="figure" key={item.kind === 'image' ? item.src : item.vimeoId} delay={i * 0.04} className={styles.figure}>
+              {item.kind === 'image' ? (
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={1400}
+                  height={Math.round(1400 / item.ratio)}
+                  sizes="(max-width: 900px) 100vw, 72vw"
+                  className={styles.galleryImg}
+                  loading="lazy"
+                />
+              ) : (
+                <div className={styles.vimeoFrame} style={{ aspectRatio: item.ratio }}>
+                  <iframe
+                    src={`https://player.vimeo.com/video/${item.vimeoId}?autoplay=1&loop=1&muted=1&autopause=0&background=1&title=0&byline=0&portrait=0&badge=0`}
+                    className={styles.vimeoIframe}
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    title={item.title}
+                    loading="lazy"
+                  />
+                </div>
+              )}
             </Reveal>
           ))}
         </div>

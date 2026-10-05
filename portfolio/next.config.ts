@@ -7,6 +7,19 @@ const nextConfig: NextConfig = {
   // has nothing to add here and would only cost a serverless round trip.
   images: { unoptimized: true },
 
+  async headers() {
+    return [
+      {
+        source: '/fonts/:path*',
+        headers: [
+          { key: 'Content-Disposition', value: 'inline' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+        ],
+      },
+    ]
+  },
+
   async redirects() {
     return [
       // The Framer site used a colon in this path, which is legal but awkward
