@@ -8,13 +8,13 @@ import { TatraTester } from './TatraTester'
 import styles from './TatraPage.module.css'
 
 const galleryImages = [
-  { src: '/media/tatra/gallery-1.png', ratio: 1.778 },
-  { src: '/media/tatra/gallery-2.png', ratio: 1.778 },
-  { src: '/media/tatra/gallery-3.png', ratio: 1.778 },
-  { src: '/media/tatra/gallery-4.png', ratio: 1.778 },
-  { src: '/media/tatra/gallery-5.png', ratio: 1.778 },
-  { src: '/media/tatra/gallery-6.png', ratio: 1.778 },
-  { src: '/media/tatra/gallery-7.png', ratio: 1.778 },
+  { src: '/media/tatra/pres-1.png', ratio: 1.778 },  // Cover — Tatra wordmark orange
+  { src: '/media/tatra/pres-2.png', ratio: 1.778 },  // Elements spread (stone cutouts)
+  { src: '/media/tatra/pres-3.png', ratio: 1.056 },  // Full glyph map (portrait)
+  { src: '/media/tatra/pres-4.png', ratio: 1.778 },  // ALTITUDE STONE poster
+  { src: '/media/tatra/pres-5.png', ratio: 1.408 },  // Elevation book mockup
+  { src: '/media/tatra/pres-6.png', ratio: 1.778 },  // Streetwear / product mockups
+  { src: '/media/tatra/pres-7.png', ratio: 1.778 },  // Beanie & apparel mockup
 ]
 
 const relatedProjects = [

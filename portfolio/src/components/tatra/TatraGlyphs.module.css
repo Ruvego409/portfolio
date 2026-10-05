@@ -19,7 +19,7 @@
 }
 
 .card {
-  border: 1px solid var(--muted-3);
+  border: 1px solid var(--line);
   padding: var(--space-3) var(--space-2);
   display: grid;
   place-items: center;
@@ -30,8 +30,8 @@
 
 .card:hover {
   transform: scale(1.12);
-  border-color: var(--on-dark);
-  background: color-mix(in srgb, var(--on-dark) 6%, transparent);
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
   z-index: 1;
   position: relative;
 }
@@ -40,6 +40,6 @@
   font-family: 'TatraRocks', serif;
   font-size: clamp(24px, 3vw, 40px);
   line-height: 1;
-  color: var(--on-dark);
+  color: var(--ink);
   display: block;
 }

@@ -12,8 +12,11 @@
   --ink: #000000;
   --ink-soft: #141414;
   --muted: #575757;        /* section labels, metadata keys */
+  --muted-1: #3d3d3d;      /* body text inside outcome blocks */
   --muted-2: #666666;      /* card subtitles */
+  --muted-3: rgba(20, 20, 20, 0.18); /* subtle borders (glyph cards, tester) */
   --line: rgba(20, 20, 20, 0.14);
+  --bg: #ffffff;           /* page background alias of --paper */
   --shelf-plinth: #635b42; /* the "projects / bookshelf" plinth under the stack */
   --on-dark: #ffffff;
 

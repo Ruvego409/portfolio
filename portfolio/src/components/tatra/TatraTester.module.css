@@ -11,8 +11,8 @@
 
 .presetBtn {
   background: transparent;
-  border: 1px solid var(--muted-3);
-  color: var(--muted-1);
+  border: 1px solid var(--line);
+  color: var(--muted);
   padding: var(--space-2) var(--space-4);
   font-family: inherit;
   font-size: var(--fs-label);
@@ -23,19 +23,19 @@
 
 .presetBtn:hover,
 .presetBtn[data-active='true'] {
-  background: var(--on-dark);
-  color: var(--bg);
-  border-color: var(--on-dark);
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
 }
 
 .editor {
   min-height: 200px;
-  border: 1px solid var(--muted-3);
+  border: 1px solid var(--line);
   padding: var(--space-6);
   font-family: 'TatraRocks', serif;
   font-size: clamp(32px, 5vw, 72px);
   line-height: 1.2;
-  color: var(--on-dark);
+  color: var(--ink);
   outline: none;
   white-space: pre-wrap;
   word-break: break-word;
@@ -43,12 +43,12 @@
 }
 
 .editor:focus {
-  border-color: var(--on-dark);
+  border-color: var(--ink);
 }
 
 .editor:empty::before {
   content: attr(data-placeholder);
-  color: var(--muted-3);
+  color: var(--muted);
   font-family: inherit;
   font-size: clamp(18px, 2vw, 28px);
   pointer-events: none;
