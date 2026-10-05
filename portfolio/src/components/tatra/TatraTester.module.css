@@ -1,0 +1,61 @@
+.root {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.presetBtn {
+  background: transparent;
+  border: 1px solid var(--muted-3);
+  color: var(--muted-1);
+  padding: var(--space-2) var(--space-4);
+  font-family: inherit;
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-heading);
+  cursor: pointer;
+  transition: background var(--dur-base), color var(--dur-base), border-color var(--dur-base);
+}
+
+.presetBtn:hover,
+.presetBtn[data-active='true'] {
+  background: var(--on-dark);
+  color: var(--bg);
+  border-color: var(--on-dark);
+}
+
+.editor {
+  min-height: 200px;
+  border: 1px solid var(--muted-3);
+  padding: var(--space-6);
+  font-family: 'TatraRocks', serif;
+  font-size: clamp(32px, 5vw, 72px);
+  line-height: 1.2;
+  color: var(--on-dark);
+  outline: none;
+  white-space: pre-wrap;
+  word-break: break-word;
+  transition: border-color var(--dur-base) var(--ease-out-expo);
+}
+
+.editor:focus {
+  border-color: var(--on-dark);
+}
+
+.editor:empty::before {
+  content: attr(data-placeholder);
+  color: var(--muted-3);
+  font-family: inherit;
+  font-size: clamp(18px, 2vw, 28px);
+  pointer-events: none;
+}
+
+.hint {
+  font-size: var(--fs-label);
+  color: var(--muted-2);
+  line-height: var(--lh-body);
+}

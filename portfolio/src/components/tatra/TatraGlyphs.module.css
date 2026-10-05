@@ -1,0 +1,45 @@
+.root {
+  display: grid;
+  gap: var(--space-9);
+}
+
+.group {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.groupLabel {
+  /* label utility class already applied */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: var(--space-2);
+}
+
+.card {
+  border: 1px solid var(--muted-3);
+  padding: var(--space-3) var(--space-2);
+  display: grid;
+  place-items: center;
+  cursor: default;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  aspect-ratio: 1;
+}
+
+.card:hover {
+  transform: scale(1.12);
+  border-color: var(--on-dark);
+  background: color-mix(in srgb, var(--on-dark) 6%, transparent);
+  z-index: 1;
+  position: relative;
+}
+
+.glyph {
+  font-family: 'TatraRocks', serif;
+  font-size: clamp(24px, 3vw, 40px);
+  line-height: 1;
+  color: var(--on-dark);
+  display: block;
+}
