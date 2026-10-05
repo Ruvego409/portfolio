@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useCallback } from 'react'
+import { useRef, useCallback, useState } from 'react'
 import styles from './TatraTester.module.css'
 
 // Build the set of all allowed characters from the font
@@ -34,13 +34,13 @@ const PRESETS = [
 
 export function TatraTester() {
   const editorRef = useRef<HTMLDivElement>(null)
-  const activePreset = useRef<string | null>(null)
+  const [fontSize, setFontSize] = useState<number>(48)
+  const [letterSpacing, setLetterSpacing] = useState<number>(-0.07)
+  const [lineHeight, setLineHeight] = useState<number>(1.1)
 
   const applyPreset = useCallback((text: string, label: string) => {
     if (!editorRef.current) return
     editorRef.current.innerText = text
-    activePreset.current = label
-    // Update active btn
     document.querySelectorAll('[data-preset]').forEach((el) => {
       el.setAttribute('data-active', el.getAttribute('data-preset') === label ? 'true' : 'false')
     })
@@ -77,29 +77,86 @@ export function TatraTester() {
 
   return (
     <div className={styles.root}>
-      <div className={styles.presets}>
-        {PRESETS.map((p) => (
+      {/* ── Typographic controls toolbar ───────────────────────── */}
+      <div className={styles.toolbar}>
+        <div className={styles.controlGroup}>
+          <div className={styles.control}>
+            <label htmlFor="tatra-size" className={styles.controlLabel}>
+              <span>Size</span>
+              <span className={styles.controlValue}>{fontSize}px</span>
+            </label>
+            <input
+              id="tatra-size"
+              type="range"
+              min="16"
+              max="120"
+              value={fontSize}
+              onChange={(e) => setFontSize(Number(e.target.value))}
+              className={styles.slider}
+            />
+          </div>
+
+          <div className={styles.control}>
+            <label htmlFor="tatra-kerning" className={styles.controlLabel}>
+              <span>Kerning</span>
+              <span className={styles.controlValue}>{letterSpacing.toFixed(2)}em</span>
+            </label>
+            <input
+              id="tatra-kerning"
+              type="range"
+              min="-0.15"
+              max="0.20"
+              step="0.01"
+              value={letterSpacing}
+              onChange={(e) => setLetterSpacing(Number(e.target.value))}
+              className={styles.slider}
+            />
+          </div>
+
+          <div className={styles.control}>
+            <label htmlFor="tatra-leading" className={styles.controlLabel}>
+              <span>Leading</span>
+              <span className={styles.controlValue}>{lineHeight.toFixed(2)}</span>
+            </label>
+            <input
+              id="tatra-leading"
+              type="range"
+              min="0.8"
+              max="2.2"
+              step="0.05"
+              value={lineHeight}
+              onChange={(e) => setLineHeight(Number(e.target.value))}
+              className={styles.slider}
+            />
+          </div>
+        </div>
+
+        {/* ── Presets buttons ───────────────────────────── */}
+        <div className={styles.presets}>
+          {PRESETS.map((p) => (
+            <button
+              key={p.label}
+              data-preset={p.label}
+              data-active="false"
+              className={styles.presetBtn}
+              onClick={() => applyPreset(p.text, p.label)}
+            >
+              {p.label}
+            </button>
+          ))}
           <button
-            key={p.label}
-            data-preset={p.label}
-            data-active="false"
             className={styles.presetBtn}
-            onClick={() => applyPreset(p.text, p.label)}
+            onClick={() => {
+              if (editorRef.current) editorRef.current.innerText = ''
+              editorRef.current?.focus()
+            }}
           >
-            {p.label}
+            Clear
           </button>
-        ))}
-        <button
-          className={styles.presetBtn}
-          onClick={() => {
-            if (editorRef.current) editorRef.current.innerText = ''
-            editorRef.current?.focus()
-          }}
-        >
-          Clear
-        </button>
+        </div>
       </div>
 
+      {/* ── Interactive Editable Surface ────────────────────── */}
       <div
         ref={editorRef}
         className={styles.editor}
@@ -109,6 +166,11 @@ export function TatraTester() {
         onKeyDown={handleKeyDown}
         onPaste={handlePaste}
         data-placeholder="Type here… (only font glyphs allowed)"
+        style={{
+          fontSize: `${fontSize}px`,
+          letterSpacing: `${letterSpacing}em`,
+          lineHeight,
+        }}
       />
 
       <p className={styles.hint}>

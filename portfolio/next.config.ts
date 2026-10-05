@@ -12,9 +12,8 @@ const nextConfig: NextConfig = {
       {
         source: '/fonts/:path*',
         headers: [
-          { key: 'Content-Disposition', value: 'inline' },
-          { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
     ]

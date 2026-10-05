@@ -33,7 +33,7 @@ export function TatraPage() {
     <article>
       {/* ── Hero band ─────────────────────────────────── */}
       <div className={styles.band}>
-        <h1 className={styles.bandTitle}>Tatra</h1>
+        <h1 className={styles.bandTitle}>Tatra display font</h1>
       </div>
 
       {/* ── Hero cover image (optimized WebP) ─────────── */}
