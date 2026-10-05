@@ -1,8 +1,10 @@
 'use client'
 
-import Link from 'next/link'
 import Image from 'next/image'
 import { Reveal } from '@/components/ui/Reveal'
+import { RelatedProjects } from '@/components/project/RelatedProjects'
+import { getProject } from '@/data/projects'
+import type { Project } from '@/data/types'
 import { TatraGlyphs } from './TatraGlyphs'
 import { TatraTester } from './TatraTester'
 import styles from './TatraPage.module.css'
@@ -17,36 +19,16 @@ const galleryImages = [
   { src: '/media/tatra/pres-7.png', ratio: 1.778 },  // Beanie & apparel mockup
 ]
 
-const relatedProjects = [
-  {
-    slug: 'aktan',
-    title: 'Bruno Jasieński Akta №',
-    discipline: 'Editorial Design',
-    img: '/media/aktan-hover-preview.png',
-    isVideo: false,
-  },
-  {
-    slug: 'sheetsolved',
-    title: 'SheetSolved branding + UI/UX',
-    discipline: 'Brand Identity',
-    img: '/media/X7mVWw48oBMDDHbcxH3RhVommQ.mp4',
-    isVideo: true,
-  },
-  {
-    slug: 'ubu',
-    title: 'Ubu Roi ou les Polonais',
-    discipline: 'Editorial Design',
-    img: '/media/SpAQypmAKcjojk1r7A0F5hcye7M.mp4',
-    isVideo: true,
-  },
-]
-
 export function TatraPage() {
+  const related = [getProject('aktan'), getProject('sheetsolved'), getProject('ubu')].filter(
+    (p): p is Project => Boolean(p),
+  )
+
   return (
     <article>
       {/* ── Hero band ─────────────────────────────────── */}
       <div className={styles.band}>
-        <h1 className={styles.bandTitle}>Tatra*</h1>
+        <h1 className={styles.bandTitle}>Tatra</h1>
       </div>
 
       {/* ── Hero video/image ──────────────────────────── */}
@@ -158,39 +140,7 @@ export function TatraPage() {
       </div>
 
       {/* ── Related projects ─────────────────────────── */}
-      <section className={`container ${styles.related}`} aria-label="More projects">
-        <ul className={styles.relatedGrid}>
-          {relatedProjects.map((p, i) => (
-            <Reveal as="li" key={p.slug} delay={i * 0.06}>
-              <Link href={`/${p.slug}`} className={styles.relatedCard}>
-                <div className={styles.relatedMedia}>
-                  {p.isVideo ? (
-                    <video
-                      src={p.img}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className={styles.relatedImg}
-                    />
-                  ) : (
-                    <Image
-                      src={p.img}
-                      alt={p.title}
-                      width={640}
-                      height={480}
-                      sizes="(max-width: 760px) 100vw, 32vw"
-                      className={styles.relatedImg}
-                    />
-                  )}
-                </div>
-                <h3 className={styles.relatedTitle}>{p.title}</h3>
-                <p className={styles.relatedDiscipline}>{p.discipline}</p>
-              </Link>
-            </Reveal>
-          ))}
-        </ul>
-      </section>
+      <RelatedProjects projects={related} />
     </article>
   )
 }

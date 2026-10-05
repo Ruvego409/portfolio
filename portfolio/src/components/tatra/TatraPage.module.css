@@ -36,7 +36,7 @@
 /* ── Overview ────────────────────────────────── */
 .overview {
   padding-block: var(--space-11) var(--space-10);
-  max-width: 60ch;
+  max-width: 50%;
 }
 
 .overviewLabel {
@@ -67,6 +67,7 @@
 /* ── Gallery + Rail ──────────────────────────── */
 .body {
   padding-block-start: var(--space-11);
+  padding-block-end: var(--section-y);
 }
 
 .gallery {
@@ -85,15 +86,15 @@
   display: block;
 }
 
+/* Sticky aside - exactly like ProjectBody rail */
 .rail {
-  /* Sticky aside - same as ProjectBody rail */
+  position: sticky;
+  top: calc(var(--header-h) + var(--space-8));
 }
 
 .railInner {
-  position: sticky;
-  top: var(--space-11);
   display: grid;
-  gap: var(--space-9);
+  gap: var(--space-7);
 }
 
 .outcome {
@@ -151,66 +152,19 @@
   color: #000;
 }
 
-/* ── Related projects ─────────────────────────── */
-.related {
-  padding-block: var(--space-12) var(--space-9);
-}
+@media (max-width: 900px) {
+  .body {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: var(--block-y);
+  }
 
-.relatedGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--grid-gap);
-  align-items: start;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  .rail {
+    position: static;
+  }
 
-.relatedCard {
-  display: grid;
-  gap: var(--space-3);
-  text-decoration: none;
-  color: inherit;
-}
-
-.relatedMedia {
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
-  background: #111;
-}
-
-.relatedImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: opacity var(--dur-base) var(--ease-out-expo);
-}
-
-.relatedCard:hover .relatedImg,
-.relatedCard:focus-visible .relatedImg {
-  opacity: 0.82;
-}
-
-.relatedTitle {
-  font-size: var(--fs-card);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-snug);
-  letter-spacing: var(--ls-heading);
-  margin-block-start: var(--space-2);
-}
-
-.relatedDiscipline {
-  font-size: var(--fs-body);
-  line-height: var(--lh-snug);
-  letter-spacing: var(--ls-body);
-  color: var(--muted-2);
-}
-
-@media (max-width: 760px) {
-  .relatedGrid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-11);
+  .overview {
+    max-width: 100%;
   }
 }
 

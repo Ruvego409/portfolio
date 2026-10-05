@@ -35,6 +35,7 @@
   font-family: 'TatraRocks', serif;
   font-size: clamp(32px, 5vw, 72px);
   line-height: 1.2;
+  letter-spacing: -0.07em;
   color: var(--ink);
   outline: none;
   white-space: pre-wrap;
