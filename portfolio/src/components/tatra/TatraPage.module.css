@@ -86,20 +86,20 @@
   display: block;
 }
 
-/* Sticky aside - exactly like ProjectBody rail */
+/* Sticky aside - positioned higher so it never clips at the viewport bottom */
 .rail {
   position: sticky;
-  top: calc(var(--header-h) + var(--space-8));
+  top: calc(var(--header-h) + var(--space-2));
 }
 
 .railInner {
   display: grid;
-  gap: var(--space-7);
+  gap: var(--space-5);
 }
 
 .outcome {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-2);
 }
 
 .outcomeBody {
@@ -107,7 +107,7 @@
   line-height: var(--lh-body);
   color: var(--ink-soft);
   display: grid;
-  gap: var(--space-2);
+  gap: 4px;
 }
 
 .outcomeBody strong {
@@ -116,13 +116,13 @@
 
 .ctaGroup {
   display: grid;
-  gap: var(--space-3);
-  padding-block-start: var(--space-3);
+  gap: var(--space-2);
+  padding-block-start: var(--space-1);
 }
 
 .ctaBtn {
   display: block;
-  padding: var(--space-4) var(--space-6);
+  padding: var(--space-3) var(--space-5);
   border: 1px solid var(--line);
   font-size: var(--fs-label);
   letter-spacing: var(--ls-heading);
