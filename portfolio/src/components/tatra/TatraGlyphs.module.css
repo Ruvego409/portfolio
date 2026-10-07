@@ -1,11 +1,13 @@
 .root {
   display: grid;
   gap: var(--space-9);
+  contain: content;
 }
 
 .group {
   display: grid;
   gap: var(--space-4);
+  contain: content;
 }
 
 .groupLabel {
@@ -16,6 +18,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
   gap: var(--space-2);
+  contain: content;
 }
 
 .card {
@@ -26,6 +29,8 @@
   cursor: default;
   transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
   aspect-ratio: 1;
+  contain: strict;
+  will-change: transform;
 }
 
 .card:hover {
