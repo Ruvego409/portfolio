@@ -141,8 +141,8 @@ export function TatraPage() {
 
             <Reveal delay={0.12} className={styles.ctaGroup}>
               <a
-                href="/fonts/tatra-rocks-trial.ttf"
-                download="Tatra-Trial.ttf"
+                href="/fonts/Tatra_Trial.zip"
+                download="Tatra_Trial.zip"
                 className={styles.ctaBtn}
               >
                 Download Trial
