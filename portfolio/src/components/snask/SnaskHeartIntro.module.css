@@ -11,9 +11,10 @@
 }
 
 .stage {
+  --snask-card-size: clamp(140px, 14vw, 180px);
   position: relative;
-  width: min(1000px, 94vw);
-  height: clamp(580px, 85vh, 760px);
+  width: min(1040px, 94vw);
+  height: clamp(620px, 86vh, 780px);
   margin: 0 auto;
 }
 
@@ -21,7 +22,7 @@
 .centerEmblem {
   position: absolute;
   left: 50%;
-  top: 48%;
+  top: 46%;
   transform: translate(-50%, -50%);
   z-index: 5;
   display: flex;
@@ -34,35 +35,35 @@
 }
 
 .logoDv {
-  width: clamp(65px, 6vw, 85px);
+  width: clamp(60px, 6vw, 82px);
   height: auto;
   display: block;
 }
 
 .plusSign {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 900;
   color: #ff599c;
   line-height: 1;
-  margin: 6px 0;
+  margin: 4px 0;
 }
 
 .logoSnask {
-  width: clamp(110px, 11vw, 150px);
+  width: clamp(105px, 10vw, 145px);
   height: auto;
   display: block;
 }
 
 .equalSign {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 900;
   color: #ff599c;
   line-height: 1;
-  margin: 6px 0;
+  margin: 4px 0;
 }
 
 .matchTitle {
-  font-size: clamp(28px, 3.2vw, 42px);
+  font-size: clamp(28px, 3vw, 40px);
   font-weight: 900;
   line-height: 1;
   color: #000;
@@ -71,22 +72,30 @@
   margin: 0;
 }
 
-/* Cards with calculated heart layout */
+/* 0x0 Anchor positioned at exact stage percentage */
+.cardAnchor {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Card centered precisely on anchor point */
 .card {
   position: absolute;
-  width: clamp(130px, 15vw, 190px);
-  height: clamp(130px, 15vw, 190px);
-  margin-left: calc(-1 * clamp(130px, 15vw, 190px) / 2);
-  margin-top: calc(-1 * clamp(130px, 15vw, 190px) / 2);
+  width: var(--snask-card-size);
+  height: var(--snask-card-size);
+  left: calc(var(--snask-card-size) * -0.5);
+  top: calc(var(--snask-card-size) * -0.5);
   border-radius: 0;
   background: transparent;
   box-shadow: none;
   border: none;
   cursor: grab;
   z-index: 10;
-  overflow: hidden;
   user-select: none;
   touch-action: none;
+  pointer-events: auto;
 }
 
 .card:active {
@@ -149,6 +158,14 @@
 
 @media (max-width: 768px) {
   .stage {
-    height: 540px;
+    height: 580px;
+    --snask-card-size: clamp(110px, 15vw, 135px);
+  }
+}
+
+@media (max-width: 480px) {
+  .stage {
+    height: 520px;
+    --snask-card-size: clamp(92px, 22vw, 110px);
   }
 }

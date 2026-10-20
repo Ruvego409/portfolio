@@ -10,22 +10,24 @@ type ProjectCardData = {
   side: 'dv' | 'snask'
   img?: string
   video?: string
-  // Final target position forming the heart (in %)
+  // Final target coordinate of the anchor in % of stage
   targetX: number
   targetY: number
-  // Initial spawn position from outside the screen
-  startX: number
-  startY: number
+  targetRotate: number
+  // Off-screen fly-in offsets (in px) and initial rotation
+  spawnX: number
+  spawnY: number
+  spawnRotate: number
+  // Floating breathing animation
   floatDeltaY: number
   duration: number
   delay: number
 }
 
-// 6 cards creating the heart curve:
-// Center is (50, 48)
-// Top lobes: (26, 16) and (74, 16)
-// Mid outer: (11, 46) and (89, 46)
-// Bottom tip: (32, 78) and (68, 78)
+// 6 cards creating the heart curve around the center emblem:
+// Top lobes: (28%, 18%) rotated -8° and (72%, 18%) rotated +8°
+// Mid outer: (13%, 46%) rotated -3° and (87%, 46%) rotated +3°
+// Bottom tip: (34%, 74%) rotated +12° and (66%, 74%) rotated -12°
 const CARDS: ProjectCardData[] = [
   // LEFT SIDE — Danylo Vasiur
   {
@@ -33,10 +35,12 @@ const CARDS: ProjectCardData[] = [
     title: 'Lasowiak',
     side: 'dv',
     img: '/media/snask/my-lasowiak.webp',
-    targetX: 26,
-    targetY: 16,
-    startX: -15,
-    startY: -10,
+    targetX: 28,
+    targetY: 18,
+    targetRotate: -8,
+    spawnX: -360,
+    spawnY: -260,
+    spawnRotate: -35,
     floatDeltaY: 7,
     duration: 3.4,
     delay: 0.1,
@@ -46,10 +50,12 @@ const CARDS: ProjectCardData[] = [
     title: 'Ubu Roi',
     side: 'dv',
     video: '/media/pmrVVXBKjVwuqmxJx9S36N57A.mp4',
-    targetX: 11,
+    targetX: 13,
     targetY: 46,
-    startX: -25,
-    startY: 50,
+    targetRotate: -3,
+    spawnX: -450,
+    spawnY: 0,
+    spawnRotate: -25,
     floatDeltaY: -8,
     duration: 3.8,
     delay: 0.25,
@@ -59,10 +65,12 @@ const CARDS: ProjectCardData[] = [
     title: 'Re:Move',
     side: 'dv',
     img: '/media/snask/my-remove.webp',
-    targetX: 32,
-    targetY: 78,
-    startX: -10,
-    startY: 110,
+    targetX: 34,
+    targetY: 74,
+    targetRotate: 12,
+    spawnX: -320,
+    spawnY: 340,
+    spawnRotate: 30,
     floatDeltaY: 7,
     duration: 3.0,
     delay: 0.4,
@@ -74,10 +82,12 @@ const CARDS: ProjectCardData[] = [
     title: 'PangPang Beer',
     side: 'snask',
     img: '/media/snask/snask-pangpang.webp',
-    targetX: 74,
-    targetY: 16,
-    startX: 115,
-    startY: -10,
+    targetX: 72,
+    targetY: 18,
+    targetRotate: 8,
+    spawnX: 360,
+    spawnY: -260,
+    spawnRotate: 35,
     floatDeltaY: -7,
     duration: 3.5,
     delay: 0.15,
@@ -87,10 +97,12 @@ const CARDS: ProjectCardData[] = [
     title: 'Make Enemies',
     side: 'snask',
     img: '/media/snask/snask-book.webp',
-    targetX: 89,
+    targetX: 87,
     targetY: 46,
-    startX: 125,
-    startY: 50,
+    targetRotate: 3,
+    spawnX: 450,
+    spawnY: 0,
+    spawnRotate: 25,
     floatDeltaY: 8,
     duration: 3.2,
     delay: 0.3,
@@ -100,10 +112,12 @@ const CARDS: ProjectCardData[] = [
     title: 'Malmöfestivalen',
     side: 'snask',
     img: '/media/snask/snask-malmo.webp',
-    targetX: 68,
-    targetY: 78,
-    startX: 110,
-    startY: 110,
+    targetX: 66,
+    targetY: 74,
+    targetRotate: -12,
+    spawnX: 320,
+    spawnY: 340,
+    spawnRotate: -30,
     floatDeltaY: -8,
     duration: 3.6,
     delay: 0.45,
@@ -142,75 +156,84 @@ export function SnaskHeartIntro() {
           <h2 className={styles.matchTitle}>Match</h2>
         </motion.div>
 
-        {/* CARDS THAT FLY IN ON LOAD TO ASSEMBLE THE HEART SHAPE */}
+        {/* CARDS THAT CONVERGE ON LOAD TO ASSEMBLE THE HEART SHAPE */}
         {CARDS.map((card) => (
-          <motion.div
+          <div
             key={card.id}
-            className={styles.card}
-            initial={{
-              left: `${card.startX}%`,
-              top: `${card.startY}%`,
-              opacity: 0,
-              scale: 0.5,
-              rotate: card.side === 'dv' ? -15 : 15,
-            }}
-            animate={{
-              left: `${card.targetX}%`,
-              top: `${card.targetY}%`,
-              opacity: 1,
-              scale: 1,
-              rotate: 0,
-            }}
-            transition={{
-              type: 'spring',
-              stiffness: 90,
-              damping: 15,
-              delay: card.delay,
-            }}
-            drag
-            dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-            dragElastic={0.85}
-            whileHover={{ scale: 1.05 }}
-            whileDrag={{ scale: 1.1, zIndex: 100 }}
+            className={styles.cardAnchor}
+            style={{ left: `${card.targetX}%`, top: `${card.targetY}%` }}
           >
-            {/* Ambient subtle breathing float */}
             <motion.div
-              className={styles.cardInner}
+              className={styles.card}
+              initial={{
+                x: card.spawnX,
+                y: card.spawnY,
+                opacity: 0,
+                scale: 0.6,
+                rotate: card.spawnRotate,
+              }}
               animate={{
-                y: [0, card.floatDeltaY, 0],
+                x: 0,
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                rotate: card.targetRotate,
               }}
               transition={{
-                duration: card.duration,
-                repeat: Infinity,
-                repeatType: 'reverse',
-                ease: 'easeInOut',
-                delay: card.delay + 0.5,
+                type: 'spring',
+                stiffness: 75,
+                damping: 14,
+                delay: card.delay,
               }}
+              drag
+              dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+              dragElastic={0.8}
+              whileHover={{ scale: 1.05 }}
+              whileDrag={{ scale: 1.1, zIndex: 100 }}
             >
-              <span className={`${styles.cardBadge} ${card.side === 'dv' ? styles.badgeDv : styles.badgeSnask}`}>
-                {card.side === 'dv' ? 'DV' : 'SNASK'}
-              </span>
-              {card.video ? (
-                <video
-                  src={card.video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className={styles.cardMedia}
-                />
-              ) : (
-                <Image
-                  src={card.img!}
-                  alt={card.title}
-                  width={380}
-                  height={380}
-                  className={styles.cardMedia}
-                />
-              )}
-              <div className={styles.cardCaption}>{card.title}</div>
+              {/* Ambient subtle breathing float */}
+              <motion.div
+                className={styles.cardInner}
+                animate={{
+                  y: [0, card.floatDeltaY, 0],
+                }}
+                transition={{
+                  duration: card.duration,
+                  repeat: Infinity,
+                  repeatType: 'reverse',
+                  ease: 'easeInOut',
+                  delay: card.delay + 0.5,
+                }}
+              >
+                <span
+                  className={`${styles.cardBadge} ${
+                    card.side === 'dv' ? styles.badgeDv : styles.badgeSnask
+                  }`}
+                >
+                  {card.side === 'dv' ? 'DV' : 'SNASK'}
+                </span>
+                {card.video ? (
+                  <video
+                    src={card.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className={styles.cardMedia}
+                  />
+                ) : (
+                  <Image
+                    src={card.img!}
+                    alt={card.title}
+                    width={380}
+                    height={380}
+                    className={styles.cardMedia}
+                  />
+                )}
+                <div className={styles.cardCaption}>{card.title}</div>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>
