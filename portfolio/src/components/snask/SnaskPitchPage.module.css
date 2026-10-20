@@ -64,10 +64,10 @@
 
 .pairList {
   display: grid;
-  gap: 80px;
+  gap: 100px;
 }
 
-/* Flat, shadowless, borderless card structure matching user design */
+/* Flat, shadowless, borderless card structure */
 .pairCard {
   background: transparent;
   border-radius: 0;
@@ -80,16 +80,28 @@
 
 .pairHeader {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
   border-bottom: 2px solid #000;
   padding-bottom: 14px;
 }
 
 .pairTheme {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 900;
   letter-spacing: -0.02em;
+}
+
+.pairTag {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #000;
+  background: #ff599c;
+  padding: 4px 10px;
 }
 
 .pairVisuals {
@@ -149,15 +161,57 @@
   flex-shrink: 0;
 }
 
+/* Snask agency signature pink background for the description text block */
 .pairDescription {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #333;
-  background: #f4f4f4;
-  padding: 24px;
+  background: #ff599c;
+  color: #000000;
+  padding: 36px 36px 32px;
   border-radius: 0;
   border: none;
-  border-left: none;
+  display: grid;
+  gap: 20px;
+}
+
+.descHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
+}
+
+.descPoints {
+  display: grid;
+  gap: 16px;
+}
+
+.descPoint {
+  display: grid;
+  gap: 4px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #111;
+}
+
+.descPoint strong {
+  font-size: 16px;
+  font-weight: 900;
+  color: #000;
+  letter-spacing: -0.01em;
+}
+
+.descTakeaway {
+  margin-top: 6px;
+  padding-top: 14px;
+  border-top: 1.5px solid rgba(0, 0, 0, 0.15);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000;
 }
 
 .pairLink {
@@ -262,5 +316,8 @@
   }
   .pairVs {
     margin: 0 auto;
+  }
+  .pairDescription {
+    padding: 24px;
   }
 }

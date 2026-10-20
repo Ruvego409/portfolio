@@ -12,17 +12,16 @@
 
 .stage {
   position: relative;
-  width: 100vw;
-  max-width: 1440px;
-  height: clamp(520px, 85vh, 800px);
+  width: min(1000px, 94vw);
+  height: clamp(580px, 85vh, 760px);
   margin: 0 auto;
 }
 
-/* Center Emblem */
+/* Center Emblem - firmly locked at dead center */
 .centerEmblem {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 48%;
   transform: translate(-50%, -50%);
   z-index: 5;
   display: flex;
@@ -35,35 +34,35 @@
 }
 
 .logoDv {
-  width: clamp(70px, 7vw, 100px);
+  width: clamp(65px, 6vw, 85px);
   height: auto;
   display: block;
 }
 
 .plusSign {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 900;
   color: #ff599c;
   line-height: 1;
-  margin: 8px 0;
+  margin: 6px 0;
 }
 
 .logoSnask {
-  width: clamp(120px, 12vw, 170px);
+  width: clamp(110px, 11vw, 150px);
   height: auto;
   display: block;
 }
 
 .equalSign {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 900;
   color: #ff599c;
   line-height: 1;
-  margin: 8px 0;
+  margin: 6px 0;
 }
 
 .matchTitle {
-  font-size: clamp(32px, 3.8vw, 52px);
+  font-size: clamp(28px, 3.2vw, 42px);
   font-weight: 900;
   line-height: 1;
   color: #000;
@@ -72,13 +71,13 @@
   margin: 0;
 }
 
-/* Clean, flat, borderless, shadowless cards that float along the screen edges */
+/* Cards with calculated heart layout */
 .card {
   position: absolute;
-  width: clamp(140px, 16vw, 220px);
-  height: clamp(140px, 16vw, 220px);
-  margin-left: calc(-1 * clamp(140px, 16vw, 220px) / 2);
-  margin-top: calc(-1 * clamp(140px, 16vw, 220px) / 2);
+  width: clamp(130px, 15vw, 190px);
+  height: clamp(130px, 15vw, 190px);
+  margin-left: calc(-1 * clamp(130px, 15vw, 190px) / 2);
+  margin-top: calc(-1 * clamp(130px, 15vw, 190px) / 2);
   border-radius: 0;
   background: transparent;
   box-shadow: none;
@@ -150,6 +149,6 @@
 
 @media (max-width: 768px) {
   .stage {
-    height: 580px;
+    height: 540px;
   }
 }

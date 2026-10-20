@@ -9,6 +9,7 @@ import styles from './SnaskPitchPage.module.css'
 const PAIRS = [
   {
     theme: 'Packaging & Craft Alcohol',
+    tag: 'Physical Craft & Folklore Reinterpretation',
     myProject: {
       title: 'Lasowiak cranberry liqueur',
       slug: 'lasowiak-cranberry-liqueur',
@@ -20,11 +21,25 @@ const PAIRS = [
       img: '/media/snask/snask-pangpang.webp',
       role: 'Snask',
     },
-    insight:
-      "You turned craft beer into rock'n'roll with PangPang. In Lasowiak, I took traditional Polish folk culture out of dated regional cliches, fusing apothecary crosses with bold handmade fabric caps into contemporary packaging.",
+    points: [
+      {
+        label: 'Shared Philosophy:',
+        text: 'Both projects reject the sterile, generic minimalism of modern beverage packaging. Snask took craft beer and injected it with exotic tiki color schemes, custom hand-rendered typography, and a distinct rock’n’roll attitude. In Lasowiak, I took traditional Polish liqueur out of dusty tourist gift-shop clichés and rebuilt it as an unapologetic, contemporary design object.',
+      },
+      {
+        label: 'Hands-on Tactility:',
+        text: 'Neither of us designs solely on a flat computer screen. Snask builds physical installations and tests real textures; in Lasowiak, the core visual language comes from hand-folded fabric cap wraps, apothecary cross geometry, and region-authentic embroidery translated into a rigorous label grid.',
+      },
+      {
+        label: 'Commercial Impact:',
+        text: 'The concept went on to be submitted to Poland’s Art of Packaging national competition in the Debiuty student category, judged by packaging industry professionals.',
+      },
+    ],
+    takeaway: 'Match: We both know how to take heritage beverages, tear up the expected playbook, and create packaging people want to keep on their shelves.',
   },
   {
     theme: 'Editorial Anarchy & Type Deconstruction',
+    tag: 'Typography as Physical Theater',
     myProject: {
       title: 'Ubu Roi ou les Polonais',
       slug: 'ubu',
@@ -36,11 +51,25 @@ const PAIRS = [
       img: '/media/snask/snask-book.webp',
       role: 'Snask',
     },
-    insight:
-      "Snask built a global movement around breaking corporate design rules. In Ubu Roi, I broke the typography itself — punching physical holes into glyphs and letting the layout collapse across pages to embody Alfred Jarry's absurd anarchy.",
+    points: [
+      {
+        label: 'Disobeying the Editorial Grid:',
+        text: 'Snask’s bestselling book "Make Enemies & Gain Fans" is legendary because it looks like a manifesto of rebellion: rainbow foil, bold confrontational typography, and layouts that spit in the face of academic book design. In Ubu Roi, I applied that exact mindset to Alfred Jarry’s 1896 absurdist play.',
+      },
+      {
+        label: 'Concept-Driven Deconstruction:',
+        text: 'Instead of setting clean academic type, I reworked the typeface by physically carving circular voids into each letterform. As the grotesque King Ubu collapses his kingdom through greed and incompetence, the typography across the pages literally falls apart in real time before the reader’s eyes.',
+      },
+      {
+        label: 'Sensory Experience:',
+        text: 'A book isn’t just text to be read; it is a physical prop in a play. Turning a page is an action that triggers a collapse.',
+      },
+    ],
+    takeaway: 'Match: We don’t treat books as passive containers for text. We treat typography as an explosive narrative device that refuses to be polite.',
   },
   {
     theme: 'Festival Energy & High-Saturation Key Visual',
+    tag: 'Maximum Saturation & Spatial Motion',
     myProject: {
       title: 'Re:Move dance workshop',
       slug: 're-move',
@@ -52,8 +81,21 @@ const PAIRS = [
       img: '/media/snask/snask-malmo.webp',
       role: 'Snask',
     },
-    insight:
-      "Just like your explosive, tactile identities for Malmöfestivalen that own the city, Re:Move uses hyper-saturated overlapping motion and heavy poster aesthetics built to translate directly from billboards into apparel and physical merch.",
+    points: [
+      {
+        label: 'Visual Loudness in Public Space:',
+        text: 'Snask’s world-famous campaign for Malmöfestivalen owned the entire city of Malmö by building gigantic physical type installations and turning them into hyper-saturated, joyful posters that demand attention from 100 meters away. Re:Move operates on the exact same frequency.',
+      },
+      {
+        label: 'Capturing Human Movement:',
+        text: 'Instead of cliché silhouettes or static dance photos, Re:Move captures the essence of motion through overlapping, neon-contrast shapes (electric yellow, hot pink, cobalt blue) and hyper-bold typography engineered to withstand high visual noise in urban outdoor settings.',
+      },
+      {
+        label: 'Seamless Product & Merch Ecosystem:',
+        text: 'Just like Snask’s festival branding extends into flags, tote bags, apparel, and wayfinding, Re:Move was designed from day one as a living system that translates naturally to street billboards, oversized printed hoodies, and digital motion graphics.',
+      },
+    ],
+    takeaway: 'Match: High-voltage, fearless color palettes paired with kinetic rhythm that dominate public spaces and ignite community excitement.',
   },
 ]
 
@@ -87,7 +129,7 @@ export function SnaskPitchPage() {
           <Reveal>
             <h3 className={styles.pairsTitle}>Three Projects, One Shared DNA</h3>
             <p className={styles.pairsSubtitle}>
-              Direct parallels between my work and Snask’s most iconic creative domains.
+              Detailed breakdown of why our creative instincts and design methodologies align.
             </p>
           </Reveal>
         </div>
@@ -98,6 +140,7 @@ export function SnaskPitchPage() {
               <div className={styles.pairCard}>
                 <div className={styles.pairHeader}>
                   <span className={styles.pairTheme}>{pair.theme}</span>
+                  <span className={styles.pairTag}>{pair.tag}</span>
                 </div>
 
                 <div className={styles.pairVisuals}>
@@ -146,7 +189,23 @@ export function SnaskPitchPage() {
                   </div>
                 </div>
 
-                <p className={styles.pairDescription}>{pair.insight}</p>
+                {/* Snask signature pink detailed breakdown */}
+                <div className={styles.pairDescription}>
+                  <div className={styles.descHeader}>
+                    <span>✦ Why this is an unmistakable match</span>
+                  </div>
+                  <div className={styles.descPoints}>
+                    {pair.points.map((pt) => (
+                      <div key={pt.label} className={styles.descPoint}>
+                        <strong>{pt.label}</strong>
+                        <span>{pt.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className={styles.descTakeaway}>
+                    {pair.takeaway}
+                  </div>
+                </div>
 
                 <Link href={`/${pair.myProject.slug}`} className={styles.pairLink}>
                   Explore Full Case Study →
