@@ -24,9 +24,9 @@ type ProjectCardData = {
   delay: number
 }
 
-// 6 cards calibrated so they NEVER overlap the center column and form a true heart:
+// 6 cards calibrated around the true visual center:
 // Top lobes: (28%, 18%) rotated -10° and (72%, 18%) rotated +10°
-// Mid outer: (13%, 48%) rotated -4° and (87%, 48%) rotated +4°
+// Mid outer: (13%, 46%) rotated -4° and (87%, 46%) rotated +4°
 // Bottom tip: (33%, 82%) rotated +16° and (67%, 82%) rotated -16°
 const CARDS: ProjectCardData[] = [
   // LEFT SIDE — Danylo Vasiur
@@ -51,7 +51,7 @@ const CARDS: ProjectCardData[] = [
     side: 'dv',
     video: '/media/pmrVVXBKjVwuqmxJx9S36N57A.mp4',
     targetX: 13,
-    targetY: 48,
+    targetY: 46,
     targetRotate: -4,
     spawnX: -480,
     spawnY: 0,
@@ -98,7 +98,7 @@ const CARDS: ProjectCardData[] = [
     side: 'snask',
     img: '/media/snask/snask-book.webp',
     targetX: 87,
-    targetY: 48,
+    targetY: 46,
     targetRotate: 4,
     spawnX: 480,
     spawnY: 0,
@@ -136,15 +136,15 @@ export function SnaskHeartIntro() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M 480 220 
-               C 430 120, 340 90, 268 115
-               C 170 145, 100 220, 124 307
-               C 145 405, 230 470, 316 524
-               C 390 565, 450 585, 480 605
-               C 510 585, 570 565, 643 524
-               C 730 470, 815 405, 835 307
-               C 860 220, 790 145, 691 115
-               C 620 90, 530 120, 480 220 Z"
+            d="M 480 205 
+               C 430 110, 340 85, 268 122
+               C 170 155, 100 230, 124 312
+               C 145 410, 225 490, 316 557
+               C 390 600, 450 615, 480 625
+               C 510 615, 570 600, 643 557
+               C 735 490, 815 410, 835 312
+               C 860 230, 790 155, 691 122
+               C 620 85, 530 110, 480 205 Z"
             stroke="#fbd4dc"
             strokeWidth="2.5"
             strokeDasharray="6 8"
@@ -152,33 +152,35 @@ export function SnaskHeartIntro() {
           />
         </svg>
 
-        {/* CENTER EMBLEM IN A CLEAN VERTICAL COLUMN */}
-        <motion.div
-          className={styles.centerEmblem}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <Image
-            src="/media/snask/dv-logo.png"
-            alt="Danylo Vasiur"
-            width={58}
-            height={58}
-            className={styles.logoDv}
-            priority
-          />
-          <span className={styles.plusSign}>+</span>
-          <Image
-            src="/media/snask/snask-logo.png"
-            alt="Snask"
-            width={115}
-            height={38}
-            className={styles.logoSnask}
-            priority
-          />
-          <span className={styles.equalSign}>=</span>
-          <h2 className={styles.matchTitle}>MATCH</h2>
-        </motion.div>
+        {/* UNTOUCHED STATIC WRAPPER: GUARANTEED DEAD-CENTER BY BROWSER */}
+        <div className={styles.centerEmblemWrapper}>
+          <motion.div
+            className={styles.centerEmblem}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Image
+              src="/media/snask/dv-logo.png"
+              alt="Danylo Vasiur"
+              width={56}
+              height={56}
+              className={styles.logoDv}
+              priority
+            />
+            <span className={styles.plusSign}>+</span>
+            <Image
+              src="/media/snask/snask-logo.png"
+              alt="Snask"
+              width={112}
+              height={36}
+              className={styles.logoSnask}
+              priority
+            />
+            <span className={styles.equalSign}>=</span>
+            <h2 className={styles.matchTitle}>MATCH</h2>
+          </motion.div>
+        </div>
 
         {/* CARDS CONVERGING ON LOAD INTO THE HEART SHAPE */}
         {CARDS.map((card) => (
