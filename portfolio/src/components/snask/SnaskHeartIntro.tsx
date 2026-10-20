@@ -8,18 +8,18 @@ type ProjectCardData = {
   id: string
   title: string
   side: 'dv' | 'snask'
-  img: string
-  // position in percentage relative to stage center (50%, 50%)
+  img?: string
+  video?: string
+  // position in percentage relative to stage center
   posX: number
   posY: number
-  // gentle float animation variation
   floatDeltaY: number
   duration: number
   delay: number
 }
 
-// 6 cards placed along the heart contour
-// 3 on the left (Danylo Vasiur), 3 on the right (Snask)
+// 6 cards pushed further out towards the edges so they never overlap the center text:
+// Left column (X: 10% - 24%), Right column (X: 76% - 90%)
 const CARDS: ProjectCardData[] = [
   // LEFT SIDE — Danylo Vasiur
   {
@@ -27,21 +27,21 @@ const CARDS: ProjectCardData[] = [
     title: 'Lasowiak',
     side: 'dv',
     img: '/media/snask/my-lasowiak.webp',
-    posX: 22,
-    posY: 22,
-    floatDeltaY: 8,
-    duration: 3.2,
+    posX: 18,
+    posY: 18,
+    floatDeltaY: 10,
+    duration: 3.4,
     delay: 0,
   },
   {
     id: 'my-ubu',
     title: 'Ubu Roi',
     side: 'dv',
-    img: '/media/snask/my-ubu.webp',
-    posX: 12,
-    posY: 52,
-    floatDeltaY: -9,
-    duration: 3.6,
+    video: '/media/pmrVVXBKjVwuqmxJx9S36N57A.mp4',
+    posX: 8,
+    posY: 50,
+    floatDeltaY: -10,
+    duration: 3.8,
     delay: 0.3,
   },
   {
@@ -49,10 +49,10 @@ const CARDS: ProjectCardData[] = [
     title: 'Re:Move',
     side: 'dv',
     img: '/media/snask/my-remove.webp',
-    posX: 34,
-    posY: 80,
-    floatDeltaY: 7,
-    duration: 2.8,
+    posX: 22,
+    posY: 82,
+    floatDeltaY: 9,
+    duration: 3.0,
     delay: 0.6,
   },
 
@@ -62,10 +62,10 @@ const CARDS: ProjectCardData[] = [
     title: 'PangPang Beer',
     side: 'snask',
     img: '/media/snask/snask-pangpang.webp',
-    posX: 78,
-    posY: 22,
-    floatDeltaY: -8,
-    duration: 3.4,
+    posX: 82,
+    posY: 18,
+    floatDeltaY: -10,
+    duration: 3.5,
     delay: 0.2,
   },
   {
@@ -73,10 +73,10 @@ const CARDS: ProjectCardData[] = [
     title: 'Make Enemies',
     side: 'snask',
     img: '/media/snask/snask-book.webp',
-    posX: 88,
-    posY: 52,
-    floatDeltaY: 9,
-    duration: 3.1,
+    posX: 92,
+    posY: 50,
+    floatDeltaY: 11,
+    duration: 3.2,
     delay: 0.5,
   },
   {
@@ -84,10 +84,10 @@ const CARDS: ProjectCardData[] = [
     title: 'Malmöfestivalen',
     side: 'snask',
     img: '/media/snask/snask-malmo.webp',
-    posX: 66,
-    posY: 80,
-    floatDeltaY: -7,
-    duration: 3.5,
+    posX: 78,
+    posY: 82,
+    floatDeltaY: -9,
+    duration: 3.6,
     delay: 0.8,
   },
 ]
@@ -95,28 +95,19 @@ const CARDS: ProjectCardData[] = [
 export function SnaskHeartIntro() {
   return (
     <section className={styles.section} aria-label="Danylo Vasiur and Snask Match">
-      <motion.div
-        className={styles.introBadge}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-      >
-        ✦ Made especially for Snask ✦
-      </motion.div>
-
       <div className={styles.stage}>
         {/* CENTER EMBLEM */}
         <motion.div
           className={styles.centerEmblem}
-          initial={{ opacity: 0, scale: 0.7 }}
+          initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
           <Image
             src="/media/snask/dv-logo.png"
             alt="Danylo Vasiur"
-            width={92}
-            height={92}
+            width={100}
+            height={100}
             className={styles.logoDv}
             priority
           />
@@ -124,17 +115,16 @@ export function SnaskHeartIntro() {
           <Image
             src="/media/snask/snask-logo.png"
             alt="Snask"
-            width={150}
-            height={50}
+            width={170}
+            height={55}
             className={styles.logoSnask}
             priority
           />
           <span className={styles.equalSign}>=</span>
           <h2 className={styles.matchTitle}>Match</h2>
-          <span className={styles.matchSubtitle}>Drag us around</span>
         </motion.div>
 
-        {/* DRAGGABLE CARDS IN HEART CONTOUR */}
+        {/* DRAGGABLE CARDS SPREAD TO FULL SCREEN EDGES */}
         {CARDS.map((card) => (
           <motion.div
             key={card.id}
@@ -143,7 +133,7 @@ export function SnaskHeartIntro() {
               left: `${card.posX}%`,
               top: `${card.posY}%`,
             }}
-            initial={{ opacity: 0, scale: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{
               opacity: 1,
               scale: 1,
@@ -151,7 +141,7 @@ export function SnaskHeartIntro() {
             }}
             transition={{
               opacity: { duration: 0.6, delay: card.delay },
-              scale: { duration: 0.6, delay: card.delay, type: 'spring', stiffness: 260, damping: 20 },
+              scale: { duration: 0.6, delay: card.delay },
               y: {
                 duration: card.duration,
                 repeat: Infinity,
@@ -163,34 +153,36 @@ export function SnaskHeartIntro() {
             drag
             dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
             dragElastic={0.85}
-            whileHover={{ scale: 1.08 }}
-            whileDrag={{ scale: 1.15, zIndex: 100 }}
+            whileHover={{ scale: 1.05 }}
+            whileDrag={{ scale: 1.1, zIndex: 100 }}
           >
             <div className={styles.cardInner}>
               <span className={`${styles.cardBadge} ${card.side === 'dv' ? styles.badgeDv : styles.badgeSnask}`}>
                 {card.side === 'dv' ? 'DV' : 'SNASK'}
               </span>
-              <Image
-                src={card.img}
-                alt={card.title}
-                width={300}
-                height={300}
-                className={styles.cardImage}
-              />
+              {card.video ? (
+                <video
+                  src={card.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className={styles.cardMedia}
+                />
+              ) : (
+                <Image
+                  src={card.img!}
+                  alt={card.title}
+                  width={400}
+                  height={400}
+                  className={styles.cardMedia}
+                />
+              )}
               <div className={styles.cardCaption}>{card.title}</div>
             </div>
           </motion.div>
         ))}
       </div>
-
-      <motion.p
-        className={styles.dragHint}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.8 }}
-      >
-        <span className={styles.dragHand}>👆</span> Grab any card to pull the heart — it springs right back!
-      </motion.p>
     </section>
   )
 }

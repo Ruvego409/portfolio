@@ -1,30 +1,20 @@
 .page {
-  background: #fbfbfb;
-  color: #000000;
+  background: var(--paper, #ffffff);
+  color: var(--ink, #000000);
   min-height: 100vh;
 }
 
 /* ── Narrative Section ── */
 .manifesto {
   padding: 80px 24px 100px;
-  background: #ffffff;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--paper, #ffffff);
+  border-top: 1px solid var(--line, rgba(0, 0, 0, 0.08));
+  border-bottom: 1px solid var(--line, rgba(0, 0, 0, 0.08));
 }
 
 .manifestoInner {
   max-width: 860px;
   margin: 0 auto;
-}
-
-.snaskTag {
-  display: inline-block;
-  color: #ff599c;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
 }
 
 .headline {
@@ -38,9 +28,6 @@
 
 .highlight {
   color: #ff599c;
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 4px;
 }
 
 .manifestoText {
@@ -80,36 +67,27 @@
   gap: 80px;
 }
 
+/* Flat, shadowless, borderless card structure matching user design */
 .pairCard {
-  background: #ffffff;
-  border-radius: 24px;
-  padding: 40px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  border: none;
   display: grid;
-  gap: 36px;
+  gap: 32px;
 }
 
 .pairHeader {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
   border-bottom: 2px solid #000;
-  padding-bottom: 18px;
-}
-
-.pairIndex {
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #ff599c;
+  padding-bottom: 14px;
 }
 
 .pairTheme {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 900;
   letter-spacing: -0.02em;
 }
@@ -139,12 +117,12 @@
   position: relative;
   width: 100%;
   aspect-ratio: 1;
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  background: #f0f0f0;
 }
 
-.visualImg {
+.visualMedia {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -169,17 +147,17 @@
   font-weight: 900;
   font-size: 14px;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(255, 89, 156, 0.35);
 }
 
 .pairDescription {
   font-size: 16px;
   line-height: 1.6;
-  color: #444;
-  background: #f7f7f7;
+  color: #333;
+  background: #f4f4f4;
   padding: 24px;
-  border-radius: 14px;
-  border-left: 4px solid #ff599c;
+  border-radius: 0;
+  border: none;
+  border-left: none;
 }
 
 .pairLink {
@@ -250,16 +228,14 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 18px 36px;
-  border-radius: 999px;
+  border-radius: 0;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  box-shadow: 0 8px 24px rgba(255, 89, 156, 0.4);
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .ctaBtnPrimary:hover {
   transform: translateY(-2px);
   background: #ff70ab;
-  box-shadow: 0 12px 32px rgba(255, 89, 156, 0.6);
 }
 
 .ctaBtnSecondary {
@@ -269,7 +245,7 @@
   font-weight: 700;
   letter-spacing: 0.05em;
   padding: 18px 32px;
-  border-radius: 999px;
+  border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.25);
   text-decoration: none;
   transition: border-color 0.2s ease, background 0.2s ease;
@@ -286,8 +262,5 @@
   }
   .pairVs {
     margin: 0 auto;
-  }
-  .pairCard {
-    padding: 24px;
   }
 }

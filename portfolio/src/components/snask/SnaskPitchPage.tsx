@@ -28,7 +28,7 @@ const PAIRS = [
     myProject: {
       title: 'Ubu Roi ou les Polonais',
       slug: 'ubu',
-      img: '/media/snask/my-ubu.webp',
+      video: '/media/pmrVVXBKjVwuqmxJx9S36N57A.mp4',
       role: 'Danylo Vasiur',
     },
     snaskProject: {
@@ -67,7 +67,6 @@ export function SnaskPitchPage() {
       <section className={styles.manifesto}>
         <div className={styles.manifestoInner}>
           <Reveal>
-            <span className={styles.snaskTag}>✦ Why Snask?</span>
             <h2 className={styles.headline}>
               Most design agencies produce sterile beige templates.{' '}
               <span className={styles.highlight}>Snask makes noise, rock &amp; roll, and true culture.</span>
@@ -98,7 +97,6 @@ export function SnaskPitchPage() {
             <Reveal key={pair.theme} delay={idx * 0.1}>
               <div className={styles.pairCard}>
                 <div className={styles.pairHeader}>
-                  <span className={styles.pairIndex}>Match 0{idx + 1}</span>
                   <span className={styles.pairTheme}>{pair.theme}</span>
                 </div>
 
@@ -107,13 +105,24 @@ export function SnaskPitchPage() {
                   <div className={styles.visualCol}>
                     <span className={styles.visualRole}>Danylo Vasiur</span>
                     <div className={styles.visualImgWrapper}>
-                      <Image
-                        src={pair.myProject.img}
-                        alt={pair.myProject.title}
-                        width={500}
-                        height={500}
-                        className={styles.visualImg}
-                      />
+                      {pair.myProject.video ? (
+                        <video
+                          src={pair.myProject.video}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className={styles.visualMedia}
+                        />
+                      ) : (
+                        <Image
+                          src={pair.myProject.img!}
+                          alt={pair.myProject.title}
+                          width={500}
+                          height={500}
+                          className={styles.visualMedia}
+                        />
+                      )}
                     </div>
                     <h4 className={styles.visualTitle}>{pair.myProject.title}</h4>
                   </div>
@@ -130,7 +139,7 @@ export function SnaskPitchPage() {
                         alt={pair.snaskProject.title}
                         width={500}
                         height={500}
-                        className={styles.visualImg}
+                        className={styles.visualMedia}
                       />
                     </div>
                     <h4 className={styles.visualTitle}>{pair.snaskProject.title}</h4>

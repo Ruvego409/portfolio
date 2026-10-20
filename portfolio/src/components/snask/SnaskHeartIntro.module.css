@@ -1,43 +1,29 @@
 .section {
   position: relative;
   min-height: 100vh;
+  width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #fbfbfb;
+  background: var(--paper, #ffffff);
   overflow: hidden;
-  padding: 40px 20px 60px;
-}
-
-.introBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #ff599c;
-  color: #000;
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 6px 14px;
-  border-radius: 999px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 14px rgba(255, 89, 156, 0.25);
+  padding: 40px 0;
 }
 
 .stage {
   position: relative;
-  width: min(840px, 94vw);
-  height: min(620px, 78vh);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100vw;
+  max-width: 1440px;
+  height: clamp(520px, 85vh, 800px);
+  margin: 0 auto;
 }
 
 /* Center Emblem */
 .centerEmblem {
   position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   z-index: 5;
   display: flex;
   flex-direction: column;
@@ -49,10 +35,9 @@
 }
 
 .logoDv {
-  width: clamp(68px, 9vw, 92px);
+  width: clamp(70px, 7vw, 100px);
   height: auto;
   display: block;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
 }
 
 .plusSign {
@@ -60,25 +45,25 @@
   font-weight: 900;
   color: #ff599c;
   line-height: 1;
-  margin: 6px 0;
+  margin: 8px 0;
 }
 
 .logoSnask {
-  width: clamp(100px, 14vw, 150px);
+  width: clamp(120px, 12vw, 170px);
   height: auto;
   display: block;
 }
 
 .equalSign {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 900;
   color: #ff599c;
   line-height: 1;
-  margin: 6px 0;
+  margin: 8px 0;
 }
 
 .matchTitle {
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(32px, 3.8vw, 52px);
   font-weight: 900;
   line-height: 1;
   color: #000;
@@ -87,37 +72,22 @@
   margin: 0;
 }
 
-.matchSubtitle {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #888;
-  margin-top: 4px;
-}
-
-/* Draggable Project Cards */
+/* Clean, flat, borderless, shadowless cards that float along the screen edges */
 .card {
   position: absolute;
-  width: clamp(110px, 15vw, 150px);
-  height: clamp(110px, 15vw, 150px);
-  margin-left: calc(-1 * clamp(110px, 15vw, 150px) / 2);
-  margin-top: calc(-1 * clamp(110px, 15vw, 150px) / 2);
-  border-radius: 18px;
-  background: #ffffff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.09), 0 2px 6px rgba(0, 0, 0, 0.04);
+  width: clamp(140px, 16vw, 220px);
+  height: clamp(140px, 16vw, 220px);
+  margin-left: calc(-1 * clamp(140px, 16vw, 220px) / 2);
+  margin-top: calc(-1 * clamp(140px, 16vw, 220px) / 2);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  border: none;
   cursor: grab;
   z-index: 10;
   overflow: hidden;
   user-select: none;
   touch-action: none;
-  border: 2px solid transparent;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  border-color: #ff599c;
-  box-shadow: 0 14px 40px rgba(255, 89, 156, 0.25), 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .card:active {
@@ -128,9 +98,11 @@
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  background: #f0f0f0;
 }
 
-.cardImage {
+.cardMedia {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -143,23 +115,22 @@
   top: 8px;
   left: 8px;
   padding: 3px 8px;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  border-radius: 6px;
+  border-radius: 0;
   color: #fff;
   z-index: 2;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .badgeDv {
-  background: #000;
+  background: #000000;
 }
 
 .badgeSnask {
   background: #ff599c;
-  color: #000;
+  color: #000000;
 }
 
 .cardCaption {
@@ -170,41 +141,15 @@
   padding: 24px 8px 6px;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
   color: #fff;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1.2;
   text-align: center;
   pointer-events: none;
 }
 
-/* Drag instructions */
-.dragHint {
-  margin-top: 18px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: #999;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.dragHand {
-  display: inline-block;
-  animation: nudge 2s infinite ease-in-out;
-}
-
-@keyframes nudge {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .stage {
-    height: 480px;
-  }
-  .card {
-    border-radius: 12px;
+    height: 580px;
   }
 }
