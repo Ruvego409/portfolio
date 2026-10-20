@@ -11,18 +11,30 @@
 }
 
 .stage {
-  --snask-card-size: clamp(140px, 14vw, 180px);
+  --snask-card-size: clamp(140px, 14vw, 175px);
   position: relative;
   width: min(1040px, 94vw);
-  height: clamp(620px, 86vh, 780px);
+  height: clamp(620px, 86vh, 760px);
   margin: 0 auto;
 }
 
-/* Center Emblem - firmly locked at dead center */
+/* Background subtle dashed heart outline */
+.heartOutlineSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: visible;
+}
+
+/* Compact 2-row Center Emblem - completely isolated from cards */
 .centerEmblem {
   position: absolute;
   left: 50%;
-  top: 46%;
+  top: 45%;
   transform: translate(-50%, -50%);
   z-index: 5;
   display: flex;
@@ -34,39 +46,52 @@
   user-select: none;
 }
 
+.emblemRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
 .logoDv {
-  width: clamp(60px, 6vw, 82px);
+  width: clamp(48px, 5.5vw, 62px);
   height: auto;
   display: block;
 }
 
 .plusSign {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 900;
-  color: #ff599c;
+  color: #000000;
   line-height: 1;
-  margin: 4px 0;
 }
 
 .logoSnask {
-  width: clamp(105px, 10vw, 145px);
+  width: clamp(96px, 11vw, 126px);
   height: auto;
   display: block;
 }
 
+.matchRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
 .equalSign {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 900;
-  color: #ff599c;
+  color: #000000;
   line-height: 1;
-  margin: 4px 0;
 }
 
 .matchTitle {
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: clamp(22px, 2.6vw, 32px);
   font-weight: 900;
   line-height: 1;
-  color: #000;
+  color: #000000;
   letter-spacing: -0.03em;
   text-transform: uppercase;
   margin: 0;
@@ -128,16 +153,16 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   border-radius: 0;
-  color: #fff;
   z-index: 2;
 }
 
 .badgeDv {
   background: #000000;
+  color: #ffffff;
 }
 
 .badgeSnask {
-  background: #ff599c;
+  background: #fbd4dc;
   color: #000000;
 }
 
@@ -159,13 +184,13 @@
 @media (max-width: 768px) {
   .stage {
     height: 580px;
-    --snask-card-size: clamp(110px, 15vw, 135px);
+    --snask-card-size: clamp(105px, 14vw, 130px);
   }
 }
 
 @media (max-width: 480px) {
   .stage {
     height: 520px;
-    --snask-card-size: clamp(92px, 22vw, 110px);
+    --snask-card-size: clamp(88px, 21vw, 105px);
   }
 }

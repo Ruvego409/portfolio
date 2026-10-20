@@ -24,10 +24,10 @@ type ProjectCardData = {
   delay: number
 }
 
-// 6 cards creating the heart curve around the center emblem:
-// Top lobes: (28%, 18%) rotated -8° and (72%, 18%) rotated +8°
-// Mid outer: (13%, 46%) rotated -3° and (87%, 46%) rotated +3°
-// Bottom tip: (34%, 74%) rotated +12° and (66%, 74%) rotated -12°
+// 6 cards creating an unmistakable, symmetric heart curve around the compact center emblem:
+// Top lobes: (30%, 17%) rotated -10° and (70%, 17%) rotated +10°
+// Mid outer: (15%, 49%) rotated -4° and (85%, 49%) rotated +4°
+// Bottom tip: (37%, 81%) rotated +14° and (63%, 81%) rotated -14°
 const CARDS: ProjectCardData[] = [
   // LEFT SIDE — Danylo Vasiur
   {
@@ -35,11 +35,11 @@ const CARDS: ProjectCardData[] = [
     title: 'Lasowiak',
     side: 'dv',
     img: '/media/snask/my-lasowiak.webp',
-    targetX: 28,
-    targetY: 18,
-    targetRotate: -8,
-    spawnX: -360,
-    spawnY: -260,
+    targetX: 30,
+    targetY: 17,
+    targetRotate: -10,
+    spawnX: -380,
+    spawnY: -280,
     spawnRotate: -35,
     floatDeltaY: 7,
     duration: 3.4,
@@ -50,10 +50,10 @@ const CARDS: ProjectCardData[] = [
     title: 'Ubu Roi',
     side: 'dv',
     video: '/media/pmrVVXBKjVwuqmxJx9S36N57A.mp4',
-    targetX: 13,
-    targetY: 46,
-    targetRotate: -3,
-    spawnX: -450,
+    targetX: 15,
+    targetY: 49,
+    targetRotate: -4,
+    spawnX: -480,
     spawnY: 0,
     spawnRotate: -25,
     floatDeltaY: -8,
@@ -65,11 +65,11 @@ const CARDS: ProjectCardData[] = [
     title: 'Re:Move',
     side: 'dv',
     img: '/media/snask/my-remove.webp',
-    targetX: 34,
-    targetY: 74,
-    targetRotate: 12,
-    spawnX: -320,
-    spawnY: 340,
+    targetX: 37,
+    targetY: 81,
+    targetRotate: 14,
+    spawnX: -340,
+    spawnY: 360,
     spawnRotate: 30,
     floatDeltaY: 7,
     duration: 3.0,
@@ -82,11 +82,11 @@ const CARDS: ProjectCardData[] = [
     title: 'PangPang Beer',
     side: 'snask',
     img: '/media/snask/snask-pangpang.webp',
-    targetX: 72,
-    targetY: 18,
-    targetRotate: 8,
-    spawnX: 360,
-    spawnY: -260,
+    targetX: 70,
+    targetY: 17,
+    targetRotate: 10,
+    spawnX: 380,
+    spawnY: -280,
     spawnRotate: 35,
     floatDeltaY: -7,
     duration: 3.5,
@@ -97,10 +97,10 @@ const CARDS: ProjectCardData[] = [
     title: 'Make Enemies',
     side: 'snask',
     img: '/media/snask/snask-book.webp',
-    targetX: 87,
-    targetY: 46,
-    targetRotate: 3,
-    spawnX: 450,
+    targetX: 85,
+    targetY: 49,
+    targetRotate: 4,
+    spawnX: 480,
     spawnY: 0,
     spawnRotate: 25,
     floatDeltaY: 8,
@@ -112,11 +112,11 @@ const CARDS: ProjectCardData[] = [
     title: 'Malmöfestivalen',
     side: 'snask',
     img: '/media/snask/snask-malmo.webp',
-    targetX: 66,
-    targetY: 74,
-    targetRotate: -12,
-    spawnX: 320,
-    spawnY: 340,
+    targetX: 63,
+    targetY: 81,
+    targetRotate: -14,
+    spawnX: 340,
+    spawnY: 360,
     spawnRotate: -30,
     floatDeltaY: -8,
     duration: 3.6,
@@ -128,35 +128,63 @@ export function SnaskHeartIntro() {
   return (
     <section className={styles.section} aria-label="Danylo Vasiur and Snask Match">
       <div className={styles.stage}>
-        {/* CENTER EMBLEM */}
+        {/* SUBTLE SNASK PINK DASHED HEART TRAJECTORY PATH */}
+        <svg
+          className={styles.heartOutlineSvg}
+          viewBox="0 0 1000 660"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M 500 220 
+               C 450 120, 370 95, 300 115
+               C 210 135, 130 220, 150 330
+               C 170 435, 270 495, 370 540
+               C 435 570, 480 600, 500 625
+               C 520 600, 565 570, 630 540
+               C 730 495, 830 435, 850 330
+               C 870 220, 790 135, 700 115
+               C 630 95, 550 120, 500 220 Z"
+            stroke="#fbd4dc"
+            strokeWidth="2.5"
+            strokeDasharray="6 8"
+            strokeLinecap="round"
+          />
+        </svg>
+
+        {/* COMPACT CENTER EMBLEM - ZERO OVERLAP */}
         <motion.div
           className={styles.centerEmblem}
-          initial={{ opacity: 0, scale: 0.7 }}
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <Image
-            src="/media/snask/dv-logo.png"
-            alt="Danylo Vasiur"
-            width={85}
-            height={85}
-            className={styles.logoDv}
-            priority
-          />
-          <span className={styles.plusSign}>+</span>
-          <Image
-            src="/media/snask/snask-logo.png"
-            alt="Snask"
-            width={150}
-            height={50}
-            className={styles.logoSnask}
-            priority
-          />
-          <span className={styles.equalSign}>=</span>
-          <h2 className={styles.matchTitle}>Match</h2>
+          <div className={styles.emblemRow}>
+            <Image
+              src="/media/snask/dv-logo.png"
+              alt="Danylo Vasiur"
+              width={56}
+              height={56}
+              className={styles.logoDv}
+              priority
+            />
+            <span className={styles.plusSign}>+</span>
+            <Image
+              src="/media/snask/snask-logo.png"
+              alt="Snask"
+              width={120}
+              height={40}
+              className={styles.logoSnask}
+              priority
+            />
+          </div>
+          <div className={styles.matchRow}>
+            <span className={styles.equalSign}>=</span>
+            <span className={styles.matchTitle}>MATCH</span>
+          </div>
         </motion.div>
 
-        {/* CARDS THAT CONVERGE ON LOAD TO ASSEMBLE THE HEART SHAPE */}
+        {/* CARDS CONVERGING ON LOAD INTO THE HEART SHAPE */}
         {CARDS.map((card) => (
           <div
             key={card.id}
