@@ -24,10 +24,10 @@ type ProjectCardData = {
   delay: number
 }
 
-// 6 cards creating a symmetric heart curve around the vertical center emblem:
-// Top lobes: (30%, 16%) rotated -10° and (70%, 16%) rotated +10°
-// Mid outer: (14%, 48%) rotated -4° and (86%, 48%) rotated +4°
-// Bottom tip: (37%, 82%) rotated +14° and (63%, 82%) rotated -14°
+// 6 cards calibrated so they NEVER overlap the center column and form a true heart:
+// Top lobes: (28%, 18%) rotated -10° and (72%, 18%) rotated +10°
+// Mid outer: (13%, 48%) rotated -4° and (87%, 48%) rotated +4°
+// Bottom tip: (33%, 82%) rotated +16° and (67%, 82%) rotated -16°
 const CARDS: ProjectCardData[] = [
   // LEFT SIDE — Danylo Vasiur
   {
@@ -35,13 +35,13 @@ const CARDS: ProjectCardData[] = [
     title: 'Lasowiak',
     side: 'dv',
     img: '/media/snask/my-lasowiak.webp',
-    targetX: 30,
-    targetY: 16,
+    targetX: 28,
+    targetY: 18,
     targetRotate: -10,
     spawnX: -380,
     spawnY: -280,
     spawnRotate: -35,
-    floatDeltaY: 7,
+    floatDeltaY: 6,
     duration: 3.4,
     delay: 0.1,
   },
@@ -50,13 +50,13 @@ const CARDS: ProjectCardData[] = [
     title: 'Ubu Roi',
     side: 'dv',
     video: '/media/pmrVVXBKjVwuqmxJx9S36N57A.mp4',
-    targetX: 14,
+    targetX: 13,
     targetY: 48,
     targetRotate: -4,
     spawnX: -480,
     spawnY: 0,
     spawnRotate: -25,
-    floatDeltaY: -8,
+    floatDeltaY: -7,
     duration: 3.8,
     delay: 0.25,
   },
@@ -65,13 +65,13 @@ const CARDS: ProjectCardData[] = [
     title: 'Re:Move',
     side: 'dv',
     img: '/media/snask/my-remove.webp',
-    targetX: 37,
+    targetX: 33,
     targetY: 82,
-    targetRotate: 14,
+    targetRotate: 16,
     spawnX: -340,
     spawnY: 360,
     spawnRotate: 30,
-    floatDeltaY: 7,
+    floatDeltaY: 6,
     duration: 3.0,
     delay: 0.4,
   },
@@ -82,13 +82,13 @@ const CARDS: ProjectCardData[] = [
     title: 'PangPang Beer',
     side: 'snask',
     img: '/media/snask/snask-pangpang.webp',
-    targetX: 70,
-    targetY: 16,
+    targetX: 72,
+    targetY: 18,
     targetRotate: 10,
     spawnX: 380,
     spawnY: -280,
     spawnRotate: 35,
-    floatDeltaY: -7,
+    floatDeltaY: -6,
     duration: 3.5,
     delay: 0.15,
   },
@@ -97,13 +97,13 @@ const CARDS: ProjectCardData[] = [
     title: 'Make Enemies',
     side: 'snask',
     img: '/media/snask/snask-book.webp',
-    targetX: 86,
+    targetX: 87,
     targetY: 48,
     targetRotate: 4,
     spawnX: 480,
     spawnY: 0,
     spawnRotate: 25,
-    floatDeltaY: 8,
+    floatDeltaY: 7,
     duration: 3.2,
     delay: 0.3,
   },
@@ -112,13 +112,13 @@ const CARDS: ProjectCardData[] = [
     title: 'Malmöfestivalen',
     side: 'snask',
     img: '/media/snask/snask-malmo.webp',
-    targetX: 63,
+    targetX: 67,
     targetY: 82,
-    targetRotate: -14,
+    targetRotate: -16,
     spawnX: 340,
     spawnY: 360,
     spawnRotate: -30,
-    floatDeltaY: -8,
+    floatDeltaY: -7,
     duration: 3.6,
     delay: 0.45,
   },
@@ -131,20 +131,20 @@ export function SnaskHeartIntro() {
         {/* SUBTLE SNASK PINK DASHED HEART TRAJECTORY PATH */}
         <svg
           className={styles.heartOutlineSvg}
-          viewBox="0 0 1000 660"
+          viewBox="0 0 960 640"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M 500 220 
-               C 450 120, 370 95, 300 115
-               C 210 135, 130 220, 150 330
-               C 170 435, 270 495, 370 540
-               C 435 570, 480 600, 500 625
-               C 520 600, 565 570, 630 540
-               C 730 495, 830 435, 850 330
-               C 870 220, 790 135, 700 115
-               C 630 95, 550 120, 500 220 Z"
+            d="M 480 220 
+               C 430 120, 340 90, 268 115
+               C 170 145, 100 220, 124 307
+               C 145 405, 230 470, 316 524
+               C 390 565, 450 585, 480 605
+               C 510 585, 570 565, 643 524
+               C 730 470, 815 405, 835 307
+               C 860 220, 790 145, 691 115
+               C 620 90, 530 120, 480 220 Z"
             stroke="#fbd4dc"
             strokeWidth="2.5"
             strokeDasharray="6 8"
@@ -162,8 +162,8 @@ export function SnaskHeartIntro() {
           <Image
             src="/media/snask/dv-logo.png"
             alt="Danylo Vasiur"
-            width={64}
-            height={64}
+            width={58}
+            height={58}
             className={styles.logoDv}
             priority
           />
@@ -171,8 +171,8 @@ export function SnaskHeartIntro() {
           <Image
             src="/media/snask/snask-logo.png"
             alt="Snask"
-            width={128}
-            height={44}
+            width={115}
+            height={38}
             className={styles.logoSnask}
             priority
           />

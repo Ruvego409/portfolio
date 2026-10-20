@@ -99,7 +99,7 @@ export function SnaskPitchPage() {
         </div>
       </section>
 
-      {/* ── 3. The 3 Matched Projects (Full-Bleed Stretch) ── */}
+      {/* ── 3. The 3 Matched Projects (Full-Bleed Stretch with 2-Column Editorial Grid) ── */}
       <section className={styles.pairsSection}>
         <div className={styles.sectionHeading}>
           <Reveal>
@@ -165,19 +165,25 @@ export function SnaskPitchPage() {
                   </div>
                 </div>
 
-                {/* Snask signature pastel pink #fbd4dc full-bleed editorial block */}
+                {/* Snask signature pastel pink #fbd4dc full-width banner with structured 2-column text */}
                 <div className={styles.pairDescription}>
-                  <h4 className={styles.descHeadline}>{pair.headline}</h4>
-                  <p className={styles.descLead}>{pair.lead}</p>
-                  <div className={styles.descBody}>
-                    {pair.narrative.map((paragraph, pIdx) => (
-                      <p key={pIdx} className={styles.descParagraph}>
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-                  <div className={styles.descTakeaway}>
-                    {pair.takeaway}
+                  <div className={styles.descInner}>
+                    <div className={styles.descColLeft}>
+                      <h4 className={styles.descHeadline}>{pair.headline}</h4>
+                      <p className={styles.descLead}>{pair.lead}</p>
+                      <div className={styles.descTakeaway}>
+                        {pair.takeaway}
+                      </div>
+                    </div>
+                    <div className={styles.descColRight}>
+                      <div className={styles.descBody}>
+                        {pair.narrative.map((paragraph, pIdx) => (
+                          <p key={pIdx} className={styles.descParagraph}>
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
 

@@ -88,14 +88,17 @@
 }
 
 .pairHeader {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 min(48px, 4vw) 16px;
+  border-bottom: 2px solid #000000;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 12px;
-  border-bottom: 2px solid #000000;
-  padding-bottom: 16px;
-  margin: 0 min(48px, 4vw);
+  box-sizing: border-box;
 }
 
 .pairTheme {
@@ -115,11 +118,15 @@
 }
 
 .pairVisuals {
-  margin: 0 min(48px, 4vw);
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 min(48px, 4vw);
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 32px;
+  gap: clamp(24px, 3vw, 48px);
+  box-sizing: border-box;
 }
 
 .visualCol {
@@ -176,34 +183,65 @@
   width: 100%;
   background: #fbd4dc;
   color: #000000;
-  padding: clamp(40px, 4.5vw, 64px) min(48px, 4vw);
+  padding: clamp(48px, 5vw, 72px) min(48px, 4vw);
   border-radius: 0;
   border: none;
-  display: grid;
-  gap: 18px;
   box-sizing: border-box;
 }
 
+/* Two-column editorial spread inside full-width banner */
+.descInner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(36px, 5vw, 80px);
+  align-items: start;
+}
+
+.descColLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .descHeadline {
-  font-size: clamp(24px, 2.6vw, 34px);
+  font-size: clamp(26px, 2.8vw, 38px);
   font-weight: 900;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
   color: #000000;
   margin: 0;
 }
 
 .descLead {
-  font-size: clamp(16px, 1.3vw, 19px);
+  font-size: clamp(16px, 1.25vw, 19px);
   font-weight: 700;
   line-height: 1.5;
   color: #000000;
   margin: 0;
 }
 
+.descTakeaway {
+  margin-top: 8px;
+  padding-top: 18px;
+  border-top: 2px solid #000000;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.45;
+  color: #000000;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.descColRight {
+  display: flex;
+  flex-direction: column;
+}
+
 .descBody {
   display: grid;
-  gap: 12px;
+  gap: 18px;
 }
 
 .descParagraph {
@@ -211,23 +249,15 @@
   line-height: 1.65;
   color: #111111;
   margin: 0;
-  max-width: 1400px;
-}
-
-.descTakeaway {
-  margin-top: 8px;
-  padding-top: 18px;
-  border-top: 2px solid #000000;
-  font-size: 14px;
-  font-weight: 900;
-  line-height: 1.45;
-  color: #000000;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
+  max-width: 70ch;
 }
 
 .pairLinkWrapper {
-  margin: 0 min(48px, 4vw);
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 min(48px, 4vw);
+  box-sizing: border-box;
 }
 
 .pairLink {
@@ -325,6 +355,13 @@
   background: rgba(255, 255, 255, 0.06);
 }
 
+@media (max-width: 900px) {
+  .descInner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
 @media (max-width: 768px) {
   .pairVisuals {
     grid-template-columns: 1fr;
@@ -333,6 +370,6 @@
     margin: 0 auto;
   }
   .pairDescription {
-    padding: 32px 24px;
+    padding: 36px 24px;
   }
 }

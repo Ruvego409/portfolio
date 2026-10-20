@@ -8,13 +8,14 @@
   background: var(--paper, #ffffff);
   overflow: hidden;
   padding: 40px 0;
+  box-sizing: border-box;
 }
 
 .stage {
-  --snask-card-size: clamp(140px, 14vw, 175px);
+  --snask-card-size: clamp(125px, 12vw, 150px);
   position: relative;
-  width: min(1040px, 94vw);
-  height: clamp(640px, 88vh, 780px);
+  width: min(960px, 92vw);
+  height: clamp(580px, 80vh, 680px);
   margin: 0 auto;
 }
 
@@ -44,39 +45,39 @@
   text-align: center;
   pointer-events: none;
   user-select: none;
-  gap: 4px;
+  gap: 3px;
 }
 
 .logoDv {
-  width: clamp(52px, 5.5vw, 68px);
+  width: clamp(48px, 5vw, 60px);
   height: auto;
   display: block;
 }
 
 .plusSign {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 900;
   color: #000000;
   line-height: 1;
-  margin: 2px 0;
+  margin: 1px 0;
 }
 
 .logoSnask {
-  width: clamp(100px, 11vw, 136px);
+  width: clamp(92px, 10vw, 120px);
   height: auto;
   display: block;
 }
 
 .equalSign {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 900;
   color: #000000;
   line-height: 1;
-  margin: 2px 0;
+  margin: 1px 0;
 }
 
 .matchTitle {
-  font-size: clamp(24px, 2.6vw, 34px);
+  font-size: clamp(22px, 2.4vw, 30px);
   font-weight: 900;
   line-height: 1;
   color: #000000;
@@ -171,14 +172,14 @@
 
 @media (max-width: 768px) {
   .stage {
-    height: 580px;
-    --snask-card-size: clamp(105px, 14vw, 130px);
+    height: 540px;
+    --snask-card-size: clamp(100px, 14vw, 120px);
   }
 }
 
 @media (max-width: 480px) {
   .stage {
-    height: 520px;
-    --snask-card-size: clamp(88px, 21vw, 105px);
+    height: 480px;
+    --snask-card-size: clamp(84px, 20vw, 98px);
   }
 }
