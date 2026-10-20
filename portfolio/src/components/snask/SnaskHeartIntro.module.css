@@ -1,0 +1,210 @@
+.section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fbfbfb;
+  overflow: hidden;
+  padding: 40px 20px 60px;
+}
+
+.introBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ff599c;
+  color: #000;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 14px rgba(255, 89, 156, 0.25);
+}
+
+.stage {
+  position: relative;
+  width: min(840px, 94vw);
+  height: min(620px, 78vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Center Emblem */
+.centerEmblem {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.logoDv {
+  width: clamp(68px, 9vw, 92px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+}
+
+.plusSign {
+  font-size: 26px;
+  font-weight: 900;
+  color: #ff599c;
+  line-height: 1;
+  margin: 6px 0;
+}
+
+.logoSnask {
+  width: clamp(100px, 14vw, 150px);
+  height: auto;
+  display: block;
+}
+
+.equalSign {
+  font-size: 22px;
+  font-weight: 900;
+  color: #ff599c;
+  line-height: 1;
+  margin: 6px 0;
+}
+
+.matchTitle {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  line-height: 1;
+  color: #000;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.matchSubtitle {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* Draggable Project Cards */
+.card {
+  position: absolute;
+  width: clamp(110px, 15vw, 150px);
+  height: clamp(110px, 15vw, 150px);
+  margin-left: calc(-1 * clamp(110px, 15vw, 150px) / 2);
+  margin-top: calc(-1 * clamp(110px, 15vw, 150px) / 2);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.09), 0 2px 6px rgba(0, 0, 0, 0.04);
+  cursor: grab;
+  z-index: 10;
+  overflow: hidden;
+  user-select: none;
+  touch-action: none;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  border-color: #ff599c;
+  box-shadow: 0 14px 40px rgba(255, 89, 156, 0.25), 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.cardBadge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  color: #fff;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.badgeDv {
+  background: #000;
+}
+
+.badgeSnask {
+  background: #ff599c;
+  color: #000;
+}
+
+.cardCaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 8px 6px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Drag instructions */
+.dragHint {
+  margin-top: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #999;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dragHand {
+  display: inline-block;
+  animation: nudge 2s infinite ease-in-out;
+}
+
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@media (max-width: 640px) {
+  .stage {
+    height: 480px;
+  }
+  .card {
+    border-radius: 12px;
+  }
+}
