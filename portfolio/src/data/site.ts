@@ -3,7 +3,7 @@ export const site = {
   role: 'Graphic designer',
   title: 'Danylo Vasiur — Portfolio',
   description: 'Portfolio of graphic designer Danylo Vasiur',
-  url: 'https://danylovasiur.com',
+  url: 'https://danylovasiurportfolio.xyz',
   email: 'vasurdana@gmail.com',
   location: 'Krakow, Poland',
   availability: 'Freelance Projects & Full-Time',
