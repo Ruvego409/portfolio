@@ -24,10 +24,10 @@ type ProjectCardData = {
   delay: number
 }
 
-// 6 cards creating an unmistakable, symmetric heart curve around the compact center emblem:
-// Top lobes: (30%, 17%) rotated -10° and (70%, 17%) rotated +10°
-// Mid outer: (15%, 49%) rotated -4° and (85%, 49%) rotated +4°
-// Bottom tip: (37%, 81%) rotated +14° and (63%, 81%) rotated -14°
+// 6 cards creating a symmetric heart curve around the vertical center emblem:
+// Top lobes: (30%, 16%) rotated -10° and (70%, 16%) rotated +10°
+// Mid outer: (14%, 48%) rotated -4° and (86%, 48%) rotated +4°
+// Bottom tip: (37%, 82%) rotated +14° and (63%, 82%) rotated -14°
 const CARDS: ProjectCardData[] = [
   // LEFT SIDE — Danylo Vasiur
   {
@@ -36,7 +36,7 @@ const CARDS: ProjectCardData[] = [
     side: 'dv',
     img: '/media/snask/my-lasowiak.webp',
     targetX: 30,
-    targetY: 17,
+    targetY: 16,
     targetRotate: -10,
     spawnX: -380,
     spawnY: -280,
@@ -50,8 +50,8 @@ const CARDS: ProjectCardData[] = [
     title: 'Ubu Roi',
     side: 'dv',
     video: '/media/pmrVVXBKjVwuqmxJx9S36N57A.mp4',
-    targetX: 15,
-    targetY: 49,
+    targetX: 14,
+    targetY: 48,
     targetRotate: -4,
     spawnX: -480,
     spawnY: 0,
@@ -66,7 +66,7 @@ const CARDS: ProjectCardData[] = [
     side: 'dv',
     img: '/media/snask/my-remove.webp',
     targetX: 37,
-    targetY: 81,
+    targetY: 82,
     targetRotate: 14,
     spawnX: -340,
     spawnY: 360,
@@ -83,7 +83,7 @@ const CARDS: ProjectCardData[] = [
     side: 'snask',
     img: '/media/snask/snask-pangpang.webp',
     targetX: 70,
-    targetY: 17,
+    targetY: 16,
     targetRotate: 10,
     spawnX: 380,
     spawnY: -280,
@@ -97,8 +97,8 @@ const CARDS: ProjectCardData[] = [
     title: 'Make Enemies',
     side: 'snask',
     img: '/media/snask/snask-book.webp',
-    targetX: 85,
-    targetY: 49,
+    targetX: 86,
+    targetY: 48,
     targetRotate: 4,
     spawnX: 480,
     spawnY: 0,
@@ -113,7 +113,7 @@ const CARDS: ProjectCardData[] = [
     side: 'snask',
     img: '/media/snask/snask-malmo.webp',
     targetX: 63,
-    targetY: 81,
+    targetY: 82,
     targetRotate: -14,
     spawnX: 340,
     spawnY: 360,
@@ -152,36 +152,32 @@ export function SnaskHeartIntro() {
           />
         </svg>
 
-        {/* COMPACT CENTER EMBLEM - ZERO OVERLAP */}
+        {/* CENTER EMBLEM IN A CLEAN VERTICAL COLUMN */}
         <motion.div
           className={styles.centerEmblem}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className={styles.emblemRow}>
-            <Image
-              src="/media/snask/dv-logo.png"
-              alt="Danylo Vasiur"
-              width={56}
-              height={56}
-              className={styles.logoDv}
-              priority
-            />
-            <span className={styles.plusSign}>+</span>
-            <Image
-              src="/media/snask/snask-logo.png"
-              alt="Snask"
-              width={120}
-              height={40}
-              className={styles.logoSnask}
-              priority
-            />
-          </div>
-          <div className={styles.matchRow}>
-            <span className={styles.equalSign}>=</span>
-            <span className={styles.matchTitle}>MATCH</span>
-          </div>
+          <Image
+            src="/media/snask/dv-logo.png"
+            alt="Danylo Vasiur"
+            width={64}
+            height={64}
+            className={styles.logoDv}
+            priority
+          />
+          <span className={styles.plusSign}>+</span>
+          <Image
+            src="/media/snask/snask-logo.png"
+            alt="Snask"
+            width={128}
+            height={44}
+            className={styles.logoSnask}
+            priority
+          />
+          <span className={styles.equalSign}>=</span>
+          <h2 className={styles.matchTitle}>MATCH</h2>
         </motion.div>
 
         {/* CARDS CONVERGING ON LOAD INTO THE HEART SHAPE */}

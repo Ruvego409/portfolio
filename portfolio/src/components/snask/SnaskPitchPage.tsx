@@ -99,7 +99,7 @@ export function SnaskPitchPage() {
         </div>
       </section>
 
-      {/* ── 3. The 3 Matched Projects ── */}
+      {/* ── 3. The 3 Matched Projects (Full-Bleed Stretch) ── */}
       <section className={styles.pairsSection}>
         <div className={styles.sectionHeading}>
           <Reveal>
@@ -137,8 +137,8 @@ export function SnaskPitchPage() {
                         <Image
                           src={pair.myProject.img!}
                           alt={pair.myProject.title}
-                          width={500}
-                          height={500}
+                          width={700}
+                          height={700}
                           className={styles.visualMedia}
                         />
                       )}
@@ -156,8 +156,8 @@ export function SnaskPitchPage() {
                       <Image
                         src={pair.snaskProject.img}
                         alt={pair.snaskProject.title}
-                        width={500}
-                        height={500}
+                        width={700}
+                        height={700}
                         className={styles.visualMedia}
                       />
                     </div>
@@ -165,7 +165,7 @@ export function SnaskPitchPage() {
                   </div>
                 </div>
 
-                {/* Snask signature pastel pink #fbd4dc editorial breakdown */}
+                {/* Snask signature pastel pink #fbd4dc full-bleed editorial block */}
                 <div className={styles.pairDescription}>
                   <h4 className={styles.descHeadline}>{pair.headline}</h4>
                   <p className={styles.descLead}>{pair.lead}</p>
@@ -181,9 +181,11 @@ export function SnaskPitchPage() {
                   </div>
                 </div>
 
-                <Link href={`/${pair.myProject.slug}`} className={styles.pairLink}>
-                  Explore Full Case Study →
-                </Link>
+                <div className={styles.pairLinkWrapper}>
+                  <Link href={`/${pair.myProject.slug}`} className={styles.pairLink}>
+                    Explore Full Case Study →
+                  </Link>
+                </div>
               </div>
             </Reveal>
           ))}
@@ -198,7 +200,7 @@ export function SnaskPitchPage() {
               Let&rsquo;s make some <span className={styles.ctaHighlight}>enemies &amp; gain fans</span> together.
             </h3>
             <p className={styles.ctaText}>
-              I would love to bring this energy, craft, and appetite for the unexpected to Stockholm and join Snask. Let’s grab a virtual coffee or a cold beer.
+              I would love to bring this energy, craft, and appetite for the unexpected to Stockholm and join Snask. Let’s grab a virtual coffee.
             </p>
 
             <div className={styles.ctaActions}>
