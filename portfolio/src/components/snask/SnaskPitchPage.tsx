@@ -81,25 +81,30 @@ export function SnaskPitchPage() {
       {/* ── 1. Interactive Heart Hero ── */}
       <SnaskHeartIntro />
 
-      {/* ── 2. The Manifesto / Statement ── */}
+      {/* ── 2. The Manifesto / Statement (Clean Typography, 2 Columns) ── */}
       <section className={styles.manifesto}>
         <div className={styles.manifestoInner}>
           <Reveal>
-            <h2 className={styles.headline}>
-              Most design agencies produce sterile beige templates.{' '}
-              <span className={styles.highlight}>Snask makes noise, rock &amp; roll, and true culture.</span>
-            </h2>
-            <p className={styles.manifestoText}>
-              I’m Danylo Vasiur — a graphic designer based in Krakow, moving between editorial design, brand identity, and physical tactile typography. I don’t believe in safe, quiet design that hides behind minimalism.
-            </p>
-            <p className={styles.manifestoText}>
-              Your ethos of <em>&ldquo;Make enemies &amp; gain fans&rdquo;</em> is exactly how I approach every project: whether that means carving letterforms out of Tatra mountain stones, tearing apart typography in a theater book, or dressing a liqueur bottle in embroidered folk fabric. Here is how our creative DNA connects:
-            </p>
+            <div className={styles.manifestoGrid}>
+              <div className={styles.manifestoColLeft}>
+                <h2 className={styles.headline}>
+                  Most design agencies produce sterile beige templates. Snask makes noise, rock &amp; roll, and true culture.
+                </h2>
+              </div>
+              <div className={styles.manifestoColRight}>
+                <p className={styles.manifestoText}>
+                  I’m Danylo Vasiur — a graphic designer based in Krakow, moving between editorial design, brand identity, and physical tactile typography. I don’t believe in safe, quiet design that hides behind minimalism.
+                </p>
+                <p className={styles.manifestoText}>
+                  Your ethos of <em>&ldquo;Make enemies &amp; gain fans&rdquo;</em> is exactly how I approach every project: whether that means carving letterforms out of Tatra mountain stones, tearing apart typography in a theater book, or dressing a liqueur bottle in embroidered folk fabric. Here is how our creative DNA connects:
+                </p>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
 
-      {/* ── 3. The 3 Matched Projects (Full-Bleed Stretch with 2-Column Editorial Grid) ── */}
+      {/* ── 3. The 3 Matched Projects (Consistent 60px Edge Margin, 2 Columns) ── */}
       <section className={styles.pairsSection}>
         <div className={styles.sectionHeading}>
           <Reveal>
@@ -165,7 +170,7 @@ export function SnaskPitchPage() {
                   </div>
                 </div>
 
-                {/* Snask signature pastel pink #fbd4dc full-width banner with structured 2-column text */}
+                {/* Snask signature pastel pink #fbd4dc block with structured 2-column text */}
                 <div className={styles.pairDescription}>
                   <div className={styles.descInner}>
                     <div className={styles.descColLeft}>
