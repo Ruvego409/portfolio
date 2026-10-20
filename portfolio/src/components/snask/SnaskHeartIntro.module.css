@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--paper, #ffffff);
+  background: #000000;
   overflow: hidden;
   padding: 40px 0;
   box-sizing: border-box;
@@ -61,7 +61,7 @@
 .plusSign {
   font-size: 18px;
   font-weight: 900;
-  color: #000000;
+  color: #fbd4dc;
   line-height: 1;
   margin: 1px 0;
 }
@@ -75,7 +75,7 @@
 .equalSign {
   font-size: 16px;
   font-weight: 900;
-  color: #000000;
+  color: #fbd4dc;
   line-height: 1;
   margin: 1px 0;
 }
@@ -84,7 +84,7 @@
   font-size: clamp(20px, 2.2vw, 28px);
   font-weight: 900;
   line-height: 1;
-  color: #000000;
+  color: #fbd4dc;
   letter-spacing: -0.03em;
   text-transform: uppercase;
   margin: 0;
@@ -150,12 +150,12 @@
 }
 
 .badgeDv {
-  background: #000000;
-  color: #ffffff;
+  background: #fbd4dc;
+  color: #000000;
 }
 
 .badgeSnask {
-  background: #fbd4dc;
+  background: #ffffff;
   color: #000000;
 }
 

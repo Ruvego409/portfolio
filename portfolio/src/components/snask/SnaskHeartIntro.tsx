@@ -145,7 +145,7 @@ export function SnaskHeartIntro() {
                C 735 490, 815 410, 835 312
                C 860 230, 790 155, 691 122
                C 620 85, 530 110, 480 205 Z"
-            stroke="#fbd4dc"
+            stroke="rgba(251,212,220,0.35)"
             strokeWidth="2.5"
             strokeDasharray="6 8"
             strokeLinecap="round"
@@ -161,7 +161,7 @@ export function SnaskHeartIntro() {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <Image
-              src="/media/snask/dv-logo.png"
+              src="/media/snask/dv-logo-pink.png"
               alt="Danylo Vasiur"
               width={56}
               height={56}
@@ -170,7 +170,7 @@ export function SnaskHeartIntro() {
             />
             <span className={styles.plusSign}>+</span>
             <Image
-              src="/media/snask/snask-logo.png"
+              src="/media/snask/snask-logo-pink.png"
               alt="Snask"
               width={112}
               height={36}

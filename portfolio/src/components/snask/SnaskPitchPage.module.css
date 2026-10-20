@@ -9,8 +9,6 @@
 .manifesto {
   padding: 100px var(--snask-margin);
   background: var(--paper, #ffffff);
-  border-top: 1px solid var(--line, rgba(0, 0, 0, 0.08));
-  border-bottom: 1px solid var(--line, rgba(0, 0, 0, 0.08));
   box-sizing: border-box;
 }
 
@@ -187,12 +185,13 @@
   flex-shrink: 0;
 }
 
-/* Snask signature pastel pink (#fbd4dc) editorial breakdown */
+/* Snask signature pastel pink (#fbd4dc) editorial breakdown — FULL BLEED edge to edge */
 .pairDescription {
-  width: 100%;
+  width: calc(100% + 2 * var(--snask-margin));
+  margin-left: calc(-1 * var(--snask-margin));
   background: #fbd4dc;
   color: #000000;
-  padding: clamp(40px, 4.5vw, 64px);
+  padding: clamp(40px, 4.5vw, 64px) var(--snask-margin);
   border-radius: 0;
   border: none;
   box-sizing: border-box;
