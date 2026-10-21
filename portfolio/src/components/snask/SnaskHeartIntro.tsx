@@ -126,7 +126,7 @@ const CARDS: ProjectCardData[] = [
 
 export function SnaskHeartIntro() {
   return (
-    <section className={styles.section} aria-label="Danylo Vasiur and Snask Match">
+    <section id="snask-hero" className={styles.section} aria-label="Danylo Vasiur and Snask Match">
       <div className={styles.stage}>
         {/* SUBTLE SNASK PINK DASHED HEART TRAJECTORY PATH */}
         <svg

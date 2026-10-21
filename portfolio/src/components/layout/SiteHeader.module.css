@@ -3,6 +3,7 @@
   top: 0;
   z-index: 50;
   background: var(--paper);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .inner {
@@ -19,6 +20,8 @@
   gap: var(--space-3);
   /* The optical centre of the smiley sits slightly above its bounding box. */
   margin-block-start: -1px;
+  color: inherit;
+  transition: color 0.3s ease;
 }
 
 .logo {
@@ -26,6 +29,7 @@
   height: auto;
   flex: none;
   color: #1d1d1b;
+  transition: color 0.3s ease;
 }
 
 .brandName,
@@ -45,6 +49,8 @@
   position: relative;
   display: inline-block;
   padding-block: var(--space-1);
+  color: inherit;
+  transition: color 0.3s ease;
 }
 
 /* Underline grows from the left rather than fading in — reads as a mark being
@@ -65,4 +71,24 @@
 .navLink:hover::after,
 .navLink:focus-visible::after {
   transform: scaleX(1);
+}
+
+/* Dark mode for initial screen on /for/snask */
+.headerDark {
+  background: #000000;
+  color: #fbd4dc;
+}
+
+.headerDark .logo {
+  color: #fbd4dc;
+}
+
+.headerDark .brandName,
+.headerDark .navLink {
+  color: #fbd4dc;
+}
+
+.headerDark .brand:hover,
+.headerDark .navLink:hover {
+  color: #ffffff;
 }
