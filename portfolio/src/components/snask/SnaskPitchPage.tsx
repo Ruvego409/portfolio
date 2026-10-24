@@ -24,14 +24,14 @@ const PAIRS = [
     },
     lead: 'Both projects reject safe, sterile minimalism in favor of visceral personality, real physical craft, and rock’n’roll attitude.',
     narrative: [
-      'Snask took craft beer and turned it into an icon with clash-color tiki palettes, bespoke typography, and a total disregard for category clichés. In Lasowiak, I took traditional Polish folk liqueur out of dusty tourist gift shops and rebuilt it as an unapologetic, contemporary design piece.',
-      'Neither of us designs solely on a flat computer screen. Snask builds physical sets; in Lasowiak, the core visual language comes from hand-folded fabric cap wraps, apothecary cross geometry, and region-authentic embroidery translated into a rigorous label grid. The concept went on to be submitted to Poland’s Art of Packaging national competition in the Debiuty student category.',
+      'Snask turned PangPang craft beer into a cult icon with clash-color tiki palettes, bespoke typography, and irreverent drinking rituals that mock industry clichés. In Lasowiak, I took a traditional Polish folk liqueur out of dusty tourist gift shops and rebuilt it as an unapologetic, contemporary design piece.',
+      'Neither of us believes packaging lives only on a flat computer mockup. Snask builds tactile experiences into every bottle; in Lasowiak, the identity lives in tangible materials: hand-folded fabric cap wraps, apothecary cross geometry, and region-authentic embroidery translated into a rigorous label grid. The project was recognized at Poland’s Art of Packaging national competition in the Debiuty student category.',
     ],
-    takeaway: 'Match: Heritage beverages torn out of the expected playbook — designed to dominate shelves and make enemies of boring packaging.',
+    takeaway: 'Match: Liquid culture torn out of the expected playbook — designed to dominate shelves and make enemies of boring packaging.',
   },
   {
-    theme: 'Editorial Anarchy & Deconstructed Typography',
-    headline: 'Typography as physical rebellion',
+    theme: 'Editorial Rebellion & Deconstructed Typography',
+    headline: 'Typography as physical revolt',
     tag: 'Ubu Roi × Make Enemies',
     myProject: {
       title: 'Ubu Roi ou les Polonais',
@@ -46,10 +46,10 @@ const PAIRS = [
     },
     lead: 'We don’t treat books as polite containers for text. We treat typography as an explosive narrative device that refuses to behave.',
     narrative: [
-      'Snask’s bestselling manifesto "Make Enemies & Gain Fans" is legendary because it was designed like a physical act of revolt — rainbow foil, confrontational typography, and layouts that spit in the face of academic book design. In Ubu Roi, I applied that exact disrespect to Alfred Jarry’s 1896 absurdist play.',
-      'Instead of setting polite academic type, I reworked the typeface by physically carving circular voids into each letterform. As the grotesque King Ubu collapses his kingdom through greed and incompetence, the typography across the pages literally falls apart in real time before the reader’s eyes. Turning a page is an action that triggers a collapse.',
+      'Snask’s cult manifesto "Make Enemies & Gain Fans" is legendary because it was written and designed like an act of defiance — holographic rainbow foil, confrontational typography, and layouts that laugh in the face of academic book design. In Ubu Roi, I applied that exact disrespect to Alfred Jarry’s 1896 absurdist play.',
+      'Instead of setting polite academic type, I reworked the typeface by carving circular voids into each letterform. As the grotesque King Ubu collapses his kingdom through greed and incompetence, the typography across the spreads literally disintegrates in real time before the reader’s eyes. Turning a page is an action that triggers a collapse.',
     ],
-    takeaway: 'Match: Disobeying the editorial grid and turning physical print into experiential theater.',
+    takeaway: 'Match: Disobeying the classical grid and turning editorial print into physical, immersive theater.',
   },
   {
     theme: 'High-Saturation Identity & Public Space',
@@ -66,10 +66,10 @@ const PAIRS = [
       img: '/media/snask/snask-malmo.webp',
       role: 'Snask',
     },
-    lead: 'High-voltage, fearless color palettes paired with kinetic rhythm that dominate public spaces and ignite community excitement.',
+    lead: 'Fearless, high-voltage palettes paired with kinetic rhythm that command public spaces and ignite community excitement.',
     narrative: [
-      'Snask’s world-famous campaign for Malmöfestivalen owned the entire city of Malmö by building gigantic physical type installations and turning them into hyper-saturated, joyful posters that demand attention from 100 meters away. Re:Move operates on the exact same electric frequency.',
-      'Instead of cliché dance photography, Re:Move captures the essence of motion through overlapping, neon-contrast shapes (electric yellow, hot pink, cobalt blue) and hyper-bold typography engineered to withstand visual noise in urban outdoor settings. Designed from day one as a living system that translates naturally to street billboards, oversized printed hoodies, and digital motion graphics.',
+      'Snask’s celebrated campaign for Malmöfestivalen owned the entire city by creating hyper-saturated, joyful typography and oversized installations that demand attention from 100 meters away. Re:Move operates on that exact same electric frequency.',
+      'Instead of polite, static cultural posters, Re:Move captures the raw energy of human motion through intense clashing color (punchy red, electric yellow, cobalt blue) and hyper-bold typography engineered to cut through visual noise in urban outdoor settings. Built as a living identity that translates effortlessly from street billboards to oversized hoodies and motion graphics.',
     ],
     takeaway: 'Match: Fearless, high-saturation identities engineered to stop people in their tracks on the street.',
   },
@@ -96,7 +96,7 @@ export function SnaskPitchPage() {
                   I’m Danylo Vasiur — a graphic designer based in Krakow, moving between editorial design, brand identity, and physical tactile typography. I don’t believe in safe, quiet design that hides behind minimalism.
                 </p>
                 <p className={styles.manifestoText}>
-                  Your ethos of <em>&ldquo;Make enemies &amp; gain fans&rdquo;</em> is exactly how I approach every project: whether that means carving letterforms out of Tatra mountain stones, tearing apart typography in a theater book, or dressing a liqueur bottle in embroidered folk fabric. Here is how our creative DNA connects:
+                  Your ethos of <em>&ldquo;Make enemies &amp; gain fans&rdquo;</em> is exactly how I approach every project: whether that means crafting a raw display typeface from the stone silhouettes of the Tatra mountains, tearing apart typography in an absurdist theater book, or wrapping a folk liqueur bottle in hand-folded embroidery. Here is how our creative DNA connects:
                 </p>
               </div>
             </div>
@@ -110,7 +110,7 @@ export function SnaskPitchPage() {
           <Reveal>
             <h3 className={styles.pairsTitle}>Three Projects, One Shared DNA</h3>
             <p className={styles.pairsSubtitle}>
-              Direct comparison showing our shared visual philosophy, physical craft, and design methodologies.
+              Tactile craft, unapologetic typography, and zero boring corporate compromise.
             </p>
           </Reveal>
         </div>
