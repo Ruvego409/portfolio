@@ -1,470 +1,207 @@
-/* ── Lundgren+Lindqvist Editorial & Architectural Pitch Page ── */
+/* ─────────────────────────────────────────────────────────────
+   Lundgren+Lindqvist Pitch Page
+   Font: PxGrotesk Regular
+   Background: #eaeaea (leur signature light gray)
+   All styling dicts from user sketch + L+L visual identity
+───────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'PxGrotesk';
+  src: url('/fonts/PxGrotesk-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 .page {
-  background: #ffffff;
+  background: #eaeaea;
   color: #000000;
   min-height: 100vh;
-  font-family: inherit;
-  --ll-border: #e9e9e9;
-  --ll-border-dark: #111111;
-  --ll-muted: #666666;
-  --ll-subtle-bg: #f9f9f9;
-  --ll-pad: clamp(20px, 3.5vw, 48px);
+  font-family: 'PxGrotesk', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
-/* ── Top Colophon / Header bar ── */
-.topColophon {
-  width: 100%;
-  border-bottom: 1px solid var(--ll-border);
-  padding: 16px var(--ll-pad);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 16px;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ll-muted);
-  box-sizing: border-box;
+/* ── Page header ── */
+.pageHeader {
+  padding: 28px 32px 0 32px;
+  font-size: 13px;
+  color: #000;
+  letter-spacing: 0;
+  font-family: 'PxGrotesk', Arial, sans-serif;
 }
 
-.colophonGroup {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+/* ── Each case block ── */
+.caseBlock {
+  padding: 40px 32px 56px 32px;
+  border-bottom: 1px solid #c8c8c8;
 }
 
-.colophonDot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: #000000;
-  border-radius: 50%;
-}
-
-.colophonHighlight {
-  color: #000000;
-  font-weight: 600;
-}
-
-/* ── Hero Statement Section ── */
-.introSection {
-  padding: clamp(60px, 8vw, 120px) var(--ll-pad);
-  border-bottom: 1px solid var(--ll-border);
-  box-sizing: border-box;
-}
-
-.introGrid {
+/* Left col: 33%, Right col: rest */
+.caseLayout {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: clamp(40px, 6vw, 100px);
+  grid-template-columns: 320px 1fr;
+  gap: 0;
   align-items: start;
 }
 
-.introTitleWrapper {
+/* ── Left column ── */
+.leftCol {
+  padding-right: 40px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 0;
 }
 
-.indexLabel {
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ll-muted);
-  font-family: monospace, monospace;
+.projectDesc {
+  font-size: 13px;
+  color: #000;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+  max-width: 280px;
 }
 
-.introHeadline {
-  font-size: clamp(32px, 4.2vw, 56px);
-  font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  color: #000000;
-  margin: 0;
-}
-
-.introHeadline em {
-  font-style: italic;
-  font-family: "New Century Schoolbook", Times, serif;
-  font-weight: 400;
-}
-
-.introBody {
+.metaBlock {
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  font-size: clamp(15px, 1.15vw, 18px);
-  line-height: 1.65;
-  color: #222222;
-}
-
-.introBody p {
-  margin: 0;
-  max-width: 58ch;
-}
-
-.introMetaList {
-  margin-top: 16px;
-  padding-top: 24px;
-  border-top: 1px solid var(--ll-border);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 20px;
-}
-
-.metaItem {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  gap: 2px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #000;
 }
 
 .metaLabel {
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ll-muted);
-  font-family: monospace, monospace;
-}
-
-.metaValue {
   font-size: 13px;
-  color: #000000;
-  font-weight: 500;
+  color: #000;
 }
 
-/* ── Section Title Bar ── */
-.sectionBar {
-  padding: 24px var(--ll-pad);
-  border-bottom: 1px solid var(--ll-border);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  box-sizing: border-box;
-  background: var(--ll-subtle-bg);
+.metaRow {
+  font-size: 13px;
+  color: #000;
 }
 
-.sectionBarTitle {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin: 0;
+.caseLink {
+  font-size: 13px;
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  display: inline-block;
 }
 
-.sectionBarSub {
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: var(--ll-muted);
-  font-family: monospace, monospace;
+.caseLink:hover {
+  opacity: 0.6;
 }
 
-/* ── Case Study Section ── */
-.caseItem {
-  width: 100%;
-  border-bottom: 1px solid var(--ll-border);
-  box-sizing: border-box;
-}
-
-.caseHeader {
-  padding: clamp(32px, 4vw, 56px) var(--ll-pad) 24px;
-  display: grid;
-  grid-template-columns: 2.2fr 1fr;
-  gap: clamp(30px, 5vw, 80px);
-  align-items: start;
-}
-
-.caseTitleGroup {
+/* ── Right column ── */
+.rightCol {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-}
-
-.caseNumber {
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  color: var(--ll-muted);
-  font-family: monospace, monospace;
-  text-transform: uppercase;
-}
-
-.caseTitle {
-  font-size: clamp(26px, 3vw, 42px);
-  font-weight: 400;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
-  margin: 0;
-  color: #000000;
-}
-
-.caseSubtitle {
-  font-size: clamp(14px, 1.1vw, 17px);
-  color: var(--ll-muted);
-  margin: 0;
-  line-height: 1.5;
-  max-width: 62ch;
-}
-
-.casePassport {
-  border-left: 1px solid var(--ll-border);
-  padding-left: clamp(20px, 3vw, 40px);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.passportRow {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.passportKey {
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ll-muted);
-  font-family: monospace, monospace;
-}
-
-.passportVal {
-  font-size: 12px;
-  line-height: 1.4;
-  color: #111111;
-}
-
-/* ── Gallery Plates Grid ── */
-.caseGallery {
-  width: 100%;
-  padding: 0 var(--ll-pad) clamp(40px, 5vw, 64px);
-  box-sizing: border-box;
-}
-
-.galleryGrid {
-  display: grid;
-  gap: clamp(16px, 2vw, 32px);
-  grid-template-columns: repeat(2, 1fr);
-  align-items: start;
-}
-
-.galleryPlateFull {
-  grid-column: 1 / -1;
-  width: 100%;
-}
-
-.galleryPlate {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.imageWrapper {
+  gap: 0;
   position: relative;
+}
+
+/* Top row: my project image */
+.myProjectRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.myImgWrapper {
   width: 100%;
-  background: #f4f4f4;
-  border: 1px solid var(--ll-border);
+  max-width: 380px;
+  background: #b8b8b8;
+  position: relative;
   overflow: hidden;
 }
 
-.plateMedia {
+.projectImg {
   width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
 }
 
-.plateCaption {
-  font-size: 11px;
-  color: var(--ll-muted);
-  letter-spacing: 0.04em;
-  font-family: monospace, monospace;
+.projectVideo {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 1;
 }
 
-/* ── Case Narrative Analysis Spread ── */
-.caseNarrative {
-  padding: 32px var(--ll-pad) clamp(40px, 5vw, 64px);
-  border-top: 1px solid var(--ll-border);
-  background: #fafafa;
+/* Divider row with + and match text */
+.middleRow {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 5vw, 80px);
-  box-sizing: border-box;
-}
-
-.narrativeCol {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.narrativeHeading {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #000000;
+  grid-template-columns: 380px 1fr;
+  align-items: flex-start;
   margin: 0;
 }
 
-.narrativeText {
-  font-size: 14px;
-  line-height: 1.65;
-  color: #333333;
-  margin: 0;
-}
-
-.caseActionRow {
-  padding: 20px var(--ll-pad) 32px;
-  display: flex;
-  justify-content: flex-start;
-  box-sizing: border-box;
-}
-
-.caseActionLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #000000;
-  border-bottom: 1px solid #000000;
-  padding-bottom: 3px;
-  transition: opacity 0.2s ease;
-  font-family: monospace, monospace;
-}
-
-.caseActionLink:hover {
-  opacity: 0.5;
-}
-
-/* ── Typographic Tester / Specimen Integration ── */
-.specimenContainer {
-  padding: 40px var(--ll-pad);
-  border-bottom: 1px solid var(--ll-border);
-  background: #ffffff;
-  box-sizing: border-box;
-}
-
-/* ── Closing Colophon & Contact ── */
-.colophonSection {
-  padding: clamp(60px, 8vw, 100px) var(--ll-pad);
-  background: #000000;
-  color: #ffffff;
-  box-sizing: border-box;
-}
-
-.colophonGrid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: clamp(40px, 6vw, 100px);
-  align-items: start;
-}
-
-.colophonLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.colophonTitle {
-  font-size: clamp(28px, 3.5vw, 44px);
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 1.12;
-  margin: 0;
-}
-
-.colophonTitle em {
-  font-family: "New Century Schoolbook", Times, serif;
-  font-style: italic;
-}
-
-.colophonText {
-  font-size: 15px;
-  line-height: 1.6;
-  color: #aaaaaa;
-  max-width: 52ch;
-  margin: 0;
-}
-
-.colophonRight {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.contactPassport {
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
-  padding-left: clamp(20px, 3vw, 40px);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.contactPassportRow {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.contactLabel {
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #888888;
-  font-family: monospace, monospace;
-}
-
-.contactLink {
-  font-size: 14px;
-  color: #ffffff;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  transition: opacity 0.2s ease;
-}
-
-.contactLink:hover {
-  opacity: 0.6;
-}
-
-.contactTextVal {
+.plusSign {
   font-size: 13px;
-  color: #dddddd;
+  color: #000;
+  padding: 8px 0;
+  text-align: center;
+  width: 380px;
 }
 
-/* ── Responsive adjustments ── */
-@media (max-width: 860px) {
-  .introGrid {
+.matchTextBlock {
+  padding: 8px 0 8px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.matchTitle {
+  font-size: 13px;
+  color: #000;
+  font-family: 'PxGrotesk', Arial, sans-serif;
+  margin: 0;
+  font-weight: 400;
+}
+
+.matchDesc {
+  font-size: 13px;
+  color: #000;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 320px;
+}
+
+/* Their project image */
+.theirProjectRow {
+  display: flex;
+}
+
+.theirImgWrapper {
+  width: 100%;
+  max-width: 380px;
+  background: #b0b0b0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Responsive ── */
+@media (max-width: 760px) {
+  .caseLayout {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
   }
-  .caseHeader {
+  .leftCol {
+    padding-right: 0;
+  }
+  .myImgWrapper,
+  .theirImgWrapper {
+    max-width: 100%;
+  }
+  .middleRow {
     grid-template-columns: 1fr;
-    gap: 32px;
   }
-  .casePassport {
-    border-left: none;
+  .plusSign {
+    width: auto;
+    text-align: left;
+  }
+  .matchTextBlock {
     padding-left: 0;
-    border-top: 1px solid var(--ll-border);
-    padding-top: 20px;
-  }
-  .galleryGrid {
-    grid-template-columns: 1fr;
-  }
-  .caseNarrative {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .colophonGrid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .contactPassport {
-    border-left: none;
-    padding-left: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: 20px;
   }
 }
