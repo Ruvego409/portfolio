@@ -33,8 +33,8 @@ const COMPARISONS: CaseComparison[] = [
       slug: 'aktan',
       meta: 'Editorial Design & Book · 2026 · University Project',
       desc: 'Archival publication confronting historical erasure through raw charcoal illustrations, inverted typographic spreads, and tactile physical binding decisions.',
-      img: '/media/tsAsaIZClXpfnvWg10zYXNlBUR4.jpg',
-      alt: 'Printed Akta № book open on a table showing charcoal spreads and binding',
+      img: '/media/aktan-wood-cover.jpg',
+      alt: 'Bruno Jasieński — Akta № book photographed on raw wooden planks',
     },
     theirProject: {
       title: 'Static Motion — Carl Ander',
@@ -88,7 +88,7 @@ export function LundgrenLindqvistPitchPage() {
   return (
     <div data-ll-page className={styles.page}>
       <div className={styles.inner}>
-        {/* ── Case Comparisons (2-Column Grid directly, no redundant proposal banner) ── */}
+        {/* ── Case Comparisons (2-Column Grid directly, no lines, edge-to-edge layout) ── */}
         {COMPARISONS.map((comp, idx) => (
           <article key={comp.myProject.slug} className={styles.caseSection}>
             {/* Category header & match thesis */}

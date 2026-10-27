@@ -1,50 +1,50 @@
 /* ─────────────────────────────────────────────────────────────
    Lundgren+Lindqvist Pitch Page
    Strictly aligned with L+L visual language:
-   - Font: PxGrotesk Regular (official L+L WOFF)
+   - Font: PxGrotesk Regular (user provided TTF)
    - Color: #000000 on #eaeaea
    - Bold 2-column image grid (50% / 50%)
-   - Pure architectural typography, no cards, no borders, no rounded corners
+   - Minimal side padding (1rem / 16px, edge-to-edge width)
+   - Pure architectural typography, NO border lines anywhere
 ───────────────────────────────────────────────────────────── */
 
 .page {
   background-color: #eaeaea;
   width: 100%;
   color: #000000;
-  font-family: 'PxGrotesk', Arial, sans-serif;
+  font-family: 'PxGrotesk', 'PxGroteskRegular', sans-serif;
   font-size: 13px;
   line-height: 1.35;
   -webkit-font-smoothing: antialiased;
 }
 
 .inner {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 32px 24px 64px 24px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 16px 1rem 48px 1rem;
 }
 
-/* ── Case Section (Repeated for each pair) ── */
+/* ── Case Section (Repeated for each pair, NO border lines) ── */
 .caseSection {
   margin-bottom: 56px;
-  padding-bottom: 56px;
-  border-bottom: 1px solid #c8c8c8;
+  padding-bottom: 0;
+  border: none;
 }
 
 .caseSection:last-of-type {
-  border-bottom: none;
   margin-bottom: 32px;
-  padding-bottom: 0;
 }
 
-/* ── Case Header Line (Category + Match Headline) ── */
+/* ── Case Header Line (Category + Match Headline, NO border line) ── */
 .caseHeaderBar {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding-bottom: 12px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid #c8c8c8;
-  font-family: 'PxGrotesk', Arial, sans-serif;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border: none;
+  font-family: 'PxGrotesk', 'PxGroteskRegular', sans-serif;
   font-size: 13px;
   color: #000000;
 }
@@ -59,11 +59,11 @@
   color: #000000;
 }
 
-/* ── 2-Column Side-by-Side Comparison Grid ── */
+/* ── 2-Column Side-by-Side Comparison Grid (Minimal 1rem gap) ── */
 .twoColGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 1rem;
   align-items: start;
 }
 
@@ -79,7 +79,7 @@
   position: relative;
   overflow: hidden;
   background-color: #d8d8d8;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   border-radius: 0;
 }
 
@@ -96,7 +96,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  font-family: 'PxGrotesk', Arial, sans-serif;
+  font-family: 'PxGrotesk', 'PxGroteskRegular', sans-serif;
 }
 
 .cardHeaderRow {
@@ -173,14 +173,14 @@
   margin: 0;
 }
 
-/* ── Pitch Closing ── */
+/* ── Pitch Closing (NO border line) ── */
 .pitchClosing {
-  padding: 28px 0 8px 0;
-  border-top: 1px solid #c8c8c8;
+  padding: 24px 0 0 0;
+  border: none;
 }
 
 .closingText {
-  font-family: 'PxGrotesk', Arial, sans-serif;
+  font-family: 'PxGrotesk', 'PxGroteskRegular', sans-serif;
   font-size: 13px;
   line-height: 1.45;
   color: #000000;
@@ -191,12 +191,12 @@
 /* ── Responsive Mobile ── */
 @media (max-width: 820px) {
   .inner {
-    padding: 20px 16px 40px 16px;
+    padding: 12px 12px 36px 12px;
   }
 
   .twoColGrid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
   }
 
   .caseHeaderBar {
@@ -205,7 +205,6 @@
   }
 
   .caseSection {
-    margin-bottom: 40px;
-    padding-bottom: 40px;
+    margin-bottom: 36px;
   }
 }

@@ -93,17 +93,18 @@
   color: #ffffff;
 }
 
+
 /* Lundgren+Lindqvist pitch page header theme */
 .headerLL {
-  background: #eaeaea !important;
-  color: #000000 !important;
-  border-bottom: 1px solid #c8c8c8;
+  background: rgba(234, 234, 234, 0.82) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: none !important;
+  border-bottom: none !important;
 }
 
 .headerLL .brandName,
 .headerLL .navLink {
-  font-family: 'PxGrotesk', Arial, sans-serif !important;
-  font-size: 13px !important;
   color: #000000 !important;
 }
 
