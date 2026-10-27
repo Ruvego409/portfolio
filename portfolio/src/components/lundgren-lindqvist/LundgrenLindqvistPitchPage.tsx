@@ -12,13 +12,13 @@ interface CasePair {
     clientContext: string
     type: string
     year: string
-    img?: string
-    video?: string
+    img: string
     imgW: number
     imgH: number
   }
   theirProject: {
     title: string
+    type: string
     img: string
     imgW: number
     imgH: number
@@ -37,17 +37,18 @@ const PAIRS: CasePair[] = [
       type: 'Editorial Design & Book',
       year: '2026',
       img: '/media/VocXQQCXA7epkcS8eluPo9Gt8.png',
-      imgW: 900,
-      imgH: 900,
+      imgW: 1500,
+      imgH: 1000,
     },
     theirProject: {
-      title: 'Static Motion — LL\'Editions',
-      img: '/media/NOavjdW8oiXLl4FIMb1Ne9xF0.png',
-      imgW: 900,
-      imgH: 900,
+      title: 'Static Motion — Carl Ander (LL\'Editions)',
+      type: 'Publication & Monograph',
+      img: '/media/lundgren-lindqvist/ll-static-motion.jpg',
+      imgW: 1500,
+      imgH: 1000,
     },
     matchTitle: 'Editorial as physical object, not container.',
-    matchDesc: 'Both approach the book as an architectural artifact with psychological mass. In Akta №, charcoal marks stand in for a clandestine Siberian diary — the editorial design does not illustrate, it implicates. In Static Motion, Lundgren+Lindqvist strip all conventional book apparatus and let the sequence do the work. The methodology is identical: material form as the argument.',
+    matchDesc: 'Both approach the book as an architectural artifact with psychological mass. In Akta №, raw charcoal gestures stand in for historical erasure — the editorial design does not illustrate, it implicates. In Static Motion, Lundgren+Lindqvist strip conventional apparatus and let the tactile sequence do the work. The methodology is identical: form as the argument.',
   },
   {
     myProject: {
@@ -58,17 +59,18 @@ const PAIRS: CasePair[] = [
       type: 'Visual Identity & Wayfinding',
       year: '2025',
       img: '/media/cUvL4YuhIciQHNXKYHUySSau5k.png',
-      imgW: 1200,
-      imgH: 390,
+      imgW: 1500,
+      imgH: 1000,
     },
     theirProject: {
-      title: 'Liljewall Arkitekter — L+L Identity',
-      img: '/media/ldqNRSQyseJ8jNAfOnz2AuYW8U.png',
-      imgW: 1200,
-      imgH: 390,
+      title: 'Inflection — Visual Identity System',
+      type: 'Visual Identity & Design System',
+      img: '/media/lundgren-lindqvist/ll-inflection-identity.jpg',
+      imgW: 1500,
+      imgH: 1000,
     },
     matchTitle: 'Identity as architecture, not decoration.',
-    matchDesc: "Lundgren+Lindqvist\u2019s institutional identities function like buildings: structural grids, repeating modular elements, and typographic hierarchies designed for permanence. The MTRW system follows the same discipline \u2014 one circle, one weight, one colour \u2014 scaled from sub-centimetre admission badges to multi-storey facade cuts in concrete.",
+    matchDesc: 'Lundgren+Lindqvist\'s institutional systems function like architectural blueprints: strict geometric framing, modular hierarchies, and typographic discipline designed for permanence. The MTRW identity follows the same rigor — one circle, one weight, one colour — scaled from sub-centimetre admission badges to multi-storey facade wayfinding in concrete.',
   },
   {
     myProject: {
@@ -79,117 +81,129 @@ const PAIRS: CasePair[] = [
       type: 'Packaging & Label Design',
       year: '2026',
       img: '/media/2LVl4gPAeX2Z4jsNezslguRIEg.jpg',
-      imgW: 900,
-      imgH: 600,
+      imgW: 1500,
+      imgH: 1000,
     },
     theirProject: {
-      title: 'Tatra Display Typeface — Specimen',
-      img: '/media/tatra/pres-5.webp',
-      imgW: 1400,
+      title: 'Uniscent — Visual Identity & Packaging',
+      type: 'Brand Identity & Tactile Packaging',
+      img: '/media/lundgren-lindqvist/ll-uniscent-packaging.jpg',
+      imgW: 1500,
       imgH: 1000,
     },
     matchTitle: 'Material honesty as design language.',
-    matchDesc: "Lundgren+Lindqvist\u2019s packaging practice begins with paper weight, surface texture, and production method \u2014 never a Photoshop mockup. Lasowiak applies the same logic: linen cap wrap folded by hand, cotton paper label with a strict apothecary-cross border grid, and a bottle shape selected for its archival mass. The material is the identity.",
+    matchDesc: 'Lundgren+Lindqvist\'s packaging practice begins with paper weight, surface texture, and production precision — never superficial mockup styling. Lasowiak applies the same logic: hand-folded linen cap wrap, cotton paper label with an apothecary-cross grid, and bottle geometry selected for archival mass. The material is the identity.',
   },
 ]
 
 export function LundgrenLindqvistPitchPage() {
   return (
-    <main className={styles.page}>
-      {/* ── Page header ── */}
-      <header className={styles.pageHeader}>
-        <p>Lundgren + Lindqvist + Danylo Vasiur = Match</p>
-      </header>
+    <div data-ll-page className={styles.page}>
+      <div className={styles.inner}>
+        {/* ── Page Header (exact line from user sketch) ── */}
+        <header className={styles.topHeader}>
+          <h1 className={styles.matchEquation}>
+            Lundgren + Lindqvist + Danylo Vasiur = Match
+          </h1>
+        </header>
 
-      {/* ── Case pairs ── */}
-      {PAIRS.map((pair) => (
-        <article key={pair.myProject.slug} className={styles.caseBlock}>
-          <div className={styles.caseLayout}>
+        {/* ── 2x2 Matrix Case Modules ── */}
+        {PAIRS.map((pair, idx) => (
+          <article key={pair.myProject.slug} className={styles.caseModule}>
+            <div className={styles.matrixGrid}>
 
-            {/* LEFT: description + metadata + link */}
-            <div className={styles.leftCol}>
-              <p className={styles.projectDesc}>{pair.myProject.desc}</p>
+              {/* ── Quadrant 1: Top-Left (My project text & metadata) ── */}
+              <div className={styles.quadrantTopLeft}>
+                <p className={styles.projectDesc}>{pair.myProject.desc}</p>
 
-              <div className={styles.metaBlock}>
-                <span className={styles.metaLabel}>Client/context:</span>
-                <span className={styles.metaRow}>{pair.myProject.clientContext}</span>
-                <span className={styles.metaRow}>Type: {pair.myProject.type}</span>
-                <span className={styles.metaRow}>Year: {pair.myProject.year}</span>
+                <div className={styles.metaList}>
+                  <div className={styles.metaItem}>
+                    Client/context: {pair.myProject.clientContext}
+                  </div>
+                  <div className={styles.metaItem}>
+                    Type: {pair.myProject.type}
+                  </div>
+                  <div className={styles.metaItem}>
+                    Year: {pair.myProject.year}
+                  </div>
+                </div>
+
+                <Link
+                  href={`/${pair.myProject.slug}`}
+                  className={styles.seeCaseLink}
+                >
+                  See full case
+                </Link>
               </div>
 
-              <Link href={`/${pair.myProject.slug}`} className={styles.caseLink}>
-                See full case
-              </Link>
+              {/* ── Quadrant 2: Top-Right (My project image) ── */}
+              <div className={styles.quadrantTopRight}>
+                <Image
+                  src={pair.myProject.img}
+                  alt={pair.myProject.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className={styles.projectImage}
+                  priority={idx === 0}
+                />
+              </div>
+
+              {/* ── Center + (Intersection of diagonal image corners) ── */}
+              <div className={styles.centerPlus} aria-hidden="true">
+                +
+              </div>
+
+              {/* ── Quadrant 3: Bottom-Left (Their project image) ── */}
+              <div className={styles.quadrantBottomLeft}>
+                <Image
+                  src={pair.theirProject.img}
+                  alt={pair.theirProject.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className={styles.projectImage}
+                />
+              </div>
+
+              {/* ── Quadrant 4: Bottom-Right (Match rationale) ── */}
+              <div className={styles.quadrantBottomRight}>
+                <h2 className={styles.matchTitle}>{pair.matchTitle}</h2>
+                <p className={styles.matchDesc}>{pair.matchDesc}</p>
+                <div className={styles.theirProjectBadge}>
+                  Lundgren+Lindqvist &mdash; {pair.theirProject.title} ({pair.theirProject.type})
+                </div>
+              </div>
+
             </div>
+          </article>
+        ))}
 
-            {/* RIGHT: my image + plus + their image + match text */}
-            <div className={styles.rightCol}>
-
-              {/* My project image — top right */}
-              <div className={styles.myProjectRow}>
-                <div className={styles.myImgWrapper}>
-                  {pair.myProject.video ? (
-                    <video
-                      src={pair.myProject.video}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className={styles.projectVideo}
-                    />
-                  ) : (
-                    <Image
-                      src={pair.myProject.img!}
-                      alt={pair.myProject.title}
-                      width={pair.myProject.imgW}
-                      height={pair.myProject.imgH}
-                      className={styles.projectImg}
-                    />
-                  )}
-                </div>
-              </div>
-
-              {/* + sign + match text, side by side */}
-              <div className={styles.middleRow}>
-                <div className={styles.plusSign}>+</div>
-                <div className={styles.matchTextBlock}>
-                  <h3 className={styles.matchTitle}>{pair.matchTitle}</h3>
-                  <p className={styles.matchDesc}>{pair.matchDesc}</p>
-                </div>
-              </div>
-
-              {/* Their project image — bottom left (of right col) */}
-              <div className={styles.theirProjectRow}>
-                <div className={styles.theirImgWrapper}>
-                  <Image
-                    src={pair.theirProject.img}
-                    alt={pair.theirProject.title}
-                    width={pair.theirProject.imgW}
-                    height={pair.theirProject.imgH}
-                    className={styles.projectImg}
-                  />
-                </div>
-              </div>
-
-            </div>
+        {/* ── Minimal Closing Footer ── */}
+        <footer className={styles.pitchFooter}>
+          <p className={styles.footerNote}>
+            I am Danylo Vasiur, a graphic designer currently finishing my degree in Kraków,
+            looking to bring this architectural discipline, editorial craft, and material rigor
+            to Lundgren+Lindqvist in Göteborg.
+          </p>
+          <div className={styles.footerLinks}>
+            <a href="mailto:vasurdana@gmail.com" className={styles.footerLink}>
+              vasurdana@gmail.com
+            </a>
+            <span className={styles.footerSep}>/</span>
+            <Link href="/" className={styles.footerLink}>
+              danylovasiurportfolio.xyz
+            </Link>
+            <span className={styles.footerSep}>/</span>
+            <a
+              href="https://www.linkedin.com/in/danylo-vasiur-7a9604324/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerLink}
+            >
+              LinkedIn
+            </a>
           </div>
-        </article>
-      ))}
-
-      {/* ── Closing contact block ── */}
-      <div className={styles.caseBlock} style={{ borderBottom: 'none' }}>
-        <p>
-          I am Danylo Vasiur, a graphic designer currently finishing my degree in Kraków,
-          looking to join Lundgren+Lindqvist in Göteborg.{' '}
-          <a href="mailto:vasurdana@gmail.com" className={styles.caseLink}>
-            vasurdana@gmail.com
-          </a>
-          {' / '}
-          <Link href="/" className={styles.caseLink}>
-            danylovasiurportfolio.xyz
-          </Link>
-        </p>
+        </footer>
       </div>
-    </main>
+    </div>
   )
 }

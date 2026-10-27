@@ -54,7 +54,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="font/woff2"
           crossOrigin="anonymous"
         />
-      </head>
+              <link
+          rel="preload"
+          href="/fonts/PxGrotesk-Regular.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+</head>
       <body>
         <SiteHeader />
         <main id="content">{children}</main>

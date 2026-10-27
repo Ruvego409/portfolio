@@ -12,6 +12,7 @@ import styles from './SiteHeader.module.css'
 export function SiteHeader() {
   const pathname = usePathname()
   const isSnask = pathname === '/for/snask'
+  const isLundgrenLindqvist = pathname === '/for/lundgren-lindqvist'
 
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -43,6 +44,10 @@ export function SiteHeader() {
   }, [isSnask])
 
   const isDark = isSnask && !isScrolled
+
+  if (isLundgrenLindqvist) {
+    return null
+  }
 
   return (
     <header className={`${styles.header} ${isDark ? styles.headerDark : ''}`}>

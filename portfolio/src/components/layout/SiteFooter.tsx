@@ -1,3 +1,6 @@
+'use client'
+
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
 import { footerPages, site, socials } from '@/data/site'
@@ -6,6 +9,11 @@ import { Reveal } from '@/components/ui/Reveal'
 import styles from './SiteFooter.module.css'
 
 export function SiteFooter() {
+  const pathname = usePathname()
+  if (pathname === '/for/lundgren-lindqvist') {
+    return null
+  }
+
   return (
     <footer className={styles.footer}>
       <Reveal className={`container ${styles.inner}`}>

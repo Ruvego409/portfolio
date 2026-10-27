@@ -1,207 +1,277 @@
 /* ─────────────────────────────────────────────────────────────
    Lundgren+Lindqvist Pitch Page
-   Font: PxGrotesk Regular
-   Background: #eaeaea (leur signature light gray)
-   All styling dicts from user sketch + L+L visual identity
+   Strictly following user sketch & L+L visual identity:
+   - Font: PxGrotesk Regular
+   - Background: #eaeaea across the entire canvas
+   - 2x2 Quadrant Grid:
+       Top-Left: My project text & metadata
+       Top-Right: My project image
+       Center: + at the diagonal corner intersection
+       Bottom-Left: Their project image
+       Bottom-Right: Match rationale text
+   - No SiteHeader / SiteFooter from main site
 ───────────────────────────────────────────────────────────── */
 
-@font-face {
-  font-family: 'PxGrotesk';
-  src: url('/fonts/PxGrotesk-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 .page {
-  background: #eaeaea;
-  color: #000000;
+  background-color: #eaeaea;
   min-height: 100vh;
+  width: 100%;
+  color: #000000;
   font-family: 'PxGrotesk', Arial, sans-serif;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  padding: 32px 32px 64px 32px;
 }
 
-/* ── Page header ── */
-.pageHeader {
-  padding: 28px 32px 0 32px;
+.inner {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* ── Top Page Title (from sketch: "Lundgren + Lindqvist + Danylo Vasiur = Match") ── */
+.topHeader {
+  margin-bottom: 28px;
+}
+
+.matchEquation {
+  font-family: 'PxGrotesk', Arial, sans-serif;
   font-size: 13px;
-  color: #000;
+  font-weight: 400;
+  color: #000000;
+  margin: 0;
   letter-spacing: 0;
-  font-family: 'PxGrotesk', Arial, sans-serif;
 }
 
-/* ── Each case block ── */
-.caseBlock {
-  padding: 40px 32px 56px 32px;
+/* ── Case Module ── */
+.caseModule {
+  margin-bottom: 72px;
+  padding-bottom: 72px;
   border-bottom: 1px solid #c8c8c8;
 }
 
-/* Left col: 33%, Right col: rest */
-.caseLayout {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 0;
-  align-items: start;
+.caseModule:last-of-type {
+  border-bottom: none;
+  margin-bottom: 48px;
+  padding-bottom: 0;
 }
 
-/* ── Left column ── */
-.leftCol {
-  padding-right: 40px;
+/* ── 2x2 Matrix (Desktop) ── */
+.matrixGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  position: relative;
+  align-items: stretch;
+}
+
+/* Center + symbol placed at diagonal intersection of images */
+.centerPlus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'PxGrotesk', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  color: #000000;
+  z-index: 10;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* ── Quadrant 1: Top-Left (My project text) ── */
+.quadrantTopLeft {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  padding: 0 40px 32px 0;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  justify-content: flex-start;
 }
 
 .projectDesc {
+  font-family: 'PxGrotesk', Arial, sans-serif;
   font-size: 13px;
-  color: #000;
-  line-height: 1.5;
-  margin: 0 0 20px 0;
-  max-width: 280px;
+  line-height: 1.45;
+  color: #000000;
+  margin: 0 0 24px 0;
+  max-width: 440px;
 }
 
-.metaBlock {
+.metaList {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  margin-bottom: 20px;
-  font-size: 13px;
-  color: #000;
+  gap: 3px;
+  margin-bottom: 24px;
 }
 
-.metaLabel {
+.metaItem {
+  font-family: 'PxGrotesk', Arial, sans-serif;
   font-size: 13px;
-  color: #000;
+  color: #000000;
+  line-height: 1.4;
 }
 
-.metaRow {
+.seeCaseLink {
+  font-family: 'PxGrotesk', Arial, sans-serif;
   font-size: 13px;
-  color: #000;
-}
-
-.caseLink {
-  font-size: 13px;
-  color: #000;
+  color: #000000;
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-underline-offset: 3px;
   display: inline-block;
+  align-self: flex-start;
+  transition: opacity 0.15s ease;
 }
 
-.caseLink:hover {
-  opacity: 0.6;
+.seeCaseLink:hover {
+  opacity: 0.55;
 }
 
-/* ── Right column ── */
-.rightCol {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  position: relative;
-}
-
-/* Top row: my project image */
-.myProjectRow {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.myImgWrapper {
-  width: 100%;
-  max-width: 380px;
-  background: #b8b8b8;
+/* ── Quadrant 2: Top-Right (My project image) ── */
+.quadrantTopRight {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
   position: relative;
   overflow: hidden;
+  background-color: #d8d8d8;
+  aspect-ratio: 3 / 2;
 }
 
-.projectImg {
+.projectImage {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
   object-fit: cover;
-}
-
-.projectVideo {
-  width: 100%;
-  height: auto;
   display: block;
-  object-fit: cover;
-  aspect-ratio: 1;
 }
 
-/* Divider row with + and match text */
-.middleRow {
-  display: grid;
-  grid-template-columns: 380px 1fr;
-  align-items: flex-start;
-  margin: 0;
+/* ── Quadrant 3: Bottom-Left (Their project image) ── */
+.quadrantBottomLeft {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  position: relative;
+  overflow: hidden;
+  background-color: #d0d0d0;
+  aspect-ratio: 3 / 2;
 }
 
-.plusSign {
-  font-size: 13px;
-  color: #000;
-  padding: 8px 0;
-  text-align: center;
-  width: 380px;
-}
-
-.matchTextBlock {
-  padding: 8px 0 8px 16px;
+/* ── Quadrant 4: Bottom-Right (Match rationale text) ── */
+.quadrantBottomRight {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  padding: 32px 0 0 40px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  justify-content: flex-start;
 }
 
 .matchTitle {
-  font-size: 13px;
-  color: #000;
   font-family: 'PxGrotesk', Arial, sans-serif;
-  margin: 0;
+  font-size: 13px;
   font-weight: 400;
+  color: #000000;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
 }
 
 .matchDesc {
+  font-family: 'PxGrotesk', Arial, sans-serif;
   font-size: 13px;
-  color: #000;
+  line-height: 1.45;
+  color: #000000;
+  margin: 0 0 20px 0;
+  max-width: 440px;
+}
+
+.theirProjectBadge {
+  font-family: 'PxGrotesk', Arial, sans-serif;
+  font-size: 12px;
+  color: #555555;
+  line-height: 1.4;
+}
+
+/* ── Closing Contact Footer ── */
+.pitchFooter {
+  padding-top: 32px;
+  border-top: 1px solid #c8c8c8;
+}
+
+.footerNote {
+  font-family: 'PxGrotesk', Arial, sans-serif;
+  font-size: 13px;
   line-height: 1.5;
-  margin: 0;
-  max-width: 320px;
+  color: #000000;
+  margin: 0 0 16px 0;
+  max-width: 680px;
 }
 
-/* Their project image */
-.theirProjectRow {
+.footerLinks {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-family: 'PxGrotesk', Arial, sans-serif;
+  font-size: 13px;
 }
 
-.theirImgWrapper {
-  width: 100%;
-  max-width: 380px;
-  background: #b0b0b0;
-  position: relative;
-  overflow: hidden;
+.footerLink {
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.15s ease;
 }
 
-/* ── Responsive ── */
-@media (max-width: 760px) {
-  .caseLayout {
-    grid-template-columns: 1fr;
-    gap: 28px;
+.footerLink:hover {
+  opacity: 0.55;
+}
+
+.footerSep {
+  color: #777777;
+}
+
+/* ── Responsive Mobile (Single column flow) ── */
+@media (max-width: 768px) {
+  .page {
+    padding: 20px 16px 40px 16px;
   }
-  .leftCol {
-    padding-right: 0;
+
+  .matrixGrid {
+    display: flex;
+    flex-direction: column;
   }
-  .myImgWrapper,
-  .theirImgWrapper {
-    max-width: 100%;
+
+  .quadrantTopLeft {
+    padding: 0 0 20px 0;
   }
-  .middleRow {
-    grid-template-columns: 1fr;
+
+  .quadrantTopRight {
+    aspect-ratio: 3 / 2;
+    margin-bottom: 16px;
   }
-  .plusSign {
-    width: auto;
-    text-align: left;
+
+  .centerPlus {
+    position: static;
+    transform: none;
+    margin: 8px auto;
+    font-size: 18px;
+    height: auto;
   }
-  .matchTextBlock {
-    padding-left: 0;
+
+  .quadrantBottomLeft {
+    aspect-ratio: 3 / 2;
+    margin-bottom: 20px;
+  }
+
+  .quadrantBottomRight {
+    padding: 0 0 16px 0;
+  }
+
+  .caseModule {
+    margin-bottom: 48px;
+    padding-bottom: 48px;
   }
 }
