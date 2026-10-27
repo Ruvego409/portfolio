@@ -80,14 +80,41 @@
 }
 
 
-/* Lundgren+Lindqvist pitch page footer: transparent overlay with original font */
+/* Lundgren+Lindqvist pitch page footer: fixed overlay like L+L site */
 .footerLL {
   background: transparent !important;
   border: none !important;
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 20;
+  padding-block-start: 0;
+  padding-block-end: 0.7rem;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  color: #ffffff;
+}
+
+.footerLL * {
+  pointer-events: auto;
+}
+
+.footerLL .inner {
+  padding-block-end: 0;
+}
+
+.footerLL .link,
+.footerLL .details,
+.footerLL .columnTitle,
+.footerLL .column ul {
+  color: inherit !important;
 }
 
 .footerLL .wordmark text {
-  fill: #000000 !important;
+  fill: currentColor !important;
+}
+
+.footerLL .wordmarkWrap {
+  display: none;
 }
