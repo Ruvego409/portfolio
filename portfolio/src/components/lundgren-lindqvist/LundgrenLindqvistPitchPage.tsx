@@ -26,7 +26,7 @@ interface CaseComparison {
 
 const COMPARISONS: CaseComparison[] = [
   {
-    category: 'Editorial & Publication Design',
+    category: '01 — Editorial & Publication Design',
     matchTheme: 'Editorial as physical object, not container.',
     myProject: {
       title: 'Bruno Jasieński — Akta №',
@@ -34,7 +34,7 @@ const COMPARISONS: CaseComparison[] = [
       meta: 'Editorial Design & Book · 2026 · University Project',
       desc: 'Archival publication confronting historical erasure through raw charcoal illustrations, inverted typographic spreads, and tactile physical binding decisions.',
       img: '/media/tsAsaIZClXpfnvWg10zYXNlBUR4.jpg',
-      alt: 'Photograph of the printed Akta № book open on a table showing charcoal spreads and binding',
+      alt: 'Printed Akta № book open on a table showing charcoal spreads and binding',
     },
     theirProject: {
       title: 'Static Motion — Carl Ander',
@@ -45,15 +45,15 @@ const COMPARISONS: CaseComparison[] = [
     },
   },
   {
-    category: 'Visual Identity & Systems',
+    category: '02 — Visual Identity & Systems',
     matchTheme: 'Identity as architecture, not decoration.',
     myProject: {
       title: 'Warsaw Museum of Dance and Movement',
       slug: 'mtrw',
       meta: 'Visual Identity & Wayfinding · 2025 · Cultural Concept',
       desc: 'A structural visual identity built from a single geometric primitive: the circle as the universal spatial constraint of human movement across centuries.',
-      img: '/media/Hx3UkmAr0EmvPLOHIHHiZGCIdA.png',
-      alt: 'Poster series for Warsaw Museum of Dance showing geometric circle identity system',
+      img: '/media/s1aYIj6heOAw1Qof49OfrefvFAo.png',
+      alt: 'Warsaw Museum of Dance and Movement logotype and geometric identity symbol',
     },
     theirProject: {
       title: 'Inflection — Visual Identity System',
@@ -64,15 +64,15 @@ const COMPARISONS: CaseComparison[] = [
     },
   },
   {
-    category: 'Packaging & Material Craft',
+    category: '03 — Packaging & Material Craft',
     matchTheme: 'Material honesty as design language.',
     myProject: {
       title: 'Lasowiak Cranberry Liqueur',
       slug: 'lasowiak-cranberry-liqueur',
       meta: 'Packaging & Label Design · 2026 · Art of Packaging (Debiuty)',
       desc: 'Reinterpreting regional folk heritage through strict pharmaceutical typography and tactile material craft: hand-folded linen cap wrap, apothecary cross grid, raw glass.',
-      img: '/media/oydoUodnHgP6O23vOYSBKadtRw.jpg',
-      alt: 'Lasowiak liqueur bottle with handmade linen cap wrap and apothecary label',
+      img: '/media/2LVl4gPAeX2Z4jsNezslguRIEg.jpg',
+      alt: 'Lasowiak cranberry liqueur bottle wrapped in folk textile',
     },
     theirProject: {
       title: 'Uniscent — Visual Identity & Packaging',
@@ -88,39 +88,20 @@ export function LundgrenLindqvistPitchPage() {
   return (
     <div data-ll-page className={styles.page}>
       <div className={styles.inner}>
-        {/* ── Top Bar (echoing Lundgren+Lindqvist website header) ── */}
-        <header className={styles.topBar}>
-          <div className={styles.topBarLeft}>Proposal / Match</div>
-          <div className={styles.topBarCenter}>
-            Lundgren + Lindqvist + Danylo Vasiur = Match
-          </div>
-          <div className={styles.topBarRight}>
-            <span>Gothenburg / Kraków</span>
-            <span className={styles.squareIcon} aria-hidden="true" />
-          </div>
-        </header>
-
-        {/* ── Short Editorial Intro ── */}
-        <section className={styles.introSection}>
-          <p className={styles.introText}>
-            A direct comparison of creative DNA between Gothenburg studio <strong>Lundgren+Lindqvist</strong> and graphic designer <strong>Danylo Vasiur</strong>. Built on shared convictions: editorial design as a physical artifact, identity as architectural constraint, and relentless material honesty.
-          </p>
-        </section>
-
-        {/* ── Case Comparisons (2-Column Grid) ── */}
+        {/* ── Case Comparisons (2-Column Grid directly, no redundant proposal banner) ── */}
         {COMPARISONS.map((comp, idx) => (
           <article key={comp.myProject.slug} className={styles.caseSection}>
-            {/* Case category & match thesis bar */}
+            {/* Category header & match thesis */}
             <div className={styles.caseHeaderBar}>
               <span className={styles.caseCategory}>
-                0{idx + 1} &mdash; {comp.category}
+                {comp.category}
               </span>
               <span className={styles.caseMatchTheme}>
                 {comp.matchTheme}
               </span>
             </div>
 
-            {/* Side-by-Side 2-Column Grid */}
+            {/* Side-by-Side 2-Column Comparison */}
             <div className={styles.twoColGrid}>
 
               {/* ── Left Column: Danylo Vasiur ── */}
