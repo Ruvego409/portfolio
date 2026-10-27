@@ -45,12 +45,10 @@ export function SiteHeader() {
 
   const isDark = isSnask && !isScrolled
 
-  if (isLundgrenLindqvist) {
-    return null
-  }
+
 
   return (
-    <header className={`${styles.header} ${isDark ? styles.headerDark : ''}`}>
+    <header className={`${styles.header} ${isDark ? styles.headerDark : ''} ${isLundgrenLindqvist ? styles.headerLL : ''}`}>
       <div className={`container ${styles.inner}`}>
         <Link href="/" className={styles.brand} aria-label={`${site.name} — home`}>
           <LogoMark className={styles.logo} />

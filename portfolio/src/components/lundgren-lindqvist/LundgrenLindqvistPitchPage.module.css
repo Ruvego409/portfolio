@@ -1,145 +1,135 @@
 /* ─────────────────────────────────────────────────────────────
    Lundgren+Lindqvist Pitch Page
-   Strictly following user sketch & L+L visual identity:
+   Strictly aligned with L+L visual language:
    - Font: PxGrotesk Regular
-   - Background: #eaeaea across the entire canvas
-   - 2x2 Quadrant Grid:
-       Top-Left: My project text & metadata
-       Top-Right: My project image
-       Center: + at the diagonal corner intersection
-       Bottom-Left: Their project image
-       Bottom-Right: Match rationale text
-   - No SiteHeader / SiteFooter from main site
+   - Color: #000000 on #eaeaea
+   - Bold 2-column image grid (50% / 50%)
+   - Architectural typography and clear hierarchy
 ───────────────────────────────────────────────────────────── */
 
 .page {
   background-color: #eaeaea;
-  min-height: 100vh;
   width: 100%;
   color: #000000;
   font-family: 'PxGrotesk', Arial, sans-serif;
   font-size: 13px;
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
-  padding: 32px 32px 64px 32px;
 }
 
 .inner {
-  max-width: 1320px;
+  max-width: 1440px;
   margin: 0 auto;
+  padding: 0 24px 64px 24px;
 }
 
-/* ── Top Page Title (from sketch: "Lundgren + Lindqvist + Danylo Vasiur = Match") ── */
-.topHeader {
-  margin-bottom: 28px;
-}
-
-.matchEquation {
+/* ── Top Bar (like in L+L screenshot: Design+ | Lundgren+Lindqvist... | status) ── */
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0 16px 0;
+  border-bottom: 1px solid #c8c8c8;
   font-family: 'PxGrotesk', Arial, sans-serif;
   font-size: 13px;
-  font-weight: 400;
   color: #000000;
-  margin: 0;
   letter-spacing: 0;
 }
 
-/* ── Case Module ── */
-.caseModule {
-  margin-bottom: 72px;
-  padding-bottom: 72px;
+.topBarLeft {
+  font-weight: 400;
+}
+
+.topBarCenter {
+  font-weight: 400;
+  text-align: center;
+}
+
+.topBarRight {
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.squareIcon {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background-color: #000000;
+}
+
+/* ── Intro statement ── */
+.introSection {
+  padding: 24px 0 32px 0;
+  max-width: 760px;
+}
+
+.introText {
+  font-family: 'PxGrotesk', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #000000;
+  margin: 0;
+}
+
+/* ── Case Section (Repeated for each pair) ── */
+.caseSection {
+  margin-bottom: 56px;
+  padding-bottom: 56px;
   border-bottom: 1px solid #c8c8c8;
 }
 
-.caseModule:last-of-type {
+.caseSection:last-of-type {
   border-bottom: none;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
   padding-bottom: 0;
 }
 
-/* ── 2x2 Matrix (Desktop) ── */
-.matrixGrid {
+/* ── Case Header Line (Category + Match Headline) ── */
+.caseHeaderBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #d4d4d4;
+  font-family: 'PxGrotesk', Arial, sans-serif;
+  font-size: 13px;
+  color: #000000;
+}
+
+.caseCategory {
+  font-weight: 400;
+  color: #000000;
+}
+
+.caseMatchTheme {
+  font-weight: 400;
+  color: #333333;
+}
+
+/* ── 2-Column Side-by-Side Comparison Grid ── */
+.twoColGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  position: relative;
-  align-items: stretch;
+  gap: 20px;
+  align-items: start;
 }
 
-/* Center + symbol placed at diagonal intersection of images */
-.centerPlus {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'PxGrotesk', Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1;
-  color: #000000;
-  z-index: 10;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-
-/* ── Quadrant 1: Top-Left (My project text) ── */
-.quadrantTopLeft {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-  padding: 0 40px 32px 0;
+.colCard {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 }
 
-.projectDesc {
-  font-family: 'PxGrotesk', Arial, sans-serif;
-  font-size: 13px;
-  line-height: 1.45;
-  color: #000000;
-  margin: 0 0 24px 0;
-  max-width: 440px;
-}
-
-.metaList {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  margin-bottom: 24px;
-}
-
-.metaItem {
-  font-family: 'PxGrotesk', Arial, sans-serif;
-  font-size: 13px;
-  color: #000000;
-  line-height: 1.4;
-}
-
-.seeCaseLink {
-  font-family: 'PxGrotesk', Arial, sans-serif;
-  font-size: 13px;
-  color: #000000;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  display: inline-block;
-  align-self: flex-start;
-  transition: opacity 0.15s ease;
-}
-
-.seeCaseLink:hover {
-  opacity: 0.55;
-}
-
-/* ── Quadrant 2: Top-Right (My project image) ── */
-.quadrantTopRight {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
+/* ── Image Presentation (Large, crisp, responsive) ── */
+.imageWrap {
+  width: 100%;
+  aspect-ratio: 16 / 11;
   position: relative;
   overflow: hidden;
   background-color: #d8d8d8;
-  aspect-ratio: 3 / 2;
+  margin-bottom: 14px;
 }
 
 .projectImage {
@@ -149,129 +139,126 @@
   display: block;
 }
 
-/* ── Quadrant 3: Bottom-Left (Their project image) ── */
-.quadrantBottomLeft {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-  position: relative;
-  overflow: hidden;
-  background-color: #d0d0d0;
-  aspect-ratio: 3 / 2;
-}
-
-/* ── Quadrant 4: Bottom-Right (Match rationale text) ── */
-.quadrantBottomRight {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-  padding: 32px 0 0 40px;
+/* ── Typographic Dock below Image ── */
+.cardInfo {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  gap: 6px;
+  font-family: 'PxGrotesk', Arial, sans-serif;
 }
 
-.matchTitle {
-  font-family: 'PxGrotesk', Arial, sans-serif;
+.cardHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+
+.authorLabel {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666666;
+}
+
+.projectTitle {
   font-size: 13px;
   font-weight: 400;
   color: #000000;
-  margin: 0 0 12px 0;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.projectMeta {
+  font-size: 12px;
+  color: #555555;
+  margin-bottom: 6px;
   line-height: 1.4;
 }
 
-.matchDesc {
-  font-family: 'PxGrotesk', Arial, sans-serif;
+.projectDesc {
   font-size: 13px;
   line-height: 1.45;
   color: #000000;
-  margin: 0 0 20px 0;
-  max-width: 440px;
+  margin: 0 0 10px 0;
 }
 
-.theirProjectBadge {
-  font-family: 'PxGrotesk', Arial, sans-serif;
+.caseLink {
+  font-size: 13px;
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  align-self: flex-start;
+  transition: opacity 0.15s ease;
+}
+
+.caseLink:hover {
+  opacity: 0.55;
+}
+
+/* ── Match block for their side ── */
+.matchCallout {
+  margin-top: 4px;
+  padding: 10px 12px;
+  background-color: #e2e2e2;
+  border-left: 2px solid #000000;
+}
+
+.matchLabel {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+.matchText {
   font-size: 12px;
-  color: #555555;
-  line-height: 1.4;
+  line-height: 1.45;
+  color: #111111;
+  margin: 0;
 }
 
-/* ── Closing Contact Footer ── */
-.pitchFooter {
-  padding-top: 32px;
+/* ── Closing Note before site footer ── */
+.pitchClosing {
+  padding: 32px 0 16px 0;
   border-top: 1px solid #c8c8c8;
 }
 
-.footerNote {
+.closingText {
   font-family: 'PxGrotesk', Arial, sans-serif;
   font-size: 13px;
   line-height: 1.5;
   color: #000000;
-  margin: 0 0 16px 0;
-  max-width: 680px;
+  max-width: 720px;
+  margin: 0;
 }
 
-.footerLinks {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  font-family: 'PxGrotesk', Arial, sans-serif;
-  font-size: 13px;
-}
-
-.footerLink {
-  color: #000000;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: opacity 0.15s ease;
-}
-
-.footerLink:hover {
-  opacity: 0.55;
-}
-
-.footerSep {
-  color: #777777;
-}
-
-/* ── Responsive Mobile (Single column flow) ── */
-@media (max-width: 768px) {
-  .page {
-    padding: 20px 16px 40px 16px;
+/* ── Responsive Mobile ── */
+@media (max-width: 820px) {
+  .inner {
+    padding: 0 16px 48px 16px;
   }
 
-  .matrixGrid {
-    display: flex;
+  .topBar {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
   }
 
-  .quadrantTopLeft {
-    padding: 0 0 20px 0;
+  .twoColGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 
-  .quadrantTopRight {
-    aspect-ratio: 3 / 2;
-    margin-bottom: 16px;
+  .caseHeaderBar {
+    flex-direction: column;
+    gap: 4px;
   }
 
-  .centerPlus {
-    position: static;
-    transform: none;
-    margin: 8px auto;
-    font-size: 18px;
-    height: auto;
-  }
-
-  .quadrantBottomLeft {
-    aspect-ratio: 3 / 2;
-    margin-bottom: 20px;
-  }
-
-  .quadrantBottomRight {
-    padding: 0 0 16px 0;
-  }
-
-  .caseModule {
-    margin-bottom: 48px;
-    padding-bottom: 48px;
+  .caseSection {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
   }
 }

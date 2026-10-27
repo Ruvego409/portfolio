@@ -4,95 +4,83 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from './LundgrenLindqvistPitchPage.module.css'
 
-interface CasePair {
+interface CaseComparison {
+  category: string
+  matchTheme: string
   myProject: {
     title: string
     slug: string
+    meta: string
     desc: string
-    clientContext: string
-    type: string
-    year: string
     img: string
-    imgW: number
-    imgH: number
+    alt: string
   }
   theirProject: {
     title: string
-    type: string
+    meta: string
     img: string
-    imgW: number
-    imgH: number
+    alt: string
+    matchDesc: string
   }
-  matchTitle: string
-  matchDesc: string
 }
 
-const PAIRS: CasePair[] = [
+const COMPARISONS: CaseComparison[] = [
   {
+    category: 'Editorial & Publication Design',
+    matchTheme: 'Editorial as physical object, not container.',
     myProject: {
       title: 'Bruno Jasieński — Akta №',
       slug: 'aktan',
-      desc: 'An archival editorial publication confronting historical erasure through raw charcoal illustrations, inverted typographic spreads, and tactile binding decisions.',
-      clientContext: 'Self-initiated / University project',
-      type: 'Editorial Design & Book',
-      year: '2026',
-      img: '/media/VocXQQCXA7epkcS8eluPo9Gt8.png',
-      imgW: 1500,
-      imgH: 1000,
+      meta: 'Editorial Design & Book · 2026 · University Project',
+      desc: 'Archival publication confronting historical erasure through raw charcoal illustrations, inverted typographic spreads, and tactile physical binding decisions.',
+      img: '/media/tsAsaIZClXpfnvWg10zYXNlBUR4.jpg',
+      alt: 'Photograph of the printed Akta № book open on a table showing charcoal spreads and binding',
     },
     theirProject: {
-      title: 'Static Motion — Carl Ander (LL\'Editions)',
-      type: 'Publication & Monograph',
+      title: 'Static Motion — Carl Ander',
+      meta: 'Publication Design · LL\'Editions, Gothenburg',
       img: '/media/lundgren-lindqvist/ll-static-motion.jpg',
-      imgW: 1500,
-      imgH: 1000,
+      alt: 'Static Motion book by Carl Ander published by LL\'Editions',
+      matchDesc: 'Both treat the book as an architectural artifact with psychological mass. In Akta №, raw charcoal gestures implicate the reader; in Static Motion, Lundgren+Lindqvist strip all conventional book apparatus and let the tactile sequence carry the work. The methodology is identical: material form as the argument.',
     },
-    matchTitle: 'Editorial as physical object, not container.',
-    matchDesc: 'Both approach the book as an architectural artifact with psychological mass. In Akta №, raw charcoal gestures stand in for historical erasure — the editorial design does not illustrate, it implicates. In Static Motion, Lundgren+Lindqvist strip conventional apparatus and let the tactile sequence do the work. The methodology is identical: form as the argument.',
   },
   {
+    category: 'Visual Identity & Systems',
+    matchTheme: 'Identity as architecture, not decoration.',
     myProject: {
       title: 'Warsaw Museum of Dance and Movement',
       slug: 'mtrw',
+      meta: 'Visual Identity & Wayfinding · 2025 · Cultural Concept',
       desc: 'A structural visual identity built from a single geometric primitive: the circle as the universal spatial constraint of human movement across centuries.',
-      clientContext: 'Cultural Institution (imaginary)',
-      type: 'Visual Identity & Wayfinding',
-      year: '2025',
-      img: '/media/cUvL4YuhIciQHNXKYHUySSau5k.png',
-      imgW: 1500,
-      imgH: 1000,
+      img: '/media/Hx3UkmAr0EmvPLOHIHHiZGCIdA.png',
+      alt: 'Poster series for Warsaw Museum of Dance showing geometric circle identity system',
     },
     theirProject: {
       title: 'Inflection — Visual Identity System',
-      type: 'Visual Identity & Design System',
+      meta: 'Identity & Design System · Gothenburg',
       img: '/media/lundgren-lindqvist/ll-inflection-identity.jpg',
-      imgW: 1500,
-      imgH: 1000,
+      alt: 'Inflection visual identity manual and geometric grid system by Lundgren+Lindqvist',
+      matchDesc: 'Lundgren+Lindqvist\'s institutional identities function like architectural blueprints: strict geometric framing, modular hierarchies, and typographic discipline designed for permanence. The MTRW system follows the same rigor — one circle, one weight, one colour — scaled from sub-centimetre admission badges to multi-storey concrete facade signage.',
     },
-    matchTitle: 'Identity as architecture, not decoration.',
-    matchDesc: 'Lundgren+Lindqvist\'s institutional systems function like architectural blueprints: strict geometric framing, modular hierarchies, and typographic discipline designed for permanence. The MTRW identity follows the same rigor — one circle, one weight, one colour — scaled from sub-centimetre admission badges to multi-storey facade wayfinding in concrete.',
   },
   {
+    category: 'Packaging & Material Craft',
+    matchTheme: 'Material honesty as design language.',
     myProject: {
       title: 'Lasowiak Cranberry Liqueur',
       slug: 'lasowiak-cranberry-liqueur',
+      meta: 'Packaging & Label Design · 2026 · Art of Packaging (Debiuty)',
       desc: 'Reinterpreting regional folk heritage through strict pharmaceutical typography and tactile material craft: hand-folded linen cap wrap, apothecary cross grid, raw glass.',
-      clientContext: 'Art of Packaging — Debiuty',
-      type: 'Packaging & Label Design',
-      year: '2026',
-      img: '/media/2LVl4gPAeX2Z4jsNezslguRIEg.jpg',
-      imgW: 1500,
-      imgH: 1000,
+      img: '/media/oydoUodnHgP6O23vOYSBKadtRw.jpg',
+      alt: 'Lasowiak liqueur bottle with handmade linen cap wrap and apothecary label',
     },
     theirProject: {
       title: 'Uniscent — Visual Identity & Packaging',
-      type: 'Brand Identity & Tactile Packaging',
-      img: '/media/lundgren-lindqvist/ll-uniscent-packaging.jpg',
-      imgW: 1500,
-      imgH: 1000,
+      meta: 'Brand Identity & Packaging · Gothenburg',
+      img: '/media/lundgren-lindqvist/ll-uniscent-patchouli.jpg',
+      alt: 'Uniscent visual identity and patchouli artwork with vector typography by Lundgren+Lindqvist',
+      matchDesc: 'Lundgren+Lindqvist\'s packaging practice begins with paper weight, surface texture, and production method — never a Photoshop mockup. Lasowiak applies the same logic: hand-folded linen cap wrap, cotton paper label with a strict apothecary-cross grid, and bottle geometry chosen for archival weight. The material is the identity.',
     },
-    matchTitle: 'Material honesty as design language.',
-    matchDesc: 'Lundgren+Lindqvist\'s packaging practice begins with paper weight, surface texture, and production precision — never superficial mockup styling. Lasowiak applies the same logic: hand-folded linen cap wrap, cotton paper label with an apothecary-cross grid, and bottle geometry selected for archival mass. The material is the identity.',
   },
 ]
 
@@ -100,76 +88,94 @@ export function LundgrenLindqvistPitchPage() {
   return (
     <div data-ll-page className={styles.page}>
       <div className={styles.inner}>
-        {/* ── Page Header (exact line from user sketch) ── */}
-        <header className={styles.topHeader}>
-          <h1 className={styles.matchEquation}>
+        {/* ── Top Bar (echoing Lundgren+Lindqvist website header) ── */}
+        <header className={styles.topBar}>
+          <div className={styles.topBarLeft}>Proposal / Match</div>
+          <div className={styles.topBarCenter}>
             Lundgren + Lindqvist + Danylo Vasiur = Match
-          </h1>
+          </div>
+          <div className={styles.topBarRight}>
+            <span>Gothenburg / Kraków</span>
+            <span className={styles.squareIcon} aria-hidden="true" />
+          </div>
         </header>
 
-        {/* ── 2x2 Matrix Case Modules ── */}
-        {PAIRS.map((pair, idx) => (
-          <article key={pair.myProject.slug} className={styles.caseModule}>
-            <div className={styles.matrixGrid}>
+        {/* ── Short Editorial Intro ── */}
+        <section className={styles.introSection}>
+          <p className={styles.introText}>
+            A direct comparison of creative DNA between Gothenburg studio <strong>Lundgren+Lindqvist</strong> and graphic designer <strong>Danylo Vasiur</strong>. Built on shared convictions: editorial design as a physical artifact, identity as architectural constraint, and relentless material honesty.
+          </p>
+        </section>
 
-              {/* ── Quadrant 1: Top-Left (My project text & metadata) ── */}
-              <div className={styles.quadrantTopLeft}>
-                <p className={styles.projectDesc}>{pair.myProject.desc}</p>
+        {/* ── Case Comparisons (2-Column Grid) ── */}
+        {COMPARISONS.map((comp, idx) => (
+          <article key={comp.myProject.slug} className={styles.caseSection}>
+            {/* Case category & match thesis bar */}
+            <div className={styles.caseHeaderBar}>
+              <span className={styles.caseCategory}>
+                0{idx + 1} &mdash; {comp.category}
+              </span>
+              <span className={styles.caseMatchTheme}>
+                {comp.matchTheme}
+              </span>
+            </div>
 
-                <div className={styles.metaList}>
-                  <div className={styles.metaItem}>
-                    Client/context: {pair.myProject.clientContext}
-                  </div>
-                  <div className={styles.metaItem}>
-                    Type: {pair.myProject.type}
-                  </div>
-                  <div className={styles.metaItem}>
-                    Year: {pair.myProject.year}
-                  </div>
+            {/* Side-by-Side 2-Column Grid */}
+            <div className={styles.twoColGrid}>
+
+              {/* ── Left Column: Danylo Vasiur ── */}
+              <div className={styles.colCard}>
+                <div className={styles.imageWrap}>
+                  <Image
+                    src={comp.myProject.img}
+                    alt={comp.myProject.alt}
+                    fill
+                    sizes="(max-width: 820px) 100vw, 50vw"
+                    className={styles.projectImage}
+                    priority={idx === 0}
+                  />
                 </div>
 
-                <Link
-                  href={`/${pair.myProject.slug}`}
-                  className={styles.seeCaseLink}
-                >
-                  See full case
-                </Link>
+                <div className={styles.cardInfo}>
+                  <div className={styles.cardHeaderRow}>
+                    <span className={styles.authorLabel}>Danylo Vasiur</span>
+                  </div>
+                  <h3 className={styles.projectTitle}>{comp.myProject.title}</h3>
+                  <div className={styles.projectMeta}>{comp.myProject.meta}</div>
+                  <p className={styles.projectDesc}>{comp.myProject.desc}</p>
+                  <Link
+                    href={`/${comp.myProject.slug}`}
+                    className={styles.caseLink}
+                  >
+                    See full case &rarr;
+                  </Link>
+                </div>
               </div>
 
-              {/* ── Quadrant 2: Top-Right (My project image) ── */}
-              <div className={styles.quadrantTopRight}>
-                <Image
-                  src={pair.myProject.img}
-                  alt={pair.myProject.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className={styles.projectImage}
-                  priority={idx === 0}
-                />
-              </div>
+              {/* ── Right Column: Lundgren+Lindqvist ── */}
+              <div className={styles.colCard}>
+                <div className={styles.imageWrap}>
+                  <Image
+                    src={comp.theirProject.img}
+                    alt={comp.theirProject.alt}
+                    fill
+                    sizes="(max-width: 820px) 100vw, 50vw"
+                    className={styles.projectImage}
+                    priority={idx === 0}
+                  />
+                </div>
 
-              {/* ── Center + (Intersection of diagonal image corners) ── */}
-              <div className={styles.centerPlus} aria-hidden="true">
-                +
-              </div>
+                <div className={styles.cardInfo}>
+                  <div className={styles.cardHeaderRow}>
+                    <span className={styles.authorLabel}>Lundgren+Lindqvist</span>
+                  </div>
+                  <h3 className={styles.projectTitle}>{comp.theirProject.title}</h3>
+                  <div className={styles.projectMeta}>{comp.theirProject.meta}</div>
 
-              {/* ── Quadrant 3: Bottom-Left (Their project image) ── */}
-              <div className={styles.quadrantBottomLeft}>
-                <Image
-                  src={pair.theirProject.img}
-                  alt={pair.theirProject.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className={styles.projectImage}
-                />
-              </div>
-
-              {/* ── Quadrant 4: Bottom-Right (Match rationale) ── */}
-              <div className={styles.quadrantBottomRight}>
-                <h2 className={styles.matchTitle}>{pair.matchTitle}</h2>
-                <p className={styles.matchDesc}>{pair.matchDesc}</p>
-                <div className={styles.theirProjectBadge}>
-                  Lundgren+Lindqvist &mdash; {pair.theirProject.title} ({pair.theirProject.type})
+                  <div className={styles.matchCallout}>
+                    <span className={styles.matchLabel}>The Match:</span>
+                    <p className={styles.matchText}>{comp.theirProject.matchDesc}</p>
+                  </div>
                 </div>
               </div>
 
@@ -177,32 +183,12 @@ export function LundgrenLindqvistPitchPage() {
           </article>
         ))}
 
-        {/* ── Minimal Closing Footer ── */}
-        <footer className={styles.pitchFooter}>
-          <p className={styles.footerNote}>
-            I am Danylo Vasiur, a graphic designer currently finishing my degree in Kraków,
-            looking to bring this architectural discipline, editorial craft, and material rigor
-            to Lundgren+Lindqvist in Göteborg.
+        {/* ── Pitch Closing ── */}
+        <div className={styles.pitchClosing}>
+          <p className={styles.closingText}>
+            I am Danylo Vasiur, a graphic designer currently completing my degree in Kraków, looking to bring this craft, architectural discipline, and dedication to physical form to Lundgren+Lindqvist in Gothenburg.
           </p>
-          <div className={styles.footerLinks}>
-            <a href="mailto:vasurdana@gmail.com" className={styles.footerLink}>
-              vasurdana@gmail.com
-            </a>
-            <span className={styles.footerSep}>/</span>
-            <Link href="/" className={styles.footerLink}>
-              danylovasiurportfolio.xyz
-            </Link>
-            <span className={styles.footerSep}>/</span>
-            <a
-              href="https://www.linkedin.com/in/danylo-vasiur-7a9604324/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.footerLink}
-            >
-              LinkedIn
-            </a>
-          </div>
-        </footer>
+        </div>
       </div>
     </div>
   )

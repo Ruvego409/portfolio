@@ -92,3 +92,21 @@
 .headerDark .navLink:hover {
   color: #ffffff;
 }
+
+/* Lundgren+Lindqvist pitch page header theme */
+.headerLL {
+  background: #eaeaea !important;
+  color: #000000 !important;
+  border-bottom: 1px solid #c8c8c8;
+}
+
+.headerLL .brandName,
+.headerLL .navLink {
+  font-family: 'PxGrotesk', Arial, sans-serif !important;
+  font-size: 13px !important;
+  color: #000000 !important;
+}
+
+.headerLL .logo {
+  color: #000000 !important;
+}

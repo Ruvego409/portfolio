@@ -10,12 +10,10 @@ import styles from './SiteFooter.module.css'
 
 export function SiteFooter() {
   const pathname = usePathname()
-  if (pathname === '/for/lundgren-lindqvist') {
-    return null
-  }
+  const isLL = pathname === '/for/lundgren-lindqvist'
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${isLL ? styles.footerLL : ''}`}>
       <Reveal className={`container ${styles.inner}`}>
         <div className={styles.details}>
           <p>
