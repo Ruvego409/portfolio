@@ -148,7 +148,7 @@ function ProjectSlideshow({ slides }: { slides: SlideItem[] }) {
           fill
           sizes="(max-width: 820px) 100vw, 50vw"
           className={styles.projectImage}
-          style={{ objectFit: 'contain', objectPosition: 'center' }}
+          style={{ objectFit: 'contain', objectPosition: 'top left' }}
           priority
         />
         {/* Transparent tap zones */}
@@ -216,7 +216,7 @@ export function LundgrenLindqvistPitchPage() {
                       fill
                       sizes="(max-width: 820px) 100vw, 50vw"
                       className={styles.projectImage}
-                      style={{ objectFit: 'contain', objectPosition: 'center' }}
+                      style={{ objectFit: 'contain', objectPosition: 'top left' }}
                       priority={idx === 0}
                     />
                   </div>
@@ -243,7 +243,7 @@ export function LundgrenLindqvistPitchPage() {
                     fill
                     sizes="(max-width: 820px) 100vw, 50vw"
                     className={styles.projectImage}
-                    style={{ objectFit: 'contain', objectPosition: 'center' }}
+                    style={{ objectFit: 'contain', objectPosition: 'top left' }}
                     priority={idx === 0}
                   />
                 </div>

@@ -76,10 +76,10 @@
   justify-content: flex-start;
 }
 
-/* ── Image Presentation (Large, crisp, top-aligned, no clipping) ── */
+/* ── Image Presentation (Large, crisp, top-left aligned, no clipping) ── */
 .imageWrap {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3 / 2;
   position: relative;
   overflow: hidden;
   background-color: transparent;
@@ -87,14 +87,14 @@
   border-radius: 0;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .projectImage {
   width: 100% !important;
   height: 100% !important;
   object-fit: contain !important;
-  object-position: top center !important;
+  object-position: top left !important;
   display: block;
   border-radius: 0;
 }
