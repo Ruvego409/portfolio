@@ -80,22 +80,14 @@
 }
 
 
-/* Lundgren+Lindqvist pitch page footer: fixed bottom, exact page background color */
+/* Lundgren+Lindqvist pitch page footer: exact same layout as other pages, styled for #eaeaea */
 .footerLL {
-  background: #eaeaea !important;
-  border: none !important;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  padding-block-start: 0.85rem;
-  padding-block-end: 0.85rem;
+  background-color: #eaeaea !important;
   color: #000000 !important;
-}
-
-.footerLL .inner {
-  padding-block-end: 0;
+  border: none !important;
+  position: static !important;
+  padding-block-start: var(--section-y);
+  padding-block-end: var(--space-6);
 }
 
 .footerLL .link,
@@ -106,13 +98,13 @@
 }
 
 .footerLL .link:hover {
-  opacity: 0.5;
+  opacity: 0.55;
+}
+
+.footerLL .wordmark {
+  fill: #000000 !important;
 }
 
 .footerLL .wordmark text {
   fill: #000000 !important;
-}
-
-.footerLL .wordmarkWrap {
-  display: none;
 }

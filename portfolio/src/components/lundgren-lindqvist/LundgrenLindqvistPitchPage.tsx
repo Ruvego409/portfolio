@@ -68,7 +68,7 @@ const AKTA_SLIDES: SlideItem[] = [
 const COMPARISONS: CaseComparison[] = [
   {
     category: '01 — Editorial & Publication Design',
-    matchTheme: 'Editorial as physical object, not container.',
+    matchTheme: 'The artist’s sketchbook: raw gesture preserved in physical binding.',
     myProject: {
       title: 'Bruno Jasieński — Akta №',
       slug: 'aktan',
@@ -79,11 +79,11 @@ const COMPARISONS: CaseComparison[] = [
       slides: AKTA_SLIDES,
     },
     theirProject: {
-      title: 'Static Motion — Carl Ander',
-      meta: 'Publication Design · LL\'Editions, Gothenburg',
-      img: '/media/lundgren-lindqvist/ll-static-motion.jpg',
-      alt: 'Static Motion book by Carl Ander published by LL\'Editions',
-      matchDesc: 'Both treat the book as an architectural artifact with psychological mass. In Akta №, raw charcoal gestures implicate the reader; in Static Motion, Lundgren+Lindqvist strip all conventional book apparatus and let the tactile sequence carry the work. The methodology is identical: material form as the argument.',
+      title: 'Ekta Sketchbooks I–III — Daniel Götesson',
+      meta: 'Publication Design & Facsimile · LL\'Editions, Gothenburg',
+      img: '/media/lundgren-lindqvist/ll-ekta-open-spread.jpg',
+      alt: 'Ekta Sketchbooks I-III three-volume publication by Lundgren+Lindqvist showing open spreads of raw drawings and paint',
+      matchDesc: 'Both publications treat the artist\'s sketchbook not as secondary prep-work, but as the core artifact. In Akta №, raw charcoal gestures stand in for a clandestine Siberian prison diary, bound into a tactile archival volume. In Ekta Sketchbooks I–III, Lundgren+Lindqvist preserve Daniel Götesson\'s raw studio drawings and collages through facsimile printing on Munken paper and custom bindings. In both works, the methodology is identical: preserving the raw, unpolished human hand through architectural editorial rigor.',
     },
   },
   {
