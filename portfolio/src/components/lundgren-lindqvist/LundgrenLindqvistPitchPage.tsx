@@ -94,7 +94,7 @@ const COMPARISONS: CaseComparison[] = [
   },
   {
     category: '03 — Packaging & Material Craft',
-    matchTheme: 'Material honesty as design language.',
+    matchTheme: 'Material honesty: tactile wrapping as the functional identity.',
     myProject: {
       title: 'Lasowiak Cranberry Liqueur',
       slug: 'lasowiak-cranberry-liqueur',
@@ -103,10 +103,10 @@ const COMPARISONS: CaseComparison[] = [
       alt: 'Lasowiak cranberry liqueur bottle wrapped in folk textile',
     },
     theirProject: {
-      title: 'Uniscent — Visual Identity & Packaging',
-      img: '/media/lundgren-lindqvist/ll-uniscent-patchouli.jpg',
-      alt: 'Uniscent visual identity and patchouli artwork with vector typography by Lundgren+Lindqvist',
-      matchDesc: 'Lundgren+Lindqvist\'s packaging practice begins with paper weight, surface texture, and production method — never a Photoshop mockup. Lasowiak applies the same logic: hand-folded linen cap wrap, cotton paper label with a strict apothecary-cross grid, and bottle geometry chosen for archival weight. The material is the identity.',
+      title: 'O/O Brewing — The Anniversary Series',
+      img: '/media/lundgren-lindqvist/ll-oo-baltic-porter.jpg',
+      alt: 'O/O Brewing Baltic Porter bottle wrapped in custom typographic paper by Lundgren+Lindqvist',
+      matchDesc: 'Both packaging systems reject standard corporate labels in favor of tactile physical wrapping that protects and defines the product. In Lasowiak, a hand-folded linen cap wrap references regional folk textiles while an apothecary cross grid grounds the liqueur in craft honesty. In O/O Brewing’s Anniversary Series, Lundgren+Lindqvist wrap limited-edition maturation beers in UV-blocking paper with experimental, distorted typography. In both, the physical material wrap is not decorative packaging — it is the identity.',
     },
   },
 ]
@@ -148,6 +148,7 @@ function ProjectSlideshow({ slides }: { slides: SlideItem[] }) {
           fill
           sizes="(max-width: 820px) 100vw, 50vw"
           className={styles.projectImage}
+          style={{ objectFit: 'contain', objectPosition: 'center' }}
           priority
         />
         {/* Transparent tap zones */}
@@ -215,6 +216,7 @@ export function LundgrenLindqvistPitchPage() {
                       fill
                       sizes="(max-width: 820px) 100vw, 50vw"
                       className={styles.projectImage}
+                      style={{ objectFit: 'contain', objectPosition: 'center' }}
                       priority={idx === 0}
                     />
                   </div>
@@ -241,6 +243,7 @@ export function LundgrenLindqvistPitchPage() {
                     fill
                     sizes="(max-width: 820px) 100vw, 50vw"
                     className={styles.projectImage}
+                    style={{ objectFit: 'contain', objectPosition: 'center' }}
                     priority={idx === 0}
                   />
                 </div>
