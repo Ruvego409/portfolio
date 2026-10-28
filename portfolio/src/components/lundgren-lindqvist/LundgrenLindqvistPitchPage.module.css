@@ -1,7 +1,9 @@
 /* ─────────────────────────────────────────────────────────────
    Lundgren+Lindqvist Pitch Page
    Strictly aligned with L+L visual language:
-   - Font: PxGrotesk Regular (user provided TTF)
+   - Font: PxGrotesk Regular (official user TTF / WOFF2)
+   - Font sizing: 15px-16px (aligned with L+L site scale)
+   - Layout: Top-aligned (no centering, tight to top edge)
    - Color: #000000 on #eaeaea
    - Bold 2-column image grid (50% / 50%)
    - Minimal side padding (1rem / 16px, edge-to-edge width)
@@ -12,9 +14,9 @@
   background-color: #eaeaea;
   width: 100%;
   color: #000000;
-  font-family: 'PxGrotesk', 'PxGroteskRegular', sans-serif;
-  font-size: 13px;
-  line-height: 1.35;
+  font-family: var(--font-px-grotesk), 'PxGrotesk', 'Px Grotesk', 'PxGroteskRegular', sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -27,7 +29,7 @@
 
 /* ── Case Section (Repeated for each pair, NO border lines) ── */
 .caseSection {
-  margin-bottom: 56px;
+  margin-bottom: 64px;
   padding-bottom: 0;
   border: none;
 }
@@ -41,11 +43,11 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding-bottom: 10px;
-  margin-bottom: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 14px;
   border: none;
-  font-family: 'PxGrotesk', 'PxGroteskRegular', sans-serif;
-  font-size: 13px;
+  font-family: var(--font-px-grotesk), 'PxGrotesk', 'Px Grotesk', 'PxGroteskRegular', sans-serif;
+  font-size: 15px;
   color: #000000;
 }
 
@@ -59,35 +61,40 @@
   color: #000000;
 }
 
-/* ── 2-Column Side-by-Side Comparison Grid (Minimal 1rem gap) ── */
+/* ── 2-Column Side-by-Side Comparison Grid (Top-aligned, minimal 1rem gap) ── */
 .twoColGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  align-items: start;
+  gap: 1.25rem;
+  align-items: flex-start;
 }
 
 .colCard {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
-/* ── Image Presentation (Large, crisp, no clipping, no border-radius) ── */
+/* ── Image Presentation (Large, crisp, top-aligned, no clipping) ── */
 .imageWrap {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   position: relative;
   overflow: hidden;
   background-color: transparent;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   border-radius: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .projectImage {
   width: 100% !important;
   height: 100% !important;
   object-fit: contain !important;
-  object-position: center !important;
+  object-position: top center !important;
   display: block;
   border-radius: 0;
 }
@@ -97,7 +104,9 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-bottom: 12px;
+  width: 100%;
+  margin-bottom: 14px;
+  align-items: flex-start;
 }
 
 .slideshowRoot .imageWrap {
@@ -131,7 +140,7 @@
 /* Minimal segmented progress bar */
 .track {
   display: flex;
-  gap: 3px;
+  gap: 4px;
   width: 100%;
 }
 
@@ -153,16 +162,18 @@
   background-color: #000000;
 }
 
-/* ── Typographic Dock below Image ── */
+/* ── Typographic Dock below Image (Top-aligned, bigger L+L font size) ── */
 .cardInfo {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  font-family: 'PxGrotesk', 'PxGroteskRegular', sans-serif;
+  gap: 8px;
+  width: 100%;
+  font-family: var(--font-px-grotesk), 'PxGrotesk', 'Px Grotesk', 'PxGroteskRegular', sans-serif;
+  align-items: flex-start;
 }
 
 .projectTitle {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 400;
   color: #000000;
   margin: 0;
@@ -170,14 +181,14 @@
 }
 
 .projectDesc {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.4;
   color: #000000;
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
 }
 
 .caseLink {
-  font-size: 13px;
+  font-size: 15px;
   color: #000000;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -196,19 +207,23 @@
   background: transparent;
   border: none;
   border-radius: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .matchLabel {
-  font-size: 11px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: #000000;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   display: block;
 }
 
 .matchText {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.4;
   color: #000000;
   margin: 0;
@@ -216,16 +231,16 @@
 
 /* ── Pitch Closing (NO border line) ── */
 .pitchClosing {
-  padding: 24px 0 0 0;
+  padding: 32px 0 0 0;
   border: none;
 }
 
 .closingText {
-  font-family: 'PxGrotesk', 'PxGroteskRegular', sans-serif;
-  font-size: 13px;
+  font-family: var(--font-px-grotesk), 'PxGrotesk', 'Px Grotesk', 'PxGroteskRegular', sans-serif;
+  font-size: 16px;
   line-height: 1.45;
   color: #000000;
-  max-width: 720px;
+  max-width: 760px;
   margin: 0;
 }
 
@@ -237,7 +252,7 @@
 
   .twoColGrid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 32px;
   }
 
   .caseHeaderBar {
@@ -246,6 +261,6 @@
   }
 
   .caseSection {
-    margin-bottom: 36px;
+    margin-bottom: 40px;
   }
 }
