@@ -8,7 +8,6 @@ import styles from './LundgrenLindqvistPitchPage.module.css'
 interface SlideItem {
   src: string
   alt: string
-  caption: string
 }
 
 interface CaseComparison {
@@ -17,7 +16,6 @@ interface CaseComparison {
   myProject: {
     title: string
     slug: string
-    meta: string
     desc: string
     img: string
     alt: string
@@ -25,7 +23,6 @@ interface CaseComparison {
   }
   theirProject: {
     title: string
-    meta: string
     img: string
     alt: string
     matchDesc: string
@@ -36,32 +33,26 @@ const AKTA_SLIDES: SlideItem[] = [
   {
     src: '/media/aktan-wood-cover.jpg',
     alt: 'Bruno Jasieński — Akta № archival book photographed on raw wooden planks',
-    caption: 'Archival book object · Raw timber cover setting',
   },
   {
     src: '/media/tsAsaIZClXpfnvWg10zYXNlBUR4.jpg',
     alt: 'Printed publication Akta № open on studio worktable',
-    caption: 'Physical publication · Open volume & binding on worktable',
   },
   {
     src: '/media/NOavjdW8oiXLl4FIMb1Ne9xF0.png',
     alt: 'Original charcoal illustration spread — Siberian camp watchtower and crows',
-    caption: 'Original illustration · Raw charcoal prison camp diary spread',
   },
   {
     src: '/media/VocXQQCXA7epkcS8eluPo9Gt8.png',
     alt: 'Akta № graphic cover with typography',
-    caption: 'Publication cover · Bruno Jasieński: Akta № typography',
   },
   {
     src: '/media/Q7ZqwQYoYCnGTKR9x3wu7GAtRPY.png',
     alt: 'Inverted archival spread confronting political censorship',
-    caption: 'Concept spread · Inverted archival censorship layout',
   },
   {
     src: '/media/JP5cZqOg6vS1gavC5q2QsMv4.png',
     alt: 'Futurist poetry typesetting layout',
-    caption: 'Editorial typography · Futurist verse typesetting',
   },
 ]
 
@@ -72,7 +63,6 @@ const COMPARISONS: CaseComparison[] = [
     myProject: {
       title: 'Bruno Jasieński — Akta №',
       slug: 'aktan',
-      meta: 'Editorial Design & Book · 2026 · University Project',
       desc: 'Archival publication confronting historical erasure through raw charcoal illustrations, inverted typographic spreads, and tactile physical binding decisions.',
       img: '/media/aktan-wood-cover.jpg',
       alt: 'Bruno Jasieński — Akta № book photographed on raw wooden planks',
@@ -80,7 +70,6 @@ const COMPARISONS: CaseComparison[] = [
     },
     theirProject: {
       title: 'Ekta Sketchbooks I–III — Daniel Götesson',
-      meta: 'Publication Design & Facsimile · LL\'Editions, Gothenburg',
       img: '/media/lundgren-lindqvist/ll-ekta-open-spread.jpg',
       alt: 'Ekta Sketchbooks I-III three-volume publication by Lundgren+Lindqvist showing open spreads of raw drawings and paint',
       matchDesc: 'Both publications treat the artist\'s sketchbook not as secondary prep-work, but as the core artifact. In Akta №, raw charcoal gestures stand in for a clandestine Siberian prison diary, bound into a tactile archival volume. In Ekta Sketchbooks I–III, Lundgren+Lindqvist preserve Daniel Götesson\'s raw studio drawings and collages through facsimile printing on Munken paper and custom bindings. In both works, the methodology is identical: preserving the raw, unpolished human hand through architectural editorial rigor.',
@@ -92,14 +81,12 @@ const COMPARISONS: CaseComparison[] = [
     myProject: {
       title: 'Warsaw Museum of Dance and Movement',
       slug: 'mtrw',
-      meta: 'Visual Identity & Wayfinding · 2025 · Cultural Concept',
       desc: 'A structural visual identity built from a single geometric primitive: the circle as the universal spatial constraint of human movement across centuries.',
       img: '/media/s1aYIj6heOAw1Qof49OfrefvFAo.png',
       alt: 'Warsaw Museum of Dance and Movement logotype and geometric identity symbol',
     },
     theirProject: {
       title: 'Inflection — Visual Identity System',
-      meta: 'Identity & Design System · Gothenburg',
       img: '/media/lundgren-lindqvist/ll-inflection-identity.jpg',
       alt: 'Inflection visual identity manual and geometric grid system by Lundgren+Lindqvist',
       matchDesc: 'Lundgren+Lindqvist\'s institutional identities function like architectural blueprints: strict geometric framing, modular hierarchies, and typographic discipline designed for permanence. The MTRW system follows the same rigor — one circle, one weight, one colour — scaled from sub-centimetre admission badges to multi-storey concrete facade signage.',
@@ -111,14 +98,12 @@ const COMPARISONS: CaseComparison[] = [
     myProject: {
       title: 'Lasowiak Cranberry Liqueur',
       slug: 'lasowiak-cranberry-liqueur',
-      meta: 'Packaging & Label Design · 2026 · Art of Packaging (Debiuty)',
       desc: 'Reinterpreting regional folk heritage through strict pharmaceutical typography and tactile material craft: hand-folded linen cap wrap, apothecary cross grid, raw glass.',
       img: '/media/2LVl4gPAeX2Z4jsNezslguRIEg.jpg',
       alt: 'Lasowiak cranberry liqueur bottle wrapped in folk textile',
     },
     theirProject: {
       title: 'Uniscent — Visual Identity & Packaging',
-      meta: 'Brand Identity & Packaging · Gothenburg',
       img: '/media/lundgren-lindqvist/ll-uniscent-patchouli.jpg',
       alt: 'Uniscent visual identity and patchouli artwork with vector typography by Lundgren+Lindqvist',
       matchDesc: 'Lundgren+Lindqvist\'s packaging practice begins with paper weight, surface texture, and production method — never a Photoshop mockup. Lasowiak applies the same logic: hand-folded linen cap wrap, cotton paper label with a strict apothecary-cross grid, and bottle geometry chosen for archival weight. The material is the identity.',
@@ -180,35 +165,6 @@ function ProjectSlideshow({ slides }: { slides: SlideItem[] }) {
         />
       </div>
 
-      {/* Control bar: index + caption + prev/next buttons */}
-      <div className={styles.slideshowBar}>
-        <div className={styles.slideshowMeta}>
-          <span className={styles.slideCounter}>
-            [{String(index + 1).padStart(2, '0')}&thinsp;/&thinsp;{String(slides.length).padStart(2, '0')}]
-          </span>
-          <span className={styles.slideCaption}>{current.caption}</span>
-        </div>
-        <div className={styles.slideshowNav}>
-          <button
-            type="button"
-            className={styles.slideNavBtn}
-            onClick={goPrev}
-            aria-label="Previous image"
-          >
-            &larr;&nbsp;prev
-          </button>
-          <span className={styles.slideNavDivider}>/</span>
-          <button
-            type="button"
-            className={styles.slideNavBtn}
-            onClick={goNext}
-            aria-label="Next image"
-          >
-            next&nbsp;&rarr;
-          </button>
-        </div>
-      </div>
-
       {/* Minimal segmented progress track */}
       <div className={styles.track} role="tablist" aria-label="Slideshow progress">
         {slides.map((slide, i) => (
@@ -217,7 +173,7 @@ function ProjectSlideshow({ slides }: { slides: SlideItem[] }) {
             type="button"
             role="tab"
             aria-selected={i === index}
-            aria-label={`Go to slide ${i + 1}: ${slide.caption}`}
+            aria-label={`Go to slide ${i + 1}`}
             className={`${styles.trackSegment} ${i === index ? styles.trackSegmentActive : ''}`}
             onClick={() => setIndex(i)}
           />
@@ -265,11 +221,7 @@ export function LundgrenLindqvistPitchPage() {
                 )}
 
                 <div className={styles.cardInfo}>
-                  <div className={styles.cardHeaderRow}>
-                    <span className={styles.authorLabel}>Danylo Vasiur</span>
-                  </div>
                   <h3 className={styles.projectTitle}>{comp.myProject.title}</h3>
-                  <div className={styles.projectMeta}>{comp.myProject.meta}</div>
                   <p className={styles.projectDesc}>{comp.myProject.desc}</p>
                   <Link
                     href={`/${comp.myProject.slug}`}
@@ -294,12 +246,7 @@ export function LundgrenLindqvistPitchPage() {
                 </div>
 
                 <div className={styles.cardInfo}>
-                  <div className={styles.cardHeaderRow}>
-                    <span className={styles.authorLabel}>Lundgren+Lindqvist</span>
-                  </div>
                   <h3 className={styles.projectTitle}>{comp.theirProject.title}</h3>
-                  <div className={styles.projectMeta}>{comp.theirProject.meta}</div>
-
                   <div className={styles.matchCallout}>
                     <span className={styles.matchLabel}>The Match:</span>
                     <p className={styles.matchText}>{comp.theirProject.matchDesc}</p>

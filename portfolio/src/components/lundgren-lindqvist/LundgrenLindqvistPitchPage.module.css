@@ -91,7 +91,7 @@
   border-radius: 0;
 }
 
-/* ── Interactive Slideshow (Editorial presentation) ── */
+/* ── Interactive Slideshow (Minimal segmented track) ── */
 .slideshowRoot {
   display: flex;
   flex-direction: column;
@@ -100,7 +100,7 @@
 }
 
 .slideshowRoot .imageWrap {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .tapZoneLeft,
@@ -124,71 +124,6 @@
 .tapZoneRight {
   right: 0;
   cursor: e-resize;
-}
-
-/* Control bar: index + caption + prev/next */
-.slideshowBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 8px;
-  font-family: 'PxGrotesk', 'PxGroteskRegular', sans-serif;
-  font-size: 11px;
-  line-height: 1.35;
-  color: #000000;
-  margin-bottom: 6px;
-}
-
-.slideshowMeta {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.slideCounter {
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #000000;
-  flex-shrink: 0;
-}
-
-.slideCaption {
-  color: #444444;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.slideshowNav {
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-  flex-shrink: 0;
-}
-
-.slideNavBtn {
-  background: transparent;
-  border: none;
-  padding: 0;
-  font-family: inherit;
-  font-size: 11px;
-  color: #000000;
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: opacity 0.15s ease;
-}
-
-.slideNavBtn:hover {
-  opacity: 0.5;
-}
-
-.slideNavDivider {
-  color: #888888;
 }
 
 /* Minimal segmented progress bar */
@@ -220,22 +155,8 @@
 .cardInfo {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   font-family: 'PxGrotesk', 'PxGroteskRegular', sans-serif;
-}
-
-.cardHeaderRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 2px;
-}
-
-.authorLabel {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #666666;
 }
 
 .projectTitle {
@@ -246,18 +167,11 @@
   line-height: 1.35;
 }
 
-.projectMeta {
-  font-size: 12px;
-  color: #555555;
-  margin-bottom: 4px;
-  line-height: 1.4;
-}
-
 .projectDesc {
   font-size: 13px;
   line-height: 1.4;
   color: #000000;
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
 }
 
 .caseLink {
@@ -275,7 +189,7 @@
 
 /* ── Match block for L+L side: pure clean typography, no borders, no background ── */
 .matchCallout {
-  margin-top: 8px;
+  margin-top: 4px;
   padding: 0;
   background: transparent;
   border: none;
@@ -331,11 +245,5 @@
 
   .caseSection {
     margin-bottom: 36px;
-  }
-
-  .slideshowBar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
   }
 }
