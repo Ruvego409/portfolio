@@ -1,8 +1,15 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './LundgrenLindqvistPitchPage.module.css'
+
+interface SlideItem {
+  src: string
+  alt: string
+  caption: string
+}
 
 interface CaseComparison {
   category: string
@@ -14,6 +21,7 @@ interface CaseComparison {
     desc: string
     img: string
     alt: string
+    slides?: SlideItem[]
   }
   theirProject: {
     title: string
@@ -23,6 +31,39 @@ interface CaseComparison {
     matchDesc: string
   }
 }
+
+const AKTA_SLIDES: SlideItem[] = [
+  {
+    src: '/media/aktan-wood-cover.jpg',
+    alt: 'Bruno Jasieński — Akta № archival book photographed on raw wooden planks',
+    caption: 'Archival book object · Raw timber cover setting',
+  },
+  {
+    src: '/media/tsAsaIZClXpfnvWg10zYXNlBUR4.jpg',
+    alt: 'Printed publication Akta № open on studio worktable',
+    caption: 'Physical publication · Open volume & binding on worktable',
+  },
+  {
+    src: '/media/NOavjdW8oiXLl4FIMb1Ne9xF0.png',
+    alt: 'Original charcoal illustration spread — Siberian camp watchtower and crows',
+    caption: 'Original illustration · Raw charcoal prison camp diary spread',
+  },
+  {
+    src: '/media/VocXQQCXA7epkcS8eluPo9Gt8.png',
+    alt: 'Akta № graphic cover with typography',
+    caption: 'Publication cover · Bruno Jasieński: Akta № typography',
+  },
+  {
+    src: '/media/Q7ZqwQYoYCnGTKR9x3wu7GAtRPY.png',
+    alt: 'Inverted archival spread confronting political censorship',
+    caption: 'Concept spread · Inverted archival censorship layout',
+  },
+  {
+    src: '/media/JP5cZqOg6vS1gavC5q2QsMv4.png',
+    alt: 'Futurist poetry typesetting layout',
+    caption: 'Editorial typography · Futurist verse typesetting',
+  },
+]
 
 const COMPARISONS: CaseComparison[] = [
   {
@@ -35,6 +76,7 @@ const COMPARISONS: CaseComparison[] = [
       desc: 'Archival publication confronting historical erasure through raw charcoal illustrations, inverted typographic spreads, and tactile physical binding decisions.',
       img: '/media/aktan-wood-cover.jpg',
       alt: 'Bruno Jasieński — Akta № book photographed on raw wooden planks',
+      slides: AKTA_SLIDES,
     },
     theirProject: {
       title: 'Static Motion — Carl Ander',
@@ -84,6 +126,107 @@ const COMPARISONS: CaseComparison[] = [
   },
 ]
 
+function ProjectSlideshow({ slides }: { slides: SlideItem[] }) {
+  const [index, setIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+
+  // Auto-advance every 4.5s unless hovered
+  useEffect(() => {
+    if (isPaused) return
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length)
+    }, 4500)
+    return () => clearInterval(timer)
+  }, [isPaused, slides.length])
+
+  const goPrev = () => {
+    setIndex((prev) => (prev - 1 + slides.length) % slides.length)
+  }
+
+  const goNext = () => {
+    setIndex((prev) => (prev + 1) % slides.length)
+  }
+
+  const current = slides[index]
+
+  return (
+    <div
+      className={styles.slideshowRoot}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div className={styles.imageWrap}>
+        <Image
+          key={current.src}
+          src={current.src}
+          alt={current.alt}
+          fill
+          sizes="(max-width: 820px) 100vw, 50vw"
+          className={styles.projectImage}
+          priority
+        />
+        {/* Transparent tap zones */}
+        <button
+          type="button"
+          aria-label="Previous slide"
+          className={styles.tapZoneLeft}
+          onClick={goPrev}
+        />
+        <button
+          type="button"
+          aria-label="Next slide"
+          className={styles.tapZoneRight}
+          onClick={goNext}
+        />
+      </div>
+
+      {/* Control bar: index + caption + prev/next buttons */}
+      <div className={styles.slideshowBar}>
+        <div className={styles.slideshowMeta}>
+          <span className={styles.slideCounter}>
+            [{String(index + 1).padStart(2, '0')}&thinsp;/&thinsp;{String(slides.length).padStart(2, '0')}]
+          </span>
+          <span className={styles.slideCaption}>{current.caption}</span>
+        </div>
+        <div className={styles.slideshowNav}>
+          <button
+            type="button"
+            className={styles.slideNavBtn}
+            onClick={goPrev}
+            aria-label="Previous image"
+          >
+            &larr;&nbsp;prev
+          </button>
+          <span className={styles.slideNavDivider}>/</span>
+          <button
+            type="button"
+            className={styles.slideNavBtn}
+            onClick={goNext}
+            aria-label="Next image"
+          >
+            next&nbsp;&rarr;
+          </button>
+        </div>
+      </div>
+
+      {/* Minimal segmented progress track */}
+      <div className={styles.track} role="tablist" aria-label="Slideshow progress">
+        {slides.map((slide, i) => (
+          <button
+            key={slide.src}
+            type="button"
+            role="tab"
+            aria-selected={i === index}
+            aria-label={`Go to slide ${i + 1}: ${slide.caption}`}
+            className={`${styles.trackSegment} ${i === index ? styles.trackSegmentActive : ''}`}
+            onClick={() => setIndex(i)}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export function LundgrenLindqvistPitchPage() {
   return (
     <div data-ll-page className={styles.page}>
@@ -106,16 +249,20 @@ export function LundgrenLindqvistPitchPage() {
 
               {/* ── Left Column: Danylo Vasiur ── */}
               <div className={styles.colCard}>
-                <div className={styles.imageWrap}>
-                  <Image
-                    src={comp.myProject.img}
-                    alt={comp.myProject.alt}
-                    fill
-                    sizes="(max-width: 820px) 100vw, 50vw"
-                    className={styles.projectImage}
-                    priority={idx === 0}
-                  />
-                </div>
+                {comp.myProject.slides ? (
+                  <ProjectSlideshow slides={comp.myProject.slides} />
+                ) : (
+                  <div className={styles.imageWrap}>
+                    <Image
+                      src={comp.myProject.img}
+                      alt={comp.myProject.alt}
+                      fill
+                      sizes="(max-width: 820px) 100vw, 50vw"
+                      className={styles.projectImage}
+                      priority={idx === 0}
+                    />
+                  </div>
+                )}
 
                 <div className={styles.cardInfo}>
                   <div className={styles.cardHeaderRow}>
