@@ -66,6 +66,48 @@
   font-variant-numeric: tabular-nums;
 }
 
+.downloadWrap {
+  display: flex;
+  justify-content: center;
+  margin-block-start: clamp(var(--space-8), 4vw, var(--space-12));
+}
+
+.downloadButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: 12px 28px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-size: clamp(15px, 0.28vw + 14px, 17px);
+  font-weight: var(--fw-regular);
+  letter-spacing: var(--ls-heading);
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 0;
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease, border-color var(--dur-fast) ease;
+}
+
+.downloadButton:hover,
+.downloadButton:focus-visible {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.downloadArrow {
+  display: inline-block;
+  font-size: 1.1em;
+  line-height: 1;
+  transition: transform var(--dur-base) var(--ease-out-expo);
+}
+
+.downloadButton:hover .downloadArrow,
+.downloadButton:focus-visible .downloadArrow {
+  transform: translateY(2px);
+}
+
 @media (max-width: 860px) {
   .row {
     grid-template-columns: minmax(0, 1fr) auto;

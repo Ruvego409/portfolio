@@ -28,6 +28,19 @@ export function Experience() {
           </Reveal>
         ))}
       </ul>
+
+      <Reveal className={styles.downloadWrap} delay={experience.length * 0.06}>
+        <a
+          href="/Danylo_Vasiur_CV.pdf"
+          download="Danylo_Vasiur_CV.pdf"
+          className={styles.downloadButton}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>download cv</span>
+          <span className={styles.downloadArrow} aria-hidden="true">&darr;</span>
+        </a>
+      </Reveal>
     </section>
   )
 }
