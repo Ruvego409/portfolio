@@ -282,13 +282,6 @@ export function StockholmDesignLabPitchPage() {
             </article>
           ))}
         </div>
-
-        {/* ── Pitch Closing ── */}
-        <footer className={styles.pitchClosing}>
-          <p className={styles.closingText}>
-            I am Danylo Vasiur, a graphic designer finishing my degree in Kraków. I am drawn to Stockholm Design Lab’s transformational rigor, systematic typography, and ability to turn complex constraints into iconic forms. I am seeking a Junior Designer role in Stockholm.
-          </p>
-        </footer>
       </div>
     </div>
   )

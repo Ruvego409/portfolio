@@ -235,22 +235,6 @@
   opacity: 0.55;
 }
 
-/* ── Pitch Closing ── */
-.pitchClosing {
-  margin-top: 64px;
-  padding-top: 36px;
-  border-top: 1px solid #181818;
-}
-
-.closingText {
-  font-size: 18px;
-  line-height: 1.45;
-  letter-spacing: -0.02em;
-  color: #000000;
-  max-width: 820px;
-  margin: 0;
-}
-
 /* ── Responsive Mobile ── */
 @media (max-width: 768px) {
   .inner {
