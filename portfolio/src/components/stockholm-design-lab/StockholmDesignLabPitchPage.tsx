@@ -92,24 +92,48 @@ const COMPARISONS: CaseComparison[] = [
   },
 ]
 
-const matchContainerVariants = {
+/* Staggered entrance for the main headline */
+const titleContainerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
       staggerChildren: 0.12,
+      delayChildren: 0.05,
+    },
+  },
+}
+
+const titleLineVariants = {
+  hidden: { opacity: 0, y: 36 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: EASE_OUT_EXPO,
+    },
+  },
+}
+
+const matchContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
       delayChildren: 0.04,
     },
   },
 }
 
 const matchColVariants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.65,
+      duration: 0.6,
       ease: EASE_OUT_EXPO,
     },
   },
@@ -121,11 +145,24 @@ export function StockholmDesignLabPitchPage() {
   return (
     <div data-sdl-page className={styles.page}>
       <div className={styles.inner}>
-        {/* ── Main Page Title ── */}
-        <h1 className={styles.pageTitle}>
-          Danylo Vasiur &times; Stockholm Design Lab
-          <span className={styles.pageSubtitle}>Selected Case Comparisons</span>
-        </h1>
+        {/* ── Main Page Title (Enlarged & Animated Entrance) ── */}
+        <motion.h1
+          className={styles.pageTitle}
+          initial={reduced ? 'visible' : 'hidden'}
+          animate="visible"
+          variants={titleContainerVariants}
+        >
+          <span className={styles.lineWrap}>
+            <motion.span className={styles.titleLine} variants={titleLineVariants}>
+              Danylo Vasiur &times; Stockholm Design Lab
+            </motion.span>
+          </span>
+          <span className={styles.lineWrap}>
+            <motion.span className={styles.titleLine} variants={titleLineVariants}>
+              Selected Case Comparisons
+            </motion.span>
+          </span>
+        </motion.h1>
 
         {/* ── Comparison Sections ── */}
         <div className={styles.comparisonsList}>
@@ -181,7 +218,7 @@ export function StockholmDesignLabPitchPage() {
                   <p className={styles.projectDesc}>{comp.theirProject.desc}</p>
                 </div>
 
-                {/* 6. Match Block (Large Animated 2-Column Block with Top Divider) */}
+                {/* 6. Match Block (Clean 2-Column Block with Top Divider Line) */}
                 <motion.div
                   className={styles.matchBlock}
                   initial={reduced ? 'visible' : 'hidden'}
@@ -189,10 +226,6 @@ export function StockholmDesignLabPitchPage() {
                   viewport={{ once: true, amount: 0.18 }}
                   variants={matchContainerVariants}
                 >
-                  <div className={styles.matchHeader}>
-                    <span className={styles.matchTag}>Match</span>
-                  </div>
-
                   <div className={styles.matchGrid}>
                     <motion.div className={styles.matchCol} variants={matchColVariants}>
                       <p className={styles.matchTextLarge}>
