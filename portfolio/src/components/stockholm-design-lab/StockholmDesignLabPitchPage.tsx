@@ -2,6 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion, useReducedMotion } from 'framer-motion'
+import { EASE_OUT_EXPO } from '@/lib/motion'
 import styles from './StockholmDesignLabPitchPage.module.css'
 
 interface ProjectItem {
@@ -27,14 +29,14 @@ const COMPARISONS: CaseComparison[] = [
     myProject: {
       title: 'SheetSolved',
       slug: 'sheetsolved',
-      desc: 'Visual identity and web platform for an Excel automation startup. Built from a 3-sheet coordinate grid, Saans grotesque, and UI elements directly mirroring spreadsheet data matrices.',
+      desc: 'Visual identity and web platform for an Excel automation startup. Built from a 3-sheet coordinate grid, Saans grotesque, and UI data matrices.',
       img: '/media/ktl5UH5AFDMm4JWqXWHLbyPbvg.png',
       alt: 'SheetSolved responsive web interface and landing page design',
       fit: 'contain',
     },
     theirProject: {
       title: 'Viedoc',
-      desc: 'Comprehensive brand identity and design system for clinical trial software. Translating complex data workflows and biometric metrics into a clinical Scandinavian visual language.',
+      desc: 'Comprehensive brand identity and design system for clinical trial software. Translating complex data workflows into a clinical Scandinavian visual language.',
       img: '/media/sdl/sdl-viedoc-ui.png',
       alt: 'Viedoc clinical data software platform visual identity system by Stockholm Design Lab',
       fit: 'contain',
@@ -42,7 +44,7 @@ const COMPARISONS: CaseComparison[] = [
     matchCol1:
       'Both identities operate at the intersection of dense technical logic and Scandinavian minimalism, rejecting generic SaaS vectors for pure architectural discipline.',
     matchCol2:
-      'In Viedoc, SDL turned clinical study metrics into the brand language. In SheetSolved, an abstract interlocking “S” is derived directly from three spreadsheet cell sheets.',
+      'In Viedoc, SDL turned clinical study data into the primary brand language. In SheetSolved, an abstract interlocking “S” is derived directly from three spreadsheet cell sheets.',
   },
   {
     id: 'lasowiak-omaka',
@@ -62,7 +64,7 @@ const COMPARISONS: CaseComparison[] = [
       fit: 'cover',
     },
     matchCol1:
-      'Both projects strip beverage packaging of nostalgic clichés, framing liquid craft through disciplined modular typography and tangible material honesty.',
+      'Both projects strip beverage packaging of nostalgic folklore clichés, framing liquid craft through disciplined modular typography and tangible material honesty.',
     matchCol2:
       'Omaka organizes unpredictable craft beers into structured label fields. Lasowiak replaces decorative folk motifs with an apothecary cross grid and raw physical linen.',
   },
@@ -90,7 +92,32 @@ const COMPARISONS: CaseComparison[] = [
   },
 ]
 
+const matchContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.04,
+    },
+  },
+}
+
+const matchColVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      ease: EASE_OUT_EXPO,
+    },
+  },
+}
+
 export function StockholmDesignLabPitchPage() {
+  const reduced = useReducedMotion()
+
   return (
     <div data-sdl-page className={styles.page}>
       <div className={styles.inner}>
@@ -154,29 +181,40 @@ export function StockholmDesignLabPitchPage() {
                   <p className={styles.projectDesc}>{comp.theirProject.desc}</p>
                 </div>
 
-                {/* 6. Match Block (2 Columns) */}
-                <div className={styles.matchBlock}>
+                {/* 6. Match Block (Large Animated 2-Column Block with Top Divider) */}
+                <motion.div
+                  className={styles.matchBlock}
+                  initial={reduced ? 'visible' : 'hidden'}
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.18 }}
+                  variants={matchContainerVariants}
+                >
+                  <div className={styles.matchHeader}>
+                    <span className={styles.matchTag}>Match</span>
+                  </div>
+
                   <div className={styles.matchGrid}>
-                    <div className={styles.matchCol}>
-                      <p className={styles.matchText}>
+                    <motion.div className={styles.matchCol} variants={matchColVariants}>
+                      <p className={styles.matchTextLarge}>
                         <strong className={styles.matchPrefix}>Match:</strong> {comp.matchCol1}
                       </p>
-                    </div>
-                    <div className={styles.matchCol}>
-                      <p className={styles.matchText}>
+                    </motion.div>
+
+                    <motion.div className={styles.matchCol} variants={matchColVariants}>
+                      <p className={styles.matchTextLarge}>
                         {comp.matchCol2}
                       </p>
-                    </div>
+                    </motion.div>
                   </div>
 
                   {comp.myProject.slug && (
-                    <div className={styles.linkWrap}>
+                    <motion.div className={styles.linkWrap} variants={matchColVariants}>
                       <Link href={`/${comp.myProject.slug}`} className={styles.seeFullCase}>
-                        See full case
+                        See full case &rarr;
                       </Link>
-                    </div>
+                    </motion.div>
                   )}
-                </div>
+                </motion.div>
               </div>
             </article>
           ))}
