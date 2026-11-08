@@ -1,12 +1,11 @@
 /* ─────────────────────────────────────────────────────────────
    Stockholm Design Lab (SDL) Pitch Page
-   Strictly aligned with SDL visual language & design philosophy:
-   - Font: Lab Grotesque (official SDL foundry font)
-   - Color: Pure #000000 on #ffffff
-   - Minimalist meta-accents: #777777 / #9e9e9e
-   - Bold 2-column side-by-side comparison grid (50% / 50%)
-   - Letter-spacing: -0.02em (classic SDL tracking)
-   - Zero rounded corners, zero box-shadows, pure structural discipline
+   Rebuilt to match user sketch & SDL typographic precision:
+   - Font: Lab Grotesque
+   - Palette: Pure #000000 on #ffffff
+   - Static hero images with central × multiplier
+   - Side-by-side Project Name & Descriptions
+   - Prominent full-width Match statement & See full case link
 ───────────────────────────────────────────────────────────── */
 
 .page {
@@ -25,252 +24,186 @@
   width: 100%;
   max-width: 100%;
   margin: 0;
-  padding: 24px 1.5rem 64px 1.5rem;
+  padding: 32px 1.5rem 80px 1.5rem;
 }
 
-/* ── Studio Header Bar ── */
-.studioHeader {
+/* ── Main Page Title ── */
+.pageTitle {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  border-bottom: 1px solid #181818;
-  padding-bottom: 14px;
-  margin-bottom: 48px;
-}
-
-.studioTitle {
-  font-size: 15px;
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  flex-direction: column;
+  gap: 2px;
+  font-size: clamp(28px, 3.8vw, 46px);
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: -0.03em;
   color: #000000;
-  margin: 0;
+  margin: 0 0 52px 0;
 }
 
-.studioMeta {
-  font-size: 13px;
-  font-family: var(--font-lab-grotesque-mono), 'LabGrotesque-mono', monospace;
-  color: #777777;
-  letter-spacing: 0;
+.pageSubtitle {
+  display: block;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
 }
 
-/* ── Case Section (Repeated for each pair) ── */
+/* ── Comparison Sections List ── */
+.comparisonsList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .caseSection {
-  margin-bottom: 80px;
-  padding-bottom: 0;
-  border: none;
+  margin-bottom: 88px;
+  width: 100%;
 }
 
 .caseSection:last-of-type {
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 
-/* ── Case Header Bar (Category & Thesis) ── */
-.caseHeaderBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding-bottom: 12px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid #e0e0e0;
-  font-size: 15px;
-  color: #000000;
-}
-
-.caseCategory {
-  font-family: var(--font-lab-grotesque-mono), 'LabGrotesque-mono', monospace;
-  font-size: 13px;
-  color: #777777;
-  letter-spacing: -0.01em;
-}
-
-.caseMatchTheme {
-  font-weight: 400;
-  color: #000000;
-  letter-spacing: -0.02em;
-}
-
-/* ── 2-Column Side-by-Side Comparison Grid ── */
-.twoColGrid {
+/* ── 3-Column Comparison Grid ── */
+.comparisonGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  align-items: flex-start;
+  grid-template-columns: 1fr 32px 1fr;
+  column-gap: 24px;
+  row-gap: 16px;
+  width: 100%;
+  align-items: start;
 }
 
-.colCard {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+/* ── Row 1: Left Image, Cross, Right Image ── */
+.leftImage {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
 }
 
-/* ── Column Author Label ── */
-.columnAuthor {
-  font-family: var(--font-lab-grotesque-mono), 'LabGrotesque-mono', monospace;
-  font-size: 12px;
-  color: #888888;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 10px;
+.crossDivider {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: center;
+  font-size: 26px;
+  line-height: 1;
+  color: #000000;
+  font-weight: 300;
+  user-select: none;
 }
 
-/* ── Image Presentation (3:2 ratio, top-left aligned, crisp) ── */
+.rightImage {
+  grid-column: 3;
+  grid-row: 1;
+  width: 100%;
+}
+
+/* ── Image Wrap & Sizing ── */
 .imageWrap {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3;
   position: relative;
   overflow: hidden;
-  background-color: #f7f7f7;
-  margin-bottom: 16px;
-  border-radius: 0;
+  background-color: #f4f4f4;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
 }
 
 .projectImage {
   width: 100% !important;
   height: 100% !important;
-  object-fit: contain !important;
-  object-position: top left !important;
+  object-fit: cover !important;
+  object-position: center !important;
   display: block;
-  border-radius: 0;
 }
 
-/* ── Interactive Slideshow (Segmented Progress Track) ── */
-.slideshowRoot {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  margin-bottom: 16px;
-  align-items: flex-start;
+.projectImageContain {
+  object-fit: contain !important;
 }
 
-.slideshowRoot .imageWrap {
-  margin-bottom: 8px;
-}
-
-.tapZoneLeft,
-.tapZoneRight {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 2;
-  padding: 0;
-}
-
-.tapZoneLeft {
-  left: 0;
-  cursor: w-resize;
-}
-
-.tapZoneRight {
-  right: 0;
-  cursor: e-resize;
-}
-
-/* Minimal segmented progress bar */
-.track {
-  display: flex;
-  gap: 4px;
-  width: 100%;
-}
-
-.trackSegment {
-  flex: 1;
-  height: 2px;
-  background-color: #e0e0e0;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.trackSegment:hover {
-  background-color: #999999;
-}
-
-.trackSegmentActive {
-  background-color: #000000;
-}
-
-/* ── Typographic Block below Image ── */
-.cardInfo {
+/* ── Row 2: Left Info, Right Info ── */
+.leftInfo {
+  grid-column: 1;
+  grid-row: 2;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 100%;
   align-items: flex-start;
 }
 
-.projectTitle {
-  font-size: 18px;
-  font-weight: 400;
-  color: #000000;
-  margin: 0;
+.rightInfo {
+  grid-column: 3;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.projectName {
+  font-size: clamp(17px, 1.25vw, 20px);
+  font-weight: 500;
   line-height: 1.3;
   letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0;
 }
 
 .projectDesc {
   font-size: 15px;
-  line-height: 1.45;
-  color: #333333;
-  margin: 0 0 6px 0;
+  line-height: 1.48;
   letter-spacing: -0.01em;
+  color: #333333;
+  margin: 0;
 }
 
-.caseLink {
-  font-size: 14px;
-  color: #000000;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  align-self: flex-start;
-  transition: opacity 0.15s ease;
-}
-
-.caseLink:hover {
-  opacity: 0.5;
-}
-
-/* ── Match Callout for SDL side ── */
-.matchCallout {
-  margin-top: 4px;
-  padding: 0;
-  background: transparent;
-  border: none;
+/* ── Row 3: Full Width Match Block ── */
+.matchBlock {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  margin-top: 18px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.matchLabel {
-  font-family: var(--font-lab-grotesque-mono), 'LabGrotesque-mono', monospace;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #777777;
-  margin-bottom: 6px;
-  display: block;
 }
 
 .matchText {
+  font-size: clamp(18px, 1.6vw, 23px);
+  line-height: 1.36;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0 0 16px 0;
+  font-weight: 400;
+}
+
+.matchPrefix {
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.linkWrap {
+  margin-top: 12px;
+}
+
+.seeFullCase {
   font-size: 15px;
-  line-height: 1.45;
-  color: #111111;
-  margin: 0;
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  display: inline-block;
+  transition: opacity 0.15s ease;
   letter-spacing: -0.01em;
+}
+
+.seeFullCase:hover {
+  opacity: 0.55;
 }
 
 /* ── Pitch Closing ── */
 .pitchClosing {
-  padding: 48px 0 0 0;
+  margin-top: 64px;
+  padding-top: 36px;
   border-top: 1px solid #181818;
 }
 
@@ -284,22 +217,57 @@
 }
 
 /* ── Responsive Mobile ── */
-@media (max-width: 860px) {
+@media (max-width: 768px) {
   .inner {
-    padding: 16px 14px 48px 14px;
+    padding: 20px 14px 60px 14px;
   }
 
-  .twoColGrid {
+  .pageTitle {
+    margin-bottom: 36px;
+  }
+
+  .comparisonGrid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    row-gap: 12px;
   }
 
-  .caseHeaderBar {
-    flex-direction: column;
-    gap: 6px;
+  .leftImage {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .leftInfo {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 8px;
+  }
+
+  .crossDivider {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: center;
+    padding: 10px 0;
+    font-size: 22px;
+  }
+
+  .rightImage {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  .rightInfo {
+    grid-column: 1;
+    grid-row: 5;
+    margin-bottom: 8px;
+  }
+
+  .matchBlock {
+    grid-column: 1;
+    grid-row: 6;
+    margin-top: 14px;
   }
 
   .caseSection {
-    margin-bottom: 48px;
+    margin-bottom: 60px;
   }
 }
