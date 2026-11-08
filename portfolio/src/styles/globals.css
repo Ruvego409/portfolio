@@ -233,3 +233,18 @@ body:has([data-ll-page]) {
 [data-ll-page] * {
   font-family: 'PxGrotesk', 'Px Grotesk', 'PxGroteskRegular', sans-serif !important;
 }
+
+
+@font-face {
+  font-family: 'LabGrotesque';
+  src: url('/fonts/LabGrotesqueWeb-Regular.woff2') format('woff2'),
+       url('/fonts/LabGrotesqueWeb-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+[data-sdl-page],
+[data-sdl-page] * {
+  font-family: var(--font-lab-grotesque), 'LabGrotesque', 'LabGrotesque-regular', 'Lab Grotesque', sans-serif !important;
+}
