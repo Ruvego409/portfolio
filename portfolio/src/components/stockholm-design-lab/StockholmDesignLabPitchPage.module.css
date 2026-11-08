@@ -4,8 +4,8 @@
    - Font: Lab Grotesque
    - Palette: Pure #000000 on #ffffff
    - Static hero images with central × multiplier
-   - Side-by-side Project Name & Descriptions
-   - Prominent full-width Match statement & See full case link
+   - Narrower, punchy case descriptions
+   - 2-column balanced Match statement & See full case link
 ───────────────────────────────────────────────────────────── */
 
 .page {
@@ -152,28 +152,44 @@
   margin: 0;
 }
 
+/* Narrowed measure for optimal editorial reading comfort */
 .projectDesc {
   font-size: 15px;
   line-height: 1.48;
   letter-spacing: -0.01em;
   color: #333333;
   margin: 0;
+  max-width: 380px;
 }
 
-/* ── Row 3: Full Width Match Block ── */
+/* ── Row 3: 2-Column Match Block (Aligned with layout) ── */
 .matchBlock {
   grid-column: 1 / -1;
   grid-row: 3;
-  margin-top: 18px;
+  margin-top: 24px;
   width: 100%;
 }
 
+.matchGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 80px; /* 24px + 32px + 24px: perfectly mirrors the two project columns above */
+  row-gap: 16px;
+  width: 100%;
+  align-items: start;
+}
+
+.matchCol {
+  display: flex;
+  flex-direction: column;
+}
+
 .matchText {
-  font-size: clamp(18px, 1.6vw, 23px);
-  line-height: 1.36;
-  letter-spacing: -0.02em;
+  font-size: clamp(16px, 1.35vw, 19px);
+  line-height: 1.42;
+  letter-spacing: -0.015em;
   color: #000000;
-  margin: 0 0 16px 0;
+  margin: 0;
   font-weight: 400;
 }
 
@@ -183,7 +199,7 @@
 }
 
 .linkWrap {
-  margin-top: 12px;
+  margin-top: 18px;
 }
 
 .seeFullCase {
@@ -242,6 +258,10 @@
     margin-bottom: 8px;
   }
 
+  .projectDesc {
+    max-width: 100%;
+  }
+
   .crossDivider {
     grid-column: 1;
     grid-row: 3;
@@ -265,6 +285,12 @@
     grid-column: 1;
     grid-row: 6;
     margin-top: 14px;
+  }
+
+  .matchGrid {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 12px;
   }
 
   .caseSection {
