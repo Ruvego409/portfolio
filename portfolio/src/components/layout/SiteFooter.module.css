@@ -108,3 +108,38 @@
 .footerLL .wordmark text {
   fill: #000000 !important;
 }
+
+/* Stockholm Design Lab pitch page footer theme */
+.footerSDL {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: none !important;
+  border-top: 1px solid #181818 !important;
+  position: static !important;
+  padding-block-start: var(--section-y);
+  padding-block-end: var(--space-6);
+}
+
+.footerSDL * {
+  font-family: var(--font-lab-grotesque), 'LabGrotesque', 'LabGrotesque-regular', sans-serif !important;
+  letter-spacing: -0.015em;
+}
+
+.footerSDL .link,
+.footerSDL .details,
+.footerSDL .columnTitle,
+.footerSDL .column ul {
+  color: #000000 !important;
+}
+
+.footerSDL .link:hover {
+  opacity: 0.5;
+}
+
+.footerSDL .wordmark {
+  fill: #000000 !important;
+}
+
+.footerSDL .wordmark text {
+  fill: #000000 !important;
+}

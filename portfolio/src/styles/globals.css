@@ -248,3 +248,7 @@ body:has([data-ll-page]) {
 [data-sdl-page] * {
   font-family: var(--font-lab-grotesque), 'LabGrotesque', 'LabGrotesque-regular', 'Lab Grotesque', sans-serif !important;
 }
+
+body:has([data-sdl-page]) {
+  background-color: #ffffff !important;
+}

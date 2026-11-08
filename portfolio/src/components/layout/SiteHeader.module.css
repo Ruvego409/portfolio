@@ -111,3 +111,22 @@
 .headerLL .logo {
   color: #000000 !important;
 }
+
+/* Stockholm Design Lab pitch page header theme */
+.headerSDL {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid #181818 !important;
+}
+
+.headerSDL .brandName,
+.headerSDL .navLink {
+  color: #000000 !important;
+  font-family: var(--font-lab-grotesque), 'LabGrotesque', 'LabGrotesque-regular', sans-serif !important;
+  letter-spacing: -0.02em;
+}
+
+.headerSDL .logo {
+  color: #000000 !important;
+}

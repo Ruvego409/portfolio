@@ -13,6 +13,7 @@ export function SiteHeader() {
   const pathname = usePathname()
   const isSnask = pathname === '/for/snask'
   const isLundgrenLindqvist = pathname === '/for/lundgren-lindqvist'
+  const isSDL = pathname === '/for/stockholm-design-lab' || pathname === '/for/sdl'
 
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -48,7 +49,7 @@ export function SiteHeader() {
 
 
   return (
-    <header className={`${styles.header} ${isDark ? styles.headerDark : ''} ${isLundgrenLindqvist ? styles.headerLL : ''}`}>
+    <header className={`${styles.header} ${isDark ? styles.headerDark : ''} ${isLundgrenLindqvist ? styles.headerLL : ''} ${isSDL ? styles.headerSDL : ''}`}>
       <div className={`container ${styles.inner}`}>
         <Link href="/" className={styles.brand} aria-label={`${site.name} — home`}>
           <LogoMark className={styles.logo} />
