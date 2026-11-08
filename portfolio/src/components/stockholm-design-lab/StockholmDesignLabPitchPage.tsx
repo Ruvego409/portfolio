@@ -9,10 +9,12 @@ import styles from './StockholmDesignLabPitchPage.module.css'
 interface ProjectItem {
   title: string
   desc: string
-  img: string
+  img?: string
+  video?: string
   alt: string
   slug?: string
   fit?: 'cover' | 'contain'
+  isMark?: boolean
 }
 
 interface CaseComparison {
@@ -30,16 +32,17 @@ const COMPARISONS: CaseComparison[] = [
       title: 'SheetSolved',
       slug: 'sheetsolved',
       desc: 'Visual identity and web platform for an Excel automation startup. Built from a 3-sheet coordinate grid, Saans grotesque, and UI data matrices.',
-      img: '/media/ktl5UH5AFDMm4JWqXWHLbyPbvg.png',
-      alt: 'SheetSolved responsive web interface and landing page design',
+      video: '/media/2vdkSvXsuOS9CVeB13a6i1x16Zs.mp4',
+      alt: 'SheetSolved responsive web interface and logo motion',
       fit: 'contain',
     },
     theirProject: {
       title: 'Viedoc',
       desc: 'Comprehensive brand identity and design system for clinical trial software. Translating complex data workflows into a clinical Scandinavian visual language.',
-      img: '/media/sdl/sdl-viedoc-ui.png',
-      alt: 'Viedoc clinical data software platform visual identity system by Stockholm Design Lab',
+      img: '/media/sdl/sdl-viedoc-mark.png',
+      alt: 'Viedoc logotype by Stockholm Design Lab',
       fit: 'contain',
+      isMark: true,
     },
     matchCol1:
       'Both identities operate at the intersection of dense technical logic and Scandinavian minimalism, rejecting generic SaaS vectors for pure architectural discipline.',
@@ -47,7 +50,7 @@ const COMPARISONS: CaseComparison[] = [
       'In Viedoc, SDL turned clinical study data into the primary brand language. In SheetSolved, an abstract interlocking “S” is derived directly from three spreadsheet cell sheets.',
   },
   {
-    id: 'lasowiak-omaka',
+    id: 'lasowiak-ohmine',
     myProject: {
       title: 'Lasowiak Cranberry Liqueur',
       slug: 'lasowiak-cranberry-liqueur',
@@ -57,16 +60,16 @@ const COMPARISONS: CaseComparison[] = [
       fit: 'cover',
     },
     theirProject: {
-      title: 'Omaka',
-      desc: 'Visual identity and packaging for Stockholm craft brewery Omaka. Built on “irregular elegance” — a disciplined, modular label architecture framing unpredictable liquid experiments.',
-      img: '/media/sdl/sdl-omaka-cans.jpg',
-      alt: 'Omaka craft brewery identity and packaging system by Stockholm Design Lab',
+      title: 'Ohmine',
+      desc: 'Identity and packaging for 300-year-old resurrected sake brewery Ohmine. Replaces conventional brown bottles and brush scripts with opaque, opal-white glass and rice grain iconography.',
+      img: '/media/sdl/sdl-ohmine-hero.jpg',
+      alt: 'Ohmine sake packaging and opal-white bottles by Stockholm Design Lab',
       fit: 'cover',
     },
     matchCol1:
-      'Both projects strip beverage packaging of nostalgic folklore clichés, framing liquid craft through disciplined modular typography and tangible material honesty.',
+      'Both projects resurrect traditional heritage beverages while completely rejecting dusty regional clichés and nostalgic tourist aesthetics.',
     matchCol2:
-      'Omaka organizes unpredictable craft beers into structured label fields. Lasowiak replaces decorative folk motifs with an apothecary cross grid and raw physical linen.',
+      'Ohmine replaces supermarket brush scripts with opal-white glass and rice grain icons. Lasowiak strips away decorative folklore in favor of an apothecary cross grid and raw linen.',
   },
   {
     id: 'ubu-orionteatern',
@@ -74,21 +77,22 @@ const COMPARISONS: CaseComparison[] = [
       title: 'Ubu Roi ou les Polonais',
       slug: 'ubu',
       desc: 'Typographic publication of Alfred Jarry’s absurdist play. Circular cutouts in letterforms and collapsing layout grids mirror the political dissolution of King Ubu’s reign.',
-      img: '/media/BjsAOjLC5f3e9YKMBpst1WHBoI.png',
-      alt: 'Open spread of Ubu Roi book with deconstructed typography and falling letterforms',
+      video: '/media/pmrVVXBKjVwuqmxJx9S36N57A.mp4',
+      alt: 'Ubu Roi book rotating in space',
       fit: 'contain',
     },
     theirProject: {
       title: 'Orionteatern',
       desc: 'Visual identity for Stockholm’s avant-garde theatre in a former mechanical factory. Embraces raw industrial scale through bold Futura, kinetic typography, and physical signage.',
-      img: '/media/sdl/sdl-orionteatern-posters.jpg',
-      alt: 'Orionteatern avant-garde theatre identity and typography by Stockholm Design Lab',
-      fit: 'cover',
+      img: '/media/sdl/sdl-orionteatern-mark.png',
+      alt: 'Orionteatern 3D architectural typographic mark by Stockholm Design Lab',
+      fit: 'contain',
+      isMark: true,
     },
     matchCol1:
       'Both identities treat typography as an active theatrical participant rather than a neutral text carrier, breaking standard grid rules to mirror physical drama.',
     matchCol2:
-      'SDL channeled the raw mechanics of an industrial workshop into kinetic type. In Ubu Roi, typographic anatomy dissolves across spreads in sync with the narrative collapse.',
+      'SDL channeled the raw mechanics of an industrial workshop into isometric spatial type. In Ubu Roi, typographic anatomy dissolves across spreads in sync with the narrative collapse.',
   },
 ]
 
@@ -169,19 +173,32 @@ export function StockholmDesignLabPitchPage() {
           {COMPARISONS.map((comp, idx) => (
             <article key={comp.id} className={styles.caseSection}>
               <div className={styles.comparisonGrid}>
-                {/* 1. Left Image (Danylo Vasiur) */}
+                {/* 1. Left Media (Danylo Vasiur: Video or Image) */}
                 <div className={styles.leftImage}>
                   <div className={styles.imageWrap}>
-                    <Image
-                      src={comp.myProject.img}
-                      alt={comp.myProject.alt}
-                      fill
-                      sizes="(max-width: 860px) 100vw, 48vw"
-                      className={`${styles.projectImage} ${
-                        comp.myProject.fit === 'contain' ? styles.projectImageContain : ''
-                      }`}
-                      priority={idx === 0}
-                    />
+                    {comp.myProject.video ? (
+                      <video
+                        src={comp.myProject.video}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className={`${styles.projectVideo} ${
+                          comp.myProject.fit === 'contain' ? styles.projectMediaContain : ''
+                        }`}
+                      />
+                    ) : (
+                      <Image
+                        src={comp.myProject.img!}
+                        alt={comp.myProject.alt}
+                        fill
+                        sizes="(max-width: 860px) 100vw, 48vw"
+                        className={`${styles.projectImage} ${
+                          comp.myProject.fit === 'contain' ? styles.projectMediaContain : ''
+                        }`}
+                        priority={idx === 0}
+                      />
+                    )}
                   </div>
                 </div>
 
@@ -190,19 +207,32 @@ export function StockholmDesignLabPitchPage() {
                   &times;
                 </div>
 
-                {/* 3. Right Image (Stockholm Design Lab) */}
+                {/* 3. Right Media (Stockholm Design Lab: Mark or Image) */}
                 <div className={styles.rightImage}>
                   <div className={styles.imageWrap}>
-                    <Image
-                      src={comp.theirProject.img}
-                      alt={comp.theirProject.alt}
-                      fill
-                      sizes="(max-width: 860px) 100vw, 48vw"
-                      className={`${styles.projectImage} ${
-                        comp.theirProject.fit === 'contain' ? styles.projectImageContain : ''
-                      }`}
-                      priority={idx === 0}
-                    />
+                    {comp.theirProject.video ? (
+                      <video
+                        src={comp.theirProject.video}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className={`${styles.projectVideo} ${
+                          comp.theirProject.fit === 'contain' ? styles.projectMediaContain : ''
+                        }`}
+                      />
+                    ) : (
+                      <Image
+                        src={comp.theirProject.img!}
+                        alt={comp.theirProject.alt}
+                        fill
+                        sizes="(max-width: 860px) 100vw, 48vw"
+                        className={`${styles.projectImage} ${
+                          comp.theirProject.fit === 'contain' ? styles.projectMediaContain : ''
+                        } ${comp.theirProject.isMark ? styles.projectMark : ''}`}
+                        priority={idx === 0}
+                      />
+                    )}
                   </div>
                 </div>
 
